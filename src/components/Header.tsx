@@ -1,6 +1,11 @@
 import { Search, ChevronDown, Sun } from "lucide-react";
+import { Link } from "react-router-dom";
 
-const Header = () => {
+interface HeaderProps {
+  activeTab?: "studio" | "api";
+}
+
+const Header = ({ activeTab = "studio" }: HeaderProps) => {
   return (
     <header className="sticky top-0 z-50 bg-background border-b border-border">
       <div className="flex items-center justify-between h-14 px-6">
@@ -63,12 +68,26 @@ const Header = () => {
         <a href="#" className="py-3 text-sm text-muted-foreground hover:text-foreground transition-colors">
           Captions
         </a>
-        <a href="#" className="py-3 text-sm text-primary font-medium border-b-2 border-primary -mb-px">
+        <Link
+          to="/"
+          className={`py-3 text-sm transition-colors ${
+            activeTab === "studio"
+              ? "text-primary font-medium border-b-2 border-primary -mb-px"
+              : "text-muted-foreground hover:text-foreground"
+          }`}
+        >
           Mirage Studio
-        </a>
-        <a href="#" className="py-3 text-sm text-muted-foreground hover:text-foreground transition-colors">
+        </Link>
+        <Link
+          to="/api"
+          className={`py-3 text-sm transition-colors ${
+            activeTab === "api"
+              ? "text-primary font-medium border-b-2 border-primary -mb-px"
+              : "text-muted-foreground hover:text-foreground"
+          }`}
+        >
           API
-        </a>
+        </Link>
       </nav>
     </header>
   );
