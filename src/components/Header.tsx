@@ -1,0 +1,77 @@
+import { Search, ChevronDown, Sun } from "lucide-react";
+
+const Header = () => {
+  return (
+    <header className="sticky top-0 z-50 bg-background border-b border-border">
+      <div className="flex items-center justify-between h-14 px-6">
+        {/* Left: Logo and Language */}
+        <div className="flex items-center gap-4">
+          <a href="/" className="flex items-center gap-2">
+            <div className="flex items-center gap-1.5">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2L2 7L12 12L22 7L12 2Z" fill="hsl(var(--primary))" />
+                <path d="M2 17L12 22L22 17" stroke="hsl(var(--primary))" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                <path d="M2 12L12 17L22 12" stroke="hsl(var(--primary))" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+              <span className="font-semibold text-foreground text-lg">Mirage</span>
+            </div>
+          </a>
+          
+          <button className="flex items-center gap-1.5 text-sm text-muted-foreground border border-border rounded-md px-2.5 py-1.5 hover:bg-muted transition-colors">
+            <span>English</span>
+            <ChevronDown className="w-3.5 h-3.5" />
+          </button>
+        </div>
+
+        {/* Center: Search */}
+        <div className="flex-1 max-w-md mx-8">
+          <div className="relative">
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+            <input
+              type="text"
+              placeholder="Search..."
+              className="w-full h-9 pl-10 pr-16 bg-background border border-border rounded-lg text-sm placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors"
+            />
+            <div className="absolute right-3 top-1/2 -translate-y-1/2 flex items-center gap-1">
+              <kbd className="px-1.5 py-0.5 text-2xs font-medium bg-kbd-bg border border-kbd-border rounded text-muted-foreground">
+                Ctrl
+              </kbd>
+              <kbd className="px-1.5 py-0.5 text-2xs font-medium bg-kbd-bg border border-kbd-border rounded text-muted-foreground">
+                K
+              </kbd>
+            </div>
+          </div>
+        </div>
+
+        {/* Right: Sign Up and Theme */}
+        <div className="flex items-center gap-3">
+          <button className="h-9 px-4 bg-primary text-primary-foreground rounded-full text-sm font-medium hover:opacity-90 transition-opacity flex items-center gap-1.5">
+            Sign Up / Sign In
+            <span className="ml-0.5">›</span>
+          </button>
+          <button className="p-2 rounded-lg hover:bg-muted transition-colors">
+            <Sun className="w-4 h-4 text-muted-foreground" />
+          </button>
+        </div>
+      </div>
+
+      {/* Navigation Tabs */}
+      <nav className="flex items-center gap-6 px-6 border-t border-border">
+        <a href="#" className="py-3 text-sm text-muted-foreground hover:text-foreground transition-colors">
+          Introduction
+        </a>
+        <a href="#" className="py-3 text-sm text-muted-foreground hover:text-foreground transition-colors">
+          Captions
+        </a>
+        <a href="#" className="py-3 text-sm text-primary font-medium border-b-2 border-primary -mb-px">
+          Mirage Studio
+        </a>
+        <a href="#" className="py-3 text-sm text-muted-foreground hover:text-foreground transition-colors">
+          API
+        </a>
+      </nav>
+    </header>
+  );
+};
+
+export default Header;
