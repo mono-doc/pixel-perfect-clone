@@ -57,11 +57,9 @@ const Header = ({ activeTab }: HeaderProps) => {
                 <img
                   src="/logo.png"
                   alt="Mirage"
-                  className="w-6 h-6 object-contain"
-                  width={24}
-                  height={24}
+                  className="h-7 object-contain"
                 />
-                <span className="font-semibold text-foreground text-lg">Mirage</span>
+                {/* <span className="font-semibold text-foreground text-lg">Mirage</span> */}
               </div>
             </a>
             
