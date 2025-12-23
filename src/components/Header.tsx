@@ -59,7 +59,7 @@ const Header = ({ activeTab }: HeaderProps) => {
                   alt="Mirage"
                   className="h-7 object-contain"
                 />
-                {/* <span className="font-semibold text-foreground text-lg">Mirage</span> */}
+                {/* <span className="font-semibold text-foreground text-lg">logoName</span> */}
               </div>
             </a>
             
