@@ -1,14 +1,39 @@
 import { useState, useEffect } from "react";
-import { Search, ChevronDown, Sun } from "lucide-react";
+import { Search, ChevronDown, Sun, Check } from "lucide-react";
 import { Link } from "react-router-dom";
 import SearchModal from "./SearchModal";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { ScrollArea } from "@/components/ui/scroll-area";
 
 interface HeaderProps {
   activeTab?: "introduction" | "studio" | "api";
 }
 
+const languages = [
+  { code: "en", label: "English" },
+  { code: "de", label: "Deutsch" },
+  { code: "es", label: "Español" },
+  { code: "pt", label: "Português" },
+  { code: "fr", label: "Français" },
+  { code: "it", label: "Italiano" },
+  { code: "ru", label: "Русский" },
+  { code: "uk", label: "Українська" },
+  { code: "pl", label: "Polski" },
+  { code: "uz", label: "O'zbekcha" },
+  { code: "ja", label: "日本語" },
+  { code: "ko", label: "한국어" },
+  { code: "zh", label: "中文" },
+  { code: "hi", label: "हिंदी" },
+];
+
 const Header = ({ activeTab }: HeaderProps) => {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [selectedLanguage, setSelectedLanguage] = useState("en");
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -39,10 +64,34 @@ const Header = ({ activeTab }: HeaderProps) => {
               </div>
             </a>
             
-            <button className="flex items-center gap-1.5 text-sm text-muted-foreground border border-border rounded-md px-2.5 py-1.5 hover:bg-muted transition-colors">
-              <span>English</span>
-              <ChevronDown className="w-3.5 h-3.5" />
-            </button>
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <button className="flex items-center gap-1.5 text-sm text-muted-foreground border border-border rounded-md px-2.5 py-1.5 hover:bg-muted transition-colors">
+                  <span>{languages.find(l => l.code === selectedLanguage)?.label}</span>
+                  <ChevronDown className="w-3.5 h-3.5" />
+                </button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="start" className="p-0 bg-background">
+                <ScrollArea className="h-[300px]">
+                  <div className="p-1">
+                    {languages.map((language) => (
+                      <DropdownMenuItem
+                        key={language.code}
+                        onClick={() => setSelectedLanguage(language.code)}
+                        className="flex items-center justify-between cursor-pointer"
+                      >
+                        <span className={selectedLanguage === language.code ? "text-primary font-medium" : ""}>
+                          {language.label}
+                        </span>
+                        {selectedLanguage === language.code && (
+                          <Check className="w-4 h-4 text-primary" />
+                        )}
+                      </DropdownMenuItem>
+                    ))}
+                  </div>
+                </ScrollArea>
+              </DropdownMenuContent>
+            </DropdownMenu>
           </div>
 
           {/* Center: Search */}
