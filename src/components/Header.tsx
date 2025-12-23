@@ -9,6 +9,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import logo from '/logo.png';
 
 interface HeaderProps {
   activeTab?: "introduction" | "studio" | "api";
@@ -55,8 +56,8 @@ const Header = ({ activeTab }: HeaderProps) => {
             <a href="/" className="flex items-center gap-2">
               <div className="flex items-center gap-1.5">
                 <img
-                  src="/logo.png"
-                  alt="Mirage"
+                  src="{logo}"
+                  alt="MonoDoc"
                   className="h-8 object-contain"
                 />
                 {/* <span className="font-semibold text-foreground text-lg">logoName</span> */}
