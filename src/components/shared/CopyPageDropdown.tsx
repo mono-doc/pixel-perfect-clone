@@ -21,17 +21,17 @@ const CopyPageDropdown = () => {
   };
 
   return (
-    <div className="inline-flex items-stretch h-10">
+    <div className="inline-flex items-stretch h-9">
       <button
         onClick={handleCopyPage}
-        className="inline-flex items-center gap-2 px-3 text-sm text-muted-foreground border border-border rounded-l-lg hover:bg-muted transition-colors h-full"
+        className="inline-flex items-center gap-2 px-2 text-sm text-muted-foreground border border-border rounded-l-lg hover:bg-muted transition-colors h-full"
       >
         <Copy className="w-4 h-4" />
         <span>Copy page</span>
       </button>
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-          <button className="inline-flex items-center justify-center px-3 text-muted-foreground border border-l-0 border-border rounded-r-lg hover:bg-muted transition-colors h-full">
+          <button className="inline-flex items-center justify-center px-2 text-muted-foreground border border-l-0 border-border rounded-r-lg hover:bg-muted transition-colors h-full">
             <ChevronDown className="w-4 h-4" />
           </button>
         </DropdownMenuTrigger>
