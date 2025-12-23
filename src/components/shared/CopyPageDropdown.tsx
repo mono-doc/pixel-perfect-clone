@@ -24,7 +24,7 @@ const CopyPageDropdown = () => {
     <div className="inline-flex items-stretch h-9">
       <button
         onClick={handleCopyPage}
-        className="inline-flex items-center gap-2 px-2 text-sm text-muted-foreground border border-border rounded-l-lg hover:bg-muted transition-colors h-full"
+        className="inline-flex items-center gap-2 px-3 text-sm text-muted-foreground border border-border rounded-l-lg hover:bg-muted transition-colors h-full"
       >
         <Copy className="w-4 h-4" />
         <span>Copy page</span>
