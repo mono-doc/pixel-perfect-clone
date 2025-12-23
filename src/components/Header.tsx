@@ -54,11 +54,13 @@ const Header = ({ activeTab }: HeaderProps) => {
           <div className="flex items-center gap-4">
             <a href="/" className="flex items-center gap-2">
               <div className="flex items-center gap-1.5">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M12 2L2 7L12 12L22 7L12 2Z" fill="hsl(var(--primary))" />
-                  <path d="M2 17L12 22L22 17" stroke="hsl(var(--primary))" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                  <path d="M2 12L12 17L22 12" stroke="hsl(var(--primary))" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
+                <img
+                  src="/logo.png"
+                  alt="Mirage"
+                  className="w-6 h-6 object-contain"
+                  width={24}
+                  height={24}
+                />
                 <span className="font-semibold text-foreground text-lg">Mirage</span>
               </div>
             </a>
