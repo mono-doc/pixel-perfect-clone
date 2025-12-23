@@ -56,7 +56,7 @@ const Header = ({ activeTab }: HeaderProps) => {
             <a href="/" className="flex items-center gap-2">
               <div className="flex items-center gap-1.5">
                 <img
-                  src="{logo}"
+                  src={logo}
                   alt="MonoDoc"
                   className="h-8 object-contain"
                 />
