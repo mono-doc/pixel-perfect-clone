@@ -78,15 +78,13 @@ const Header = ({ activeTab }: HeaderProps) => {
                       <DropdownMenuItem
                         key={language.code}
                         onClick={() => setSelectedLanguage(language.code)}
-                        className="group flex items-center justify-between cursor-pointer data-[highlighted]:bg-[rgb(var(--gray-950)/0.75)] data-[highlighted]:text-white"
+                        className="flex items-center justify-between cursor-pointer"
                       >
-                        <span
-                          className={`${selectedLanguage === language.code ? "text-primary font-medium" : ""} group-data-[highlighted]:text-white`}
-                        >
+                        <span className={selectedLanguage === language.code ? "text-primary font-medium" : ""}>
                           {language.label}
                         </span>
                         {selectedLanguage === language.code && (
-                          <Check className="w-4 h-4 text-primary group-data-[highlighted]:text-white" />
+                          <Check className="w-4 h-4 text-primary" />
                         )}
                       </DropdownMenuItem>
                     ))}
