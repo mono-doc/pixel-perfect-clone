@@ -1,4 +1,3 @@
-import Header from "@/components/Header";
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 
@@ -9,9 +8,7 @@ const Introduction = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background">
-      <Header activeTab="introduction" />
-      
+    <main className="bg-background">
       {/* Hero Section */}
       <div className="bg-gradient-to-b from-accent/50 to-background">
         <div className="max-w-[1200px] mx-auto px-6 py-16 md:py-24">
@@ -104,7 +101,7 @@ const Introduction = () => {
 
       {/* Footer spacing */}
       <div className="h-24" />
-    </div>
+    </main>
   );
 };
 
