@@ -53,7 +53,7 @@ const Header = ({ activeTab }: HeaderProps) => {
         <div className="flex items-center justify-between h-14 px-6">
           {/* Left: Logo and Language */}
           <div className="flex items-center gap-4">
-            <a href="/" className="flex items-center gap-2">
+            <Link to="/" className="flex items-center gap-2">
               <div className="flex items-center gap-1.5">
                 <img
                   src={logo}
@@ -62,7 +62,7 @@ const Header = ({ activeTab }: HeaderProps) => {
                 />
                 {/* <span className="font-semibold text-foreground text-lg">logoName</span> */}
               </div>
-            </a>
+            </Link>
             
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
