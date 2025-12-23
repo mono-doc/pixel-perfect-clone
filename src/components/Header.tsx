@@ -82,7 +82,7 @@ const Header = ({ activeTab }: HeaderProps) => {
             to="/introduction"
             className={`py-3 text-sm transition-colors ${
               activeTab === "introduction"
-                ? "text-primary font-medium border-b-1 border-primary -mb-px"
+                ? "text-primary font-medium border-b border-primary -mb-px"
                 : "text-muted-foreground hover:text-foreground"
             }`}
           >
@@ -95,7 +95,7 @@ const Header = ({ activeTab }: HeaderProps) => {
             to="/"
             className={`py-3 text-sm transition-colors ${
               activeTab === "studio"
-                ? "text-primary font-medium border-b-1 border-primary -mb-px"
+                ? "text-primary font-medium border-b border-primary -mb-px"
                 : "text-muted-foreground hover:text-foreground"
             }`}
           >
@@ -105,7 +105,7 @@ const Header = ({ activeTab }: HeaderProps) => {
             to="/api"
             className={`py-3 text-sm transition-colors ${
               activeTab === "api"
-                ? "text-primary font-medium border-b-1 border-primary -mb-px"
+                ? "text-primary font-medium border-b border-primary -mb-px"
                 : "text-muted-foreground hover:text-foreground"
             }`}
           >
