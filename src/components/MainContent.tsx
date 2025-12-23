@@ -1,5 +1,6 @@
-import { Info, User, Copy, ChevronDown, ChevronRight, ThumbsUp, ThumbsDown } from "lucide-react";
+import { Info, User, ChevronRight, ThumbsUp, ThumbsDown } from "lucide-react";
 import FAQ from "./FAQ";
+import CopyPageDropdown from "./CopyPageDropdown";
 
 const faqItems = [
   {
@@ -37,15 +38,7 @@ const MainContent = () => {
       {/* Title and Actions */}
       <div className="flex items-start justify-between mb-6">
         <h1 className="text-3xl font-semibold text-foreground">Quick Start</h1>
-        <div className="flex items-center gap-2">
-          <button className="flex items-center gap-2 px-3 py-1.5 text-sm text-muted-foreground border border-border rounded-lg hover:bg-muted transition-colors">
-            <Copy className="w-4 h-4" />
-            <span>Copy page</span>
-          </button>
-          <button className="p-1.5 text-muted-foreground border border-border rounded-lg hover:bg-muted transition-colors">
-            <ChevronDown className="w-4 h-4" />
-          </button>
-        </div>
+        <CopyPageDropdown />
       </div>
 
       {/* Description */}
