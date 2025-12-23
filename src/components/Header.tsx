@@ -77,7 +77,7 @@ const Header = ({ activeTab = "studio" }: HeaderProps) => {
         </div>
 
         {/* Navigation Tabs */}
-        <nav className="flex items-center gap-6 px-6 border-t border-border">
+        <nav className="flex items-center gap-6 px-6">
           <a href="#" className="py-3 text-sm text-muted-foreground hover:text-foreground transition-colors">
             Introduction
           </a>
