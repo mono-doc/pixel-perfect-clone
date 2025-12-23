@@ -1,4 +1,5 @@
-import { Copy, ChevronDown, ThumbsUp, ThumbsDown, ChevronRight } from "lucide-react";
+import { ThumbsUp, ThumbsDown, ChevronRight } from "lucide-react";
+import CopyPageDropdown from "../shared/CopyPageDropdown";
 
 const ApiContent = () => {
   return (
@@ -11,11 +12,7 @@ const ApiContent = () => {
       {/* Title with Copy Button */}
       <div className="flex items-start justify-between mb-6">
         <h1 className="text-4xl font-bold text-foreground">Overview</h1>
-        <button className="flex items-center gap-2 px-3 py-2 border border-border rounded-lg text-sm text-foreground hover:bg-muted transition-colors">
-          <Copy className="w-4 h-4" />
-          <span>Copy page</span>
-          <ChevronDown className="w-4 h-4 text-muted-foreground" />
-        </button>
+        <CopyPageDropdown />
       </div>
 
       {/* Description */}
