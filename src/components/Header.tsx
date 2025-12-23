@@ -9,7 +9,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import logo from '/logo.png';
+import logo from 'logo.png';
 
 interface HeaderProps {
   activeTab?: "introduction" | "studio" | "api";
