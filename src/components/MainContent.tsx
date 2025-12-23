@@ -1,35 +1,28 @@
 import { Info, User, Copy, ChevronDown, ChevronRight, ThumbsUp, ThumbsDown } from "lucide-react";
-import { useState } from "react";
+import FAQ from "./FAQ";
 
-interface FaqItemProps {
-  question: string;
-  answer: string;
-}
-
-const FaqItem = ({ question, answer }: FaqItemProps) => {
-  const [isOpen, setIsOpen] = useState(false);
-  
-  return (
-    <div className="border-b border-border">
-      <button
-        onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center justify-between w-full py-4 text-left"
-      >
-        <span className="text-sm font-medium text-foreground">{question}</span>
-        {isOpen ? (
-          <ChevronDown className="w-4 h-4 text-muted-foreground" />
-        ) : (
-          <ChevronRight className="w-4 h-4 text-muted-foreground" />
-        )}
-      </button>
-      {isOpen && (
-        <div className="pb-4 text-sm text-muted-foreground leading-relaxed">
-          {answer}
-        </div>
-      )}
-    </div>
-  );
-};
+const faqItems = [
+  {
+    question: "What is the maximum video length?",
+    answer: "You can produce 60 second videos with Mirage Studio. Create multiple videos and edit together to make longer-form videos."
+  },
+  {
+    question: "What is the maximum character limit for audio prompts?",
+    answer: "Your prompt can be 60 seconds or 1200 characters."
+  },
+  {
+    question: "What is the size limit for uploading video or audio files?",
+    answer: "Your video and audio files can be up to 100MB."
+  },
+  {
+    question: "Can I use the same actor in multiple videos?",
+    answer: "With Mirage Studio, you can maintain character consistency and save your favorite generated actors to use them over and over again."
+  },
+  {
+    question: "Do I own the content I generate?",
+    answer: "You retain full rights to all videos created using Mirage Studio. The AI-generated creators are completely virtual and free from licensing restrictions. You can read more in our Terms and Conditions."
+  }
+];
 
 const MainContent = () => {
   return (
@@ -134,34 +127,7 @@ const MainContent = () => {
       </section>
 
       {/* FAQ section */}
-      <section className="mb-10">
-        <h2 className="text-xl font-semibold text-foreground mb-6 flex items-center gap-2">
-          <a href="#" className="text-muted-foreground hover:text-primary">​</a>
-          Frequently Asked Questions
-        </h2>
-        <div className="border-t border-border">
-          <FaqItem
-            question="What is the maximum video length?"
-            answer="You can produce 60 second videos with Mirage Studio. Create multiple videos and edit together to make longer-form videos."
-          />
-          <FaqItem
-            question="What is the maximum character limit for audio prompts?"
-            answer="Your prompt can be 60 seconds or 1200 characters."
-          />
-          <FaqItem
-            question="What is the size limit for uploading video or audio files?"
-            answer="Your video and audio files can be up to 100MB."
-          />
-          <FaqItem
-            question="Can I use the same actor in multiple videos?"
-            answer="With Mirage Studio, you can maintain character consistency and save your favorite generated actors to use them over and over again."
-          />
-          <FaqItem
-            question="Do I own the content I generate?"
-            answer="You retain full rights to all videos created using Mirage Studio. The AI-generated creators are completely virtual and free from licensing restrictions. You can read more in our Terms and Conditions."
-          />
-        </div>
-      </section>
+      <FAQ items={faqItems} />
 
       {/* Feedback */}
       <div className="flex items-center gap-4 py-6 border-t border-border">
