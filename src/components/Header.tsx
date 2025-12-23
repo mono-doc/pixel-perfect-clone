@@ -78,7 +78,7 @@ const Header = ({ activeTab }: HeaderProps) => {
                       <DropdownMenuItem
                         key={language.code}
                         onClick={() => setSelectedLanguage(language.code)}
-                        className="flex items-center justify-between cursor-pointer hover:bg-muted/50"
+                        className="flex items-center justify-between cursor-pointer"
                       >
                         <span className={selectedLanguage === language.code ? "text-primary font-medium" : ""}>
                           {language.label}
