@@ -1,6 +1,6 @@
 import { Info, User, ChevronRight, ThumbsUp, ThumbsDown } from "lucide-react";
 import FAQ from "./FAQ";
-import CopyPageDropdown from "./CopyPageDropdown";
+import CopyPageDropdown from "./shared/CopyPageDropdown";
 
 const faqItems = [
   {
