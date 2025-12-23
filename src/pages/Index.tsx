@@ -6,7 +6,7 @@ import TableOfContents from "@/components/TableOfContents";
 const Index = () => {
   return (
     <div className="min-h-screen bg-background">
-      <Header />
+      <Header activeTab="studio" />
       <div className="flex max-w-[1600px] mx-auto px-6">
         <Sidebar />
         <MainContent />

@@ -4,10 +4,10 @@ import { Link } from "react-router-dom";
 import SearchModal from "./SearchModal";
 
 interface HeaderProps {
-  activeTab?: "studio" | "api";
+  activeTab?: "introduction" | "studio" | "api";
 }
 
-const Header = ({ activeTab = "studio" }: HeaderProps) => {
+const Header = ({ activeTab }: HeaderProps) => {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
 
   useEffect(() => {
@@ -78,9 +78,16 @@ const Header = ({ activeTab = "studio" }: HeaderProps) => {
 
         {/* Navigation Tabs */}
         <nav className="flex items-center gap-6 px-6">
-          <a href="#" className="py-3 text-sm text-muted-foreground hover:text-foreground transition-colors">
+          <Link
+            to="/introduction"
+            className={`py-3 text-sm transition-colors ${
+              activeTab === "introduction"
+                ? "text-primary font-medium border-b-2 border-primary -mb-px"
+                : "text-muted-foreground hover:text-foreground"
+            }`}
+          >
             Introduction
-          </a>
+          </Link>
           <a href="#" className="py-3 text-sm text-muted-foreground hover:text-foreground transition-colors">
             Captions
           </a>
