@@ -21,7 +21,6 @@ const languages = [
   { code: "pt", label: "Português" },
   { code: "fr", label: "Français" },
   { code: "it", label: "Italiano" },
-  { code: "ru", label: "Русский" },
   { code: "uk", label: "Українська" },
   { code: "pl", label: "Polski" },
   { code: "uz", label: "O'zbekcha" },
