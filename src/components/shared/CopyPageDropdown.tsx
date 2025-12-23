@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from "react";
 import { Copy, ChevronDown, ArrowUpRight } from "lucide-react";
 import {
   DropdownMenu,
@@ -7,10 +8,28 @@ import {
 } from "@/components/ui/dropdown-menu";
 
 const CopyPageDropdown = () => {
-  const handleCopyPage = () => {
+  const [isCopied, setIsCopied] = useState(false);
+  const resetTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const handleCopyPage = async () => {
     // Copy page as markdown logic
-    navigator.clipboard.writeText(document.body.innerText);
+    await navigator.clipboard.writeText(document.body.innerText);
+    setIsCopied(true);
+
+    if (resetTimerRef.current) {
+      clearTimeout(resetTimerRef.current);
+    }
+
+    resetTimerRef.current = setTimeout(() => setIsCopied(false), 2000);
   };
+
+  useEffect(() => {
+    return () => {
+      if (resetTimerRef.current) {
+        clearTimeout(resetTimerRef.current);
+      }
+    };
+  }, []);
 
   const handleOpenInChatGPT = () => {
     window.open("https://chat.openai.com", "_blank");
@@ -20,6 +39,8 @@ const CopyPageDropdown = () => {
     window.open("https://claude.ai", "_blank");
   };
 
+  const copyLabel = isCopied ? "Copied" : "Copy page";
+
   return (
     <div className="inline-flex items-stretch h-9">
       <button
@@ -27,7 +48,7 @@ const CopyPageDropdown = () => {
         className="inline-flex items-center gap-2 px-3 text-sm text-muted-foreground border border-border rounded-l-lg hover:bg-muted transition-colors h-full"
       >
         <Copy className="w-4 h-4" />
-        <span>Copy page</span>
+        <span>{copyLabel}</span>
       </button>
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
@@ -42,7 +63,7 @@ const CopyPageDropdown = () => {
           >
             <Copy className="w-5 h-5 text-muted-foreground mt-0.5 flex-shrink-0" />
             <div className="flex flex-col">
-              <span className="text-sm font-medium text-foreground">Copy page</span>
+              <span className="text-sm font-medium text-foreground">{copyLabel}</span>
               <span className="text-xs text-muted-foreground">Copy page as Markdown for LLMs</span>
             </div>
           </DropdownMenuItem>
