@@ -6,20 +6,32 @@ interface Message {
   content: string;
 }
 
+interface CodeContext {
+  label: string;
+  code: string;
+}
+
 interface AssistantPanelProps {
-  initialQuestion: string;
+  initialQuestion?: string;
+  codeContext?: CodeContext;
   onClose: () => void;
 }
 
-const AssistantPanel = ({ initialQuestion, onClose }: AssistantPanelProps) => {
-  const [messages, setMessages] = useState<Message[]>([
-    { role: "user", content: initialQuestion },
-    { role: "assistant", content: "Hello! How can I help you today?" },
-  ]);
+const AssistantPanel = ({ initialQuestion, codeContext, onClose }: AssistantPanelProps) => {
+  const [messages, setMessages] = useState<Message[]>(
+    initialQuestion 
+      ? [
+          { role: "user", content: initialQuestion },
+          { role: "assistant", content: "Hello! How can I help you today?" },
+        ]
+      : []
+  );
   const [inputValue, setInputValue] = useState("");
   const [isFocused, setIsFocused] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
   const [isThinking, setIsThinking] = useState(false);
+  const [activeCodeContext, setActiveCodeContext] = useState<CodeContext | null>(codeContext || null);
+  const [isBadgeHovered, setIsBadgeHovered] = useState(false);
 
   const hasValue = inputValue.trim().length > 0;
   const hasMessages = messages.length > 0;
@@ -28,10 +40,18 @@ const AssistantPanel = ({ initialQuestion, onClose }: AssistantPanelProps) => {
     setMessages([]);
   };
 
+  const handleRemoveContext = () => {
+    setActiveCodeContext(null);
+  };
+
   const handleSubmit = () => {
     if (!hasValue) return;
-    setMessages([...messages, { role: "user", content: inputValue }]);
+    const messageContent = activeCodeContext 
+      ? `[Context: ${activeCodeContext.label}]\n${inputValue}`
+      : inputValue;
+    setMessages([...messages, { role: "user", content: messageContent }]);
     setInputValue("");
+    setActiveCodeContext(null);
     setIsThinking(true);
     // Simulate assistant response
     setTimeout(() => {
@@ -140,7 +160,7 @@ const AssistantPanel = ({ initialQuestion, onClose }: AssistantPanelProps) => {
       <div className="p-4 border-t border-border">
         <div
           className={`
-            flex items-center gap-2 bg-background border rounded-xl pl-4 pr-3 py-2
+            flex flex-col gap-2 bg-background border rounded-xl px-3 py-3
             transition-all duration-300 ease-out
             ${isFocused 
               ? "border-primary shadow-sm" 
@@ -148,30 +168,54 @@ const AssistantPanel = ({ initialQuestion, onClose }: AssistantPanelProps) => {
             }
           `}
         >
-          <input
-            type="text"
-            value={inputValue}
-            onChange={(e) => setInputValue(e.target.value)}
-            onFocus={() => setIsFocused(true)}
-            onBlur={() => setIsFocused(false)}
-            onKeyDown={handleKeyDown}
-            placeholder="Ask a question..."
-            className="flex-1 bg-transparent text-sm text-foreground placeholder:text-muted-foreground focus:outline-none"
-          />
+          {/* Code Context Badge */}
+          {activeCodeContext && (
+            <div 
+              className="inline-flex items-center gap-1 w-fit"
+              onMouseEnter={() => setIsBadgeHovered(true)}
+              onMouseLeave={() => setIsBadgeHovered(false)}
+            >
+              <span className="inline-flex items-center gap-1.5 px-2 py-1 bg-muted rounded-md text-xs text-muted-foreground font-mono">
+                <span className="text-muted-foreground">&lt;/&gt;</span>
+                <span className="max-w-[180px] truncate">{activeCodeContext.label}</span>
+                {isBadgeHovered && (
+                  <button 
+                    onClick={handleRemoveContext}
+                    className="ml-0.5 hover:text-foreground transition-colors"
+                  >
+                    <X className="w-3 h-3" />
+                  </button>
+                )}
+              </span>
+            </div>
+          )}
           
-          <button
-            onClick={handleSubmit}
-            disabled={!hasValue}
-            className={`
-              p-1.5 rounded-full transition-all duration-200
-              ${hasValue 
-                ? "bg-primary text-primary-foreground hover:bg-primary/90 cursor-pointer" 
-                : "bg-muted text-muted-foreground cursor-not-allowed"
-              }
-            `}
-          >
-            <ArrowUp className="w-4 h-4" />
-          </button>
+          <div className="flex items-end gap-2">
+            <textarea
+              value={inputValue}
+              onChange={(e) => setInputValue(e.target.value)}
+              onFocus={() => setIsFocused(true)}
+              onBlur={() => setIsFocused(false)}
+              onKeyDown={handleKeyDown}
+              placeholder="Ask a question..."
+              rows={2}
+              className="flex-1 bg-transparent text-sm text-foreground placeholder:text-muted-foreground focus:outline-none resize-none min-h-[48px]"
+            />
+            
+            <button
+              onClick={handleSubmit}
+              disabled={!hasValue}
+              className={`
+                p-1.5 rounded-full transition-all duration-200 flex-shrink-0 mb-1
+                ${hasValue 
+                  ? "bg-primary text-primary-foreground hover:bg-primary/90 cursor-pointer" 
+                  : "bg-muted text-muted-foreground cursor-not-allowed"
+                }
+              `}
+            >
+              <ArrowUp className="w-4 h-4" />
+            </button>
+          </div>
         </div>
       </div>
     </aside>
