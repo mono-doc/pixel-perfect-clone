@@ -109,7 +109,7 @@ await client.EmailSendAsync(new EmailMessage {
 });`
 };
 
-const languages: Language[] = ["Python" | "Node.js" | "Java" | ".NET" | "PHP" | "Ruby" | "Go"];
+const languages: Language[] = ["Python", "Node.js", "Java", ".NET", "PHP", "Ruby", "Go"];
 
 interface ParameterProps {
   name: string;
