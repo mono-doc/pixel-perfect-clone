@@ -4,7 +4,7 @@ import ApiSidebar from "@/components/api/ApiSidebar";
 import CopyPageDropdown from "@/components/shared/CopyPageDropdown";
 import Footer from "@/components/shared/Footer";
 
-type Language = "Node.js" | "PHP" | "Python" | "Ruby" | "Go" | "Rust" | "Java" | ".NET";
+type Language = "Python" | "Node.js" | "Java" | ".NET" | "PHP" | "Ruby" | "Go";
 
 const codeExamples: Record<Language, string> = {
   "Node.js": `import { MonoSend } from 'monosend';
