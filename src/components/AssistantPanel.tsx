@@ -70,7 +70,7 @@ const AssistantPanel = ({ initialQuestion, onClose }: AssistantPanelProps) => {
         {messages.map((message, index) => (
           <div key={index} className={`flex ${message.role === "user" ? "justify-end" : "justify-start"}`}>
             <div
-              className={`max-w-[85%] rounded-lg px-3 py-2 text-sm ${
+              className={`max-w-[85%] rounded-lg py-2 text-sm ${
                 message.role === "user"
                   ? "bg-muted text-foreground"
                   : "text-foreground"
