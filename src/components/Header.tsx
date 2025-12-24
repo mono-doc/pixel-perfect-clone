@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
-import { Search, ChevronDown, Sun, Check } from "lucide-react";
+import { Search, ChevronDown, Sun, Moon, Check } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useTheme } from "next-themes";
 import SearchModal from "./SearchModal";
 import {
   DropdownMenu,
@@ -34,6 +35,12 @@ const languages = [
 const Header = ({ activeTab }: HeaderProps) => {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [selectedLanguage, setSelectedLanguage] = useState("en");
+  const { theme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -119,8 +126,15 @@ const Header = ({ activeTab }: HeaderProps) => {
               Sign Up / Sign In
               <span className="ml-0.5">›</span>
             </button>
-            <button className="p-2 rounded-lg hover:bg-muted transition-colors">
-              <Sun className="w-4 h-4 text-muted-foreground" />
+            <button 
+              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+              className="p-2 rounded-lg hover:bg-muted transition-colors"
+            >
+              {mounted && theme === "dark" ? (
+                <Moon className="w-4 h-4 text-muted-foreground" />
+              ) : (
+                <Sun className="w-4 h-4 text-muted-foreground" />
+              )}
             </button>
           </div>
         </div>
