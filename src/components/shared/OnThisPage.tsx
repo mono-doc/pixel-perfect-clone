@@ -5,6 +5,7 @@ interface TocItem {
   label: string;
   href: string;
   indented?: boolean;
+  parentHref?: string;
 }
 
 interface OnThisPageProps {
@@ -47,6 +48,12 @@ const OnThisPage = ({ items }: OnThisPageProps) => {
     }
   };
 
+  // Check if this item is a parent of the currently active item
+  const isParentOfActive = (item: TocItem) => {
+    const activeItem = items.find((i) => i.href === activeId);
+    return activeItem?.parentHref === item.href;
+  };
+
   return (
     <aside className="w-56 flex-shrink-0 h-[calc(100vh-7rem)] sticky top-28 overflow-y-auto scrollbar-thin py-6 pl-6">
       <div className="flex items-center gap-2 mb-4">
@@ -56,6 +63,8 @@ const OnThisPage = ({ items }: OnThisPageProps) => {
       <nav className="space-y-3">
         {items.map((item, index) => {
           const isActive = activeId === item.href || (activeId === "" && index === 0);
+          const isParentActive = isParentOfActive(item);
+          
           return (
             <a
               key={index}
@@ -66,6 +75,8 @@ const OnThisPage = ({ items }: OnThisPageProps) => {
               } ${
                 isActive
                   ? "text-primary font-medium border-l-2 border-primary pl-3"
+                  : isParentActive
+                  ? "text-foreground font-medium"
                   : "text-muted-foreground hover:text-foreground"
               }`}
             >
