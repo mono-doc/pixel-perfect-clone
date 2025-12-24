@@ -20,6 +20,11 @@ const AssistantPanel = ({ initialQuestion, onClose }: AssistantPanelProps) => {
   const [isFocused, setIsFocused] = useState(false);
 
   const hasValue = inputValue.trim().length > 0;
+  const hasMessages = messages.length > 0;
+
+  const handleClearChat = () => {
+    setMessages([]);
+  };
 
   const handleSubmit = () => {
     if (!hasValue) return;
@@ -53,9 +58,14 @@ const AssistantPanel = ({ initialQuestion, onClose }: AssistantPanelProps) => {
           <button className="p-1.5 hover:bg-muted rounded-md transition-colors">
             <Maximize2 className="w-4 h-4 text-muted-foreground" />
           </button>
-          <button className="p-1.5 hover:bg-muted rounded-md transition-colors">
-            <Trash2 className="w-4 h-4 text-muted-foreground" />
-          </button>
+          {hasMessages && (
+            <button 
+              onClick={handleClearChat}
+              className="p-1.5 hover:bg-muted rounded-md transition-colors"
+            >
+              <Trash2 className="w-4 h-4 text-muted-foreground" />
+            </button>
+          )}
           <button 
             onClick={onClose}
             className="p-1.5 hover:bg-muted rounded-md transition-colors"
@@ -67,35 +77,43 @@ const AssistantPanel = ({ initialQuestion, onClose }: AssistantPanelProps) => {
 
       {/* Messages */}
       <div className="flex-1 overflow-y-auto p-4 space-y-4">
-        {messages.map((message, index) => (
-          <div key={index} className={`flex ${message.role === "user" ? "justify-end" : "justify-start"}`}>
-            <div
-              className={`max-w-[85%] rounded-lg py-2 text-sm ${
-                message.role === "user"
-                  ? "bg-muted text-foreground"
-                  : "text-foreground"
-              }`}
-            >
-              {message.content}
-              {message.role === "assistant" && (
-                <div className="flex items-center gap-1 mt-2">
-                  <button className="p-1 hover:bg-muted rounded transition-colors">
-                    <ThumbsUp className="w-3.5 h-3.5 text-muted-foreground" />
-                  </button>
-                  <button className="p-1 hover:bg-muted rounded transition-colors">
-                    <ThumbsDown className="w-3.5 h-3.5 text-muted-foreground" />
-                  </button>
-                  <button className="p-1 hover:bg-muted rounded transition-colors">
-                    <Copy className="w-3.5 h-3.5 text-muted-foreground" />
-                  </button>
-                  <button className="p-1 hover:bg-muted rounded transition-colors">
-                    <RefreshCw className="w-3.5 h-3.5 text-muted-foreground" />
-                  </button>
-                </div>
-              )}
+        {hasMessages ? (
+          messages.map((message, index) => (
+            <div key={index} className={`flex ${message.role === "user" ? "justify-end" : "justify-start"}`}>
+              <div
+                className={`max-w-[85%] rounded-lg py-2 text-sm ${
+                  message.role === "user"
+                    ? "bg-muted text-foreground"
+                    : "text-foreground"
+                }`}
+              >
+                {message.content}
+                {message.role === "assistant" && (
+                  <div className="flex items-center gap-1 mt-2">
+                    <button className="p-1 hover:bg-muted rounded transition-colors">
+                      <ThumbsUp className="w-3.5 h-3.5 text-muted-foreground" />
+                    </button>
+                    <button className="p-1 hover:bg-muted rounded transition-colors">
+                      <ThumbsDown className="w-3.5 h-3.5 text-muted-foreground" />
+                    </button>
+                    <button className="p-1 hover:bg-muted rounded transition-colors">
+                      <Copy className="w-3.5 h-3.5 text-muted-foreground" />
+                    </button>
+                    <button className="p-1 hover:bg-muted rounded transition-colors">
+                      <RefreshCw className="w-3.5 h-3.5 text-muted-foreground" />
+                    </button>
+                  </div>
+                )}
+              </div>
             </div>
+          ))
+        ) : (
+          <div className="flex items-center justify-center h-full">
+            <p className="text-sm text-muted-foreground text-center px-4">
+              Responses are generated using AI and may contain mistakes.
+            </p>
           </div>
-        ))}
+        )}
       </div>
 
       {/* Input */}
