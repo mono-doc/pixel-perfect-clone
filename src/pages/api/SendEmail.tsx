@@ -7,105 +7,105 @@ import Footer from "@/components/shared/Footer";
 type Language = "Node.js" | "PHP" | "Python" | "Ruby" | "Go" | "Rust" | "Java" | ".NET";
 
 const codeExamples: Record<Language, string> = {
-  "Node.js": `import { Resend } from 'resend';
+  "Node.js": `import { MonoSend } from 'monosend';
 
-const resend = new Resend('re_xxxxxxxxx');
+const monosend = new MonoSend('re_xxxxxxxxx');
 
-resend.emails.send({
-  from: 'Acme <onboarding@resend.dev>',
-  to: ['delivered@resend.dev'],
+monosend.emails.send({
+  from: 'Acme <onboarding@monosend.dev>',
+  to: ['delivered@monosend.dev'],
   subject: 'hello world',
   html: '<p>it works!</p>',
-  reply_to: 'onboarding@resend.dev'
+  reply_to: 'onboarding@monosend.dev'
 });`,
-  "PHP": `$resend = Resend::client('re_xxxxxxxxx');
+  "PHP": `$monosend = MonoSend::client('re_xxxxxxxxx');
 
-$resend->emails->send([
-  'from' => 'Acme <onboarding@resend.dev>',
-  'to' => ['delivered@resend.dev'],
+$monosend->emails->send([
+  'from' => 'Acme <onboarding@monosend.dev>',
+  'to' => ['delivered@monosend.dev'],
   'subject' => 'hello world',
   'html' => '<p>it works!</p>',
-  'reply_to': 'onboarding@resend.dev'
+  'reply_to': 'onboarding@monosend.dev'
 ]);`,
-  "Python": `import resend
+  "Python": `import monosend
 
-resend.api_key = "re_xxxxxxxxx"
+monosend.api_key = "re_xxxxxxxxx"
 
-resend.Emails.send({
-  "from": "Acme <onboarding@resend.dev>",
-  "to": ["delivered@resend.dev"],
+monosend.Emails.send({
+  "from": "Acme <onboarding@monosend.dev>",
+  "to": ["delivered@monosend.dev"],
   "subject": "hello world",
   "html": "<p>it works!</p>",
-  "reply_to": "onboarding@resend.dev"
+  "reply_to": "onboarding@monosend.dev"
 })`,
-  "Ruby": `require 'resend'
+  "Ruby": `require 'monosend'
 
-Resend.api_key = 're_xxxxxxxxx'
+MonoSend.api_key = 're_xxxxxxxxx'
 
-Resend::Emails.send({
-  from: 'Acme <onboarding@resend.dev>',
-  to: ['delivered@resend.dev'],
+MonoSend::Emails.send({
+  from: 'Acme <onboarding@monosend.dev>',
+  to: ['delivered@monosend.dev'],
   subject: 'hello world',
   html: '<p>it works!</p>',
-  reply_to: 'onboarding@resend.dev'
+  reply_to: 'onboarding@monosend.dev'
 })`,
   "Go": `package main
 
-import "github.com/resend/resend-go/v2"
+import "github.com/monosend/monosend-go/v2"
 
 func main() {
-  client := resend.NewClient("re_xxxxxxxxx")
+  client := monosend.NewClient("re_xxxxxxxxx")
   
-  params := &resend.SendEmailRequest{
-    From:    "Acme <onboarding@resend.dev>",
-    To:      []string{"delivered@resend.dev"},
+  params := &monosend.SendEmailRequest{
+    From:    "Acme <onboarding@monosend.dev>",
+    To:      []string{"delivered@monosend.dev"},
     Subject: "hello world",
     Html:    "<p>it works!</p>",
-    ReplyTo: "onboarding@resend.dev",
+    ReplyTo: "onboarding@monosend.dev",
   }
   client.Emails.Send(params)
 }`,
-  "Rust": `use resend_rs::{Resend, CreateEmailOptions};
+  "Rust": `use monosend_rs::{MonoSend, CreateEmailOptions};
 
 #[tokio::main]
 async fn main() {
-  let resend = Resend::new("re_xxxxxxxxx");
+  let monosend = MonoSend::new("re_xxxxxxxxx");
   
   let email = CreateEmailOptions::new(
-    "Acme <onboarding@resend.dev>",
-    ["delivered@resend.dev"],
+    "Acme <onboarding@monosend.dev>",
+    ["delivered@monosend.dev"],
     "hello world",
   ).with_html("<p>it works!</p>");
   
-  resend.emails.send(email).await;
+  monosend.emails.send(email).await;
 }`,
-  "Java": `import com.resend.*;
+  "Java": `import com.monosend.*;
 
 public class Main {
   public static void main(String[] args) {
-    Resend resend = new Resend("re_xxxxxxxxx");
+    MonoSend monosend = new MonoSend("re_xxxxxxxxx");
     
     SendEmailRequest request = SendEmailRequest.builder()
-      .from("Acme <onboarding@resend.dev>")
-      .to("delivered@resend.dev")
+      .from("Acme <onboarding@monosend.dev>")
+      .to("delivered@monosend.dev")
       .subject("hello world")
       .html("<p>it works!</p>")
-      .replyTo("onboarding@resend.dev")
+      .replyTo("onboarding@monosend.dev")
       .build();
       
-    resend.emails().send(request);
+    monosend.emails().send(request);
   }
 }`,
-  ".NET": `using Resend;
+  ".NET": `using MonoSend;
 
-var client = new ResendClient("re_xxxxxxxxx");
+var client = new MonoSendClient("re_xxxxxxxxx");
 
 await client.EmailSendAsync(new EmailMessage {
-  From = "Acme <onboarding@resend.dev>",
-  To = "delivered@resend.dev",
+  From = "Acme <onboarding@monosend.dev>",
+  To = "delivered@monosend.dev",
   Subject = "hello world",
   HtmlBody = "<p>it works!</p>",
-  ReplyTo = "onboarding@resend.dev"
+  ReplyTo = "onboarding@monosend.dev"
 });`
 };
 
@@ -179,13 +179,13 @@ const SendEmail = () => {
         </div>
         
         <p className="text-muted-foreground mb-6">
-          Start sending emails through the Resend Email API.
+          Start sending emails through the MonoSend Email API.
         </p>
         
         {/* Endpoint */}
         <div className="flex items-center gap-3 p-4 bg-muted/50 rounded-lg border border-border mb-8">
           <span className="text-xs font-semibold px-2 py-1 bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400 rounded">POST</span>
-          <code className="text-sm text-foreground">https://api.resend.com /emails</code>
+          <code className="text-sm text-foreground">https://api.monosend.com /emails</code>
         </div>
         
         {/* Body Parameters */}
