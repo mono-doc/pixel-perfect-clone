@@ -121,7 +121,7 @@ const MainContent = () => {
       <FAQ items={faqItems} />
 
       {/* Feedback */}
-      <div className="flex items-center gap-4 py-6 border-t border-border">
+      <div className="flex items-center gap-4 py-6">
         <span className="text-sm text-muted-foreground">Was this page helpful?</span>
         <div className="flex items-center gap-2">
           <button className="p-2 border border-border rounded-lg hover:bg-muted transition-colors">
