@@ -115,7 +115,7 @@ await client.EmailSendAsync(new EmailMessage {
 });`
 };
 
-const languages: Language[] = ["Node.js", "PHP", "Python", "Ruby", "Go", "Rust", "Java", ".NET"];
+const languages: Language[] = ["Python", "Node.js", "Java", ".NET", "PHP", "Ruby", "Go", "Rust"];
 
 interface ParameterProps {
   name: string;
