@@ -3,6 +3,7 @@ import { Copy, Sparkles, Info } from "lucide-react";
 import ApiSidebar from "@/components/api/ApiSidebar";
 import CopyPageDropdown from "@/components/shared/CopyPageDropdown";
 import Footer from "@/components/shared/Footer";
+import AssistantPanel from "@/components/AssistantPanel";
 import {
   Tooltip,
   TooltipContent,
@@ -145,7 +146,7 @@ const Parameter = ({ name, type, required, description, note, children }: Parame
   </div>
 );
 
-const CodeBlock = ({ code, title }: { code: string; title?: string }) => {
+const CodeBlock = ({ code, title, onAskAI }: { code: string; title?: string; onAskAI?: (label: string, code: string) => void }) => {
   const [copied, setCopied] = useState(false);
 
   const handleCopy = async () => {
@@ -178,7 +179,10 @@ const CodeBlock = ({ code, title }: { code: string; title?: string }) => {
             <TooltipProvider>
               <Tooltip>
                 <TooltipTrigger asChild>
-                  <button className="p-1.5 hover:bg-white/10 rounded transition-colors">
+                  <button 
+                    onClick={() => onAskAI?.(title, code)}
+                    className="p-1.5 hover:bg-white/10 rounded transition-colors"
+                  >
                     <Sparkles className="w-4 h-4 text-white/50" />
                   </button>
                 </TooltipTrigger>
@@ -200,11 +204,18 @@ const CodeBlock = ({ code, title }: { code: string; title?: string }) => {
 const SendEmail = () => {
   const [activeLanguage, setActiveLanguage] = useState<Language>("Node.js");
   const [codeCopied, setCodeCopied] = useState(false);
+  const [showAssistant, setShowAssistant] = useState(false);
+  const [assistantCodeContext, setAssistantCodeContext] = useState<{ label: string; code: string } | null>(null);
 
   const handleCopyCode = async () => {
     await navigator.clipboard.writeText(codeExamples[activeLanguage]);
     setCodeCopied(true);
     setTimeout(() => setCodeCopied(false), 2000);
+  };
+
+  const handleOpenAssistant = (label: string, code: string) => {
+    setAssistantCodeContext({ label, code });
+    setShowAssistant(true);
   };
 
   return (
@@ -354,7 +365,10 @@ const SendEmail = () => {
               <TooltipProvider>
                 <Tooltip>
                   <TooltipTrigger asChild>
-                    <button className="p-1.5 hover:bg-white/10 rounded transition-colors">
+                    <button 
+                      onClick={() => handleOpenAssistant(`use ${activeLanguage}::...`, codeExamples[activeLanguage])}
+                      className="p-1.5 hover:bg-white/10 rounded transition-colors"
+                    >
                       <Sparkles className="w-4 h-4 text-white/50" />
                     </button>
                   </TooltipTrigger>
@@ -376,10 +390,22 @@ const SendEmail = () => {
             title="Response" 
             code={`{
   "id": "49a3999c-0ce1-4ea6-ab68-afcd6dc2e794"
-}`} 
+}`}
+            onAskAI={handleOpenAssistant}
           />
         </div>
       </aside>
+
+      {/* AI Assistant Panel */}
+      {showAssistant && (
+        <AssistantPanel 
+          codeContext={assistantCodeContext || undefined}
+          onClose={() => {
+            setShowAssistant(false);
+            setAssistantCodeContext(null);
+          }}
+        />
+      )}
     </main>
   );
 };
