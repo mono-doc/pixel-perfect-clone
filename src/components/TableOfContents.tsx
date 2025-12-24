@@ -1,41 +1,14 @@
-import { List } from "lucide-react";
+import OnThisPage from "./shared/OnThisPage";
 
-interface TocItemProps {
-  label: string;
-  active?: boolean;
-  indented?: boolean;
-}
-
-const TocItem = ({ label, active, indented }: TocItemProps) => (
-  <a
-    href="#"
-    className={`block text-sm transition-colors ${
-      indented ? "pl-4" : ""
-    } ${
-      active
-        ? "text-primary font-medium"
-        : "text-muted-foreground hover:text-foreground"
-    }`}
-  >
-    {label}
-  </a>
-);
+const tocItems = [
+  { label: "How Mirage Studio Works in 3 Easy Steps", href: "#how-it-works", active: true },
+  { label: "Availability, Pricing & Usage", href: "#pricing" },
+  { label: "Available Plans", href: "#plans", indented: true },
+  { label: "Frequently Asked Questions", href: "#faq" },
+];
 
 const TableOfContents = () => {
-  return (
-    <aside className="w-56 flex-shrink-0 h-[calc(100vh-7rem)] sticky top-28 overflow-y-auto scrollbar-thin py-6 pl-6">
-      <div className="flex items-center gap-2 mb-4">
-        <List className="w-4 h-4 text-muted-foreground" />
-        <span className="text-sm font-medium text-muted-foreground">On this page</span>
-      </div>
-      <nav className="space-y-3">
-        <TocItem label="How Mirage Studio Works in 3 Easy Steps" active />
-        <TocItem label="Availability, Pricing & Usage" />
-        <TocItem label="Available Plans" indented />
-        <TocItem label="Frequently Asked Questions" />
-      </nav>
-    </aside>
-  );
+  return <OnThisPage items={tocItems} />;
 };
 
 export default TableOfContents;
