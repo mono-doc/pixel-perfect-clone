@@ -9,7 +9,7 @@ type Language = "Node.js" | "PHP" | "Python" | "Ruby" | "Go" | "Rust" | "Java" |
 const codeExamples: Record<Language, string> = {
   "Node.js": `import { MonoSend } from 'monosend';
 
-const monosend = new MonoSend('re_xxxxxxxxx');
+const monosend = new MonoSend('mono_xxxxxxxxx');
 
 monosend.emails.send({
   from: 'Acme <onboarding@monosend.dev>',
@@ -18,7 +18,7 @@ monosend.emails.send({
   html: '<p>it works!</p>',
   reply_to: 'onboarding@monosend.dev'
 });`,
-  "PHP": `$monosend = MonoSend::client('re_xxxxxxxxx');
+  "PHP": `$monosend = MonoSend::client('mono_xxxxxxxxx');
 
 $monosend->emails->send([
   'from' => 'Acme <onboarding@monosend.dev>',
@@ -29,7 +29,7 @@ $monosend->emails->send([
 ]);`,
   "Python": `import monosend
 
-monosend.api_key = "re_xxxxxxxxx"
+monosend.api_key = "mono_xxxxxxxxx"
 
 monosend.Emails.send({
   "from": "Acme <onboarding@monosend.dev>",
@@ -40,7 +40,7 @@ monosend.Emails.send({
 })`,
   "Ruby": `require 'monosend'
 
-MonoSend.api_key = 're_xxxxxxxxx'
+MonoSend.api_key = 'mono_xxxxxxxxx'
 
 MonoSend::Emails.send({
   from: 'Acme <onboarding@monosend.dev>',
@@ -54,7 +54,7 @@ MonoSend::Emails.send({
 import "github.com/monosend/monosend-go/v2"
 
 func main() {
-  client := monosend.NewClient("re_xxxxxxxxx")
+  client := monosend.NewClient("mono_xxxxxxxxx")
   
   params := &monosend.SendEmailRequest{
     From:    "Acme <onboarding@monosend.dev>",
@@ -69,7 +69,7 @@ func main() {
 
 #[tokio::main]
 async fn main() {
-  let monosend = MonoSend::new("re_xxxxxxxxx");
+  let monosend = MonoSend::new("mono_xxxxxxxxx");
   
   let email = CreateEmailOptions::new(
     "Acme <onboarding@monosend.dev>",
@@ -83,7 +83,7 @@ async fn main() {
 
 public class Main {
   public static void main(String[] args) {
-    MonoSend monosend = new MonoSend("re_xxxxxxxxx");
+    MonoSend monosend = new MonoSend("mono_xxxxxxxxx");
     
     SendEmailRequest request = SendEmailRequest.builder()
       .from("Acme <onboarding@monosend.dev>")
@@ -98,7 +98,7 @@ public class Main {
 }`,
   ".NET": `using MonoSend;
 
-var client = new MonoSendClient("re_xxxxxxxxx");
+var client = new MonoSendClient("mono_xxxxxxxxx");
 
 await client.EmailSendAsync(new EmailMessage {
   From = "Acme <onboarding@monosend.dev>",
