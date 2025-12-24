@@ -274,7 +274,7 @@ const SendEmail = () => {
       </div>
       
       {/* Code Examples Sidebar */}
-      <aside className="w-80 flex-shrink-0 py-8 sticky top-24 h-fit">
+      <aside className="w-90 flex-shrink-0 py-8 sticky top-24 h-fit">
         {/* Language Tabs */}
         <div className="bg-[#1a1a2e] dark:bg-[#0d0d1a] rounded-lg overflow-hidden">
           <div className="flex items-center border-b border-white/10 overflow-x-auto">
