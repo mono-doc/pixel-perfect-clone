@@ -1,21 +1,45 @@
 import { ChevronRight } from "lucide-react";
 
+type HttpMethod = "GET" | "POST" | "PATCH" | "DELETE" | "PUT";
+
+interface MethodBadgeProps {
+  method: HttpMethod;
+}
+
+const MethodBadge = ({ method }: MethodBadgeProps) => {
+  const colors: Record<HttpMethod, string> = {
+    GET: "bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400",
+    POST: "bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400",
+    PATCH: "bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400",
+    DELETE: "bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400",
+    PUT: "bg-purple-100 text-purple-700 dark:bg-purple-900/30 dark:text-purple-400",
+  };
+
+  return (
+    <span className={`text-2xs font-semibold px-1.5 py-0.5 rounded ${colors[method]}`}>
+      {method}
+    </span>
+  );
+};
+
 interface NavItemProps {
   label: string;
   active?: boolean;
   hasChevron?: boolean;
+  method?: HttpMethod;
 }
 
-const NavItem = ({ label, active, hasChevron }: NavItemProps) => (
+const NavItem = ({ label, active, hasChevron, method }: NavItemProps) => (
   <a
     href="#"
-    className={`flex items-center justify-between gap-2.5 px-3 py-2 rounded-lg text-sm transition-colors ${
+    className={`flex items-center gap-2.5 px-3 py-2 rounded-lg text-sm transition-colors ${
       active
         ? "bg-nav-active text-primary font-medium"
         : "text-foreground hover:bg-nav-hover"
     }`}
   >
-    <span>{label}</span>
+    {method && <MethodBadge method={method} />}
+    <span className="flex-1">{label}</span>
     {hasChevron && (
       <ChevronRight className="w-4 h-4 text-muted-foreground" />
     )}
@@ -41,20 +65,29 @@ const ApiSidebar = () => {
         </nav>
       </div>
 
-      {/* VIDEO CAPTIONING */}
+      {/* SENDING */}
       <div className="mb-6">
-        <SectionLabel>Video Captioning</SectionLabel>
+        <SectionLabel>Sending</SectionLabel>
         <nav className="space-y-0.5">
-          <NavItem label="Getting started" />
-          <NavItem label="Caption templates" />
+          <NavItem label="Send Email" method="POST" />
+          <NavItem label="Send Batch Emails" method="POST" />
+          <NavItem label="Retrieve Email" method="GET" />
+          <NavItem label="List Sent Emails" method="GET" />
+          <NavItem label="Update Email" method="PATCH" />
+          <NavItem label="Cancel Email" method="POST" />
+          <NavItem label="Retrieve Attachment" method="GET" />
+          <NavItem label="List Attachments" method="GET" />
         </nav>
       </div>
 
-      {/* VIDEO GENERATION */}
+      {/* RECEIVING */}
       <div className="mb-6">
-        <SectionLabel>Video Generation</SectionLabel>
+        <SectionLabel>Receiving</SectionLabel>
         <nav className="space-y-0.5">
-          <NavItem label="Getting started" />
+          <NavItem label="Retrieve Received Email" method="GET" />
+          <NavItem label="List Received Emails" method="GET" />
+          <NavItem label="Retrieve Attachment" method="GET" />
+          <NavItem label="List Attachments" method="GET" />
         </nav>
       </div>
 
