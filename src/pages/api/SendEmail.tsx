@@ -3,8 +3,14 @@ import { Copy, Sparkles, Info } from "lucide-react";
 import ApiSidebar from "@/components/api/ApiSidebar";
 import CopyPageDropdown from "@/components/shared/CopyPageDropdown";
 import Footer from "@/components/shared/Footer";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
-type Language = "Python" | "Node.js" | "Java" | ".NET" | "PHP" | "Ruby" | "Go";
+type Language = "Python" | "Node.js" | "Java" | ".NET" | "PHP" | "Ruby" | "Go" | "Rust";
 
 const codeExamples: Record<Language, string> = {
   "Node.js": `import { MonoSend } from 'monosend';
@@ -109,7 +115,7 @@ await client.EmailSendAsync(new EmailMessage {
 });`
 };
 
-const languages: Language[] = ["Python", "Node.js", "Java", ".NET", "PHP", "Ruby", "Go"];
+const languages: Language[] = ["Node.js", "PHP", "Python", "Ruby", "Go", "Rust", "Java", ".NET"];
 
 interface ParameterProps {
   name: string;
@@ -145,12 +151,30 @@ const CodeBlock = ({ code, title }: { code: string; title?: string }) => (
       <div className="flex items-center justify-between px-4 py-2 border-b border-white/10">
         <span className="text-sm text-white/70">{title}</span>
         <div className="flex items-center gap-2">
-          <button className="p-1.5 hover:bg-white/10 rounded transition-colors">
-            <Copy className="w-4 h-4 text-white/50" />
-          </button>
-          <button className="p-1.5 hover:bg-white/10 rounded transition-colors">
-            <Sparkles className="w-4 h-4 text-white/50" />
-          </button>
+          <TooltipProvider>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <button className="p-1.5 hover:bg-white/10 rounded transition-colors">
+                  <Copy className="w-4 h-4 text-white/50" />
+                </button>
+              </TooltipTrigger>
+              <TooltipContent>
+                <p>Copy</p>
+              </TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
+          <TooltipProvider>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <button className="p-1.5 hover:bg-white/10 rounded transition-colors">
+                  <Sparkles className="w-4 h-4 text-white/50" />
+                </button>
+              </TooltipTrigger>
+              <TooltipContent>
+                <p>Ask AI</p>
+              </TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
         </div>
       </div>
     )}
@@ -292,12 +316,30 @@ const SendEmail = () => {
               </button>
             ))}
             <div className="ml-auto flex items-center gap-1 px-2">
-              <button className="p-1.5 hover:bg-white/10 rounded transition-colors">
-                <Copy className="w-4 h-4 text-white/50" />
-              </button>
-              <button className="p-1.5 hover:bg-white/10 rounded transition-colors">
-                <Sparkles className="w-4 h-4 text-white/50" />
-              </button>
+              <TooltipProvider>
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <button className="p-1.5 hover:bg-white/10 rounded transition-colors">
+                      <Copy className="w-4 h-4 text-white/50" />
+                    </button>
+                  </TooltipTrigger>
+                  <TooltipContent>
+                    <p>Copy</p>
+                  </TooltipContent>
+                </Tooltip>
+              </TooltipProvider>
+              <TooltipProvider>
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <button className="p-1.5 hover:bg-white/10 rounded transition-colors">
+                      <Sparkles className="w-4 h-4 text-white/50" />
+                    </button>
+                  </TooltipTrigger>
+                  <TooltipContent>
+                    <p>Ask AI</p>
+                  </TooltipContent>
+                </Tooltip>
+              </TooltipProvider>
             </div>
           </div>
           <pre className="p-4 text-sm overflow-x-auto max-h-[400px]">
