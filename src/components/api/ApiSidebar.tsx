@@ -75,7 +75,7 @@ interface ApiSidebarProps {
 
 const ApiSidebar = ({ activePath }: ApiSidebarProps) => {
   return (
-    <aside className="w-64 flex-shrink-0 border-r border-border h-[calc(100vh-7rem)] sticky overflow-y-auto scrollbar-thin py-6 pr-4">
+    <aside className="w-64 flex-shrink-0 border-r border-border h-[calc(100vh-7rem)] sticky top-24 overflow-y-auto scrollbar-thin py-6 pr-4">
       {/* USING THE API */}
       <div className="mb-6">
         <SectionLabel>Using the API</SectionLabel>
