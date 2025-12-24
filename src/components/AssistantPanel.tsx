@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Sparkles, Maximize2, Trash2, X, ThumbsUp, ThumbsDown, Copy, RefreshCw, ArrowUp } from "lucide-react";
+import { Sparkles, Maximize2, Minimize2, Trash2, X, ThumbsUp, ThumbsDown, Copy, RefreshCw, ArrowUp } from "lucide-react";
 
 interface Message {
   role: "user" | "assistant";
@@ -18,6 +18,7 @@ const AssistantPanel = ({ initialQuestion, onClose }: AssistantPanelProps) => {
   ]);
   const [inputValue, setInputValue] = useState("");
   const [isFocused, setIsFocused] = useState(false);
+  const [isExpanded, setIsExpanded] = useState(false);
 
   const hasValue = inputValue.trim().length > 0;
   const hasMessages = messages.length > 0;
@@ -47,7 +48,7 @@ const AssistantPanel = ({ initialQuestion, onClose }: AssistantPanelProps) => {
   };
 
   return (
-    <aside className="w-80 h-[calc(100vh-6rem)] fixed top-24 right-0 overflow-hidden flex flex-col border-l border-border bg-background animate-fade-in">
+    <aside className={`${isExpanded ? 'w-[40rem]' : 'w-80'} h-[calc(100vh-6rem)] fixed top-24 right-0 overflow-hidden flex flex-col border-l border-border bg-background animate-fade-in transition-all duration-300`}>
       {/* Header */}
       <div className="flex items-center justify-between px-4 py-3 border-b border-border">
         <div className="flex items-center gap-2">
@@ -55,8 +56,15 @@ const AssistantPanel = ({ initialQuestion, onClose }: AssistantPanelProps) => {
           <span className="font-medium text-foreground">Assistant</span>
         </div>
         <div className="flex items-center gap-1">
-          <button className="p-1.5 hover:bg-muted rounded-md transition-colors">
-            <Maximize2 className="w-4 h-4 text-muted-foreground" />
+          <button 
+            onClick={() => setIsExpanded(!isExpanded)}
+            className="p-1.5 hover:bg-muted rounded-md transition-colors"
+          >
+            {isExpanded ? (
+              <Minimize2 className="w-4 h-4 text-muted-foreground" />
+            ) : (
+              <Maximize2 className="w-4 h-4 text-muted-foreground" />
+            )}
           </button>
           {hasMessages && (
             <button 
