@@ -73,10 +73,8 @@ const OnThisPage = ({ items }: OnThisPageProps) => {
               className={`block text-sm transition-colors ${
                 item.indented ? "pl-4" : ""
               } ${
-                isActive
+                isActive || isParentActive
                   ? "text-primary font-medium border-l-2 border-primary pl-3"
-                  : isParentActive
-                  ? "text-foreground font-medium"
                   : "text-muted-foreground hover:text-foreground"
               }`}
             >
