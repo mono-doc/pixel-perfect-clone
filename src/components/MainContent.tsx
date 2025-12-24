@@ -1,4 +1,4 @@
-import { Info, User, ChevronRight, ThumbsUp, ThumbsDown } from "lucide-react";
+import { Info, User, ChevronRight, ThumbsUp, ThumbsDown, Youtube, Twitter, Instagram, Linkedin } from "lucide-react";
 import FAQ from "./FAQ";
 import CopyPageDropdown from "./shared/CopyPageDropdown";
 
@@ -145,6 +145,25 @@ const MainContent = () => {
           <ChevronRight className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" />
         </a>
       </div>
+
+      {/* Footer */}
+      <footer className="flex items-center justify-between py-8 mt-8">
+        <div className="flex items-center gap-4">
+          <a href="#" className="text-muted-foreground hover:text-foreground transition-colors">
+            <Youtube className="w-5 h-5" />
+          </a>
+          <a href="#" className="text-muted-foreground hover:text-foreground transition-colors">
+            <Twitter className="w-5 h-5" />
+          </a>
+          <a href="#" className="text-muted-foreground hover:text-foreground transition-colors">
+            <Instagram className="w-5 h-5" />
+          </a>
+          <a href="#" className="text-muted-foreground hover:text-foreground transition-colors">
+            <Linkedin className="w-5 h-5" />
+          </a>
+        </div>
+        <span className="text-sm text-muted-foreground">Powered by MonoDoc</span>
+      </footer>
     </main>
   );
 };
