@@ -145,47 +145,67 @@ const Parameter = ({ name, type, required, description, note, children }: Parame
   </div>
 );
 
-const CodeBlock = ({ code, title }: { code: string; title?: string }) => (
-  <div className="bg-[#1a1a2e] dark:bg-[#0d0d1a] rounded-lg overflow-hidden">
-    {title && (
-      <div className="flex items-center justify-between px-4 py-2 border-b border-white/10">
-        <span className="text-sm text-white/70">{title}</span>
-        <div className="flex items-center gap-2">
-          <TooltipProvider>
-            <Tooltip>
-              <TooltipTrigger asChild>
-                <button className="p-1.5 hover:bg-white/10 rounded transition-colors">
-                  <Copy className="w-4 h-4 text-white/50" />
-                </button>
-              </TooltipTrigger>
-              <TooltipContent>
-                <p>Copy</p>
-              </TooltipContent>
-            </Tooltip>
-          </TooltipProvider>
-          <TooltipProvider>
-            <Tooltip>
-              <TooltipTrigger asChild>
-                <button className="p-1.5 hover:bg-white/10 rounded transition-colors">
-                  <Sparkles className="w-4 h-4 text-white/50" />
-                </button>
-              </TooltipTrigger>
-              <TooltipContent>
-                <p>Ask AI</p>
-              </TooltipContent>
-            </Tooltip>
-          </TooltipProvider>
+const CodeBlock = ({ code, title }: { code: string; title?: string }) => {
+  const [copied, setCopied] = useState(false);
+
+  const handleCopy = async () => {
+    await navigator.clipboard.writeText(code);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+
+  return (
+    <div className="bg-[#1a1a2e] dark:bg-[#0d0d1a] rounded-lg overflow-hidden">
+      {title && (
+        <div className="flex items-center justify-between px-4 py-2 border-b border-white/10">
+          <span className="text-sm text-white/70">{title}</span>
+          <div className="flex items-center gap-2">
+            <TooltipProvider>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <button 
+                    onClick={handleCopy}
+                    className="p-1.5 hover:bg-white/10 rounded transition-colors"
+                  >
+                    <Copy className="w-4 h-4 text-white/50" />
+                  </button>
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p>{copied ? "Copied" : "Copy"}</p>
+                </TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
+            <TooltipProvider>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <button className="p-1.5 hover:bg-white/10 rounded transition-colors">
+                    <Sparkles className="w-4 h-4 text-white/50" />
+                  </button>
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p>Ask AI</p>
+                </TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
+          </div>
         </div>
-      </div>
-    )}
-    <pre className="p-4 text-sm overflow-x-auto">
-      <code className="text-white/90 font-mono">{code}</code>
-    </pre>
-  </div>
-);
+      )}
+      <pre className="p-4 text-sm overflow-x-auto">
+        <code className="text-white/90 font-mono">{code}</code>
+      </pre>
+    </div>
+  );
+};
 
 const SendEmail = () => {
   const [activeLanguage, setActiveLanguage] = useState<Language>("Node.js");
+  const [codeCopied, setCodeCopied] = useState(false);
+
+  const handleCopyCode = async () => {
+    await navigator.clipboard.writeText(codeExamples[activeLanguage]);
+    setCodeCopied(true);
+    setTimeout(() => setCodeCopied(false), 2000);
+  };
 
   return (
     <main className="flex max-w-[1600px] mx-auto px-6">
@@ -319,12 +339,15 @@ const SendEmail = () => {
               <TooltipProvider>
                 <Tooltip>
                   <TooltipTrigger asChild>
-                    <button className="p-1.5 hover:bg-white/10 rounded transition-colors">
+                    <button 
+                      onClick={handleCopyCode}
+                      className="p-1.5 hover:bg-white/10 rounded transition-colors"
+                    >
                       <Copy className="w-4 h-4 text-white/50" />
                     </button>
                   </TooltipTrigger>
                   <TooltipContent>
-                    <p>Copy</p>
+                    <p>{codeCopied ? "Copied" : "Copy"}</p>
                   </TooltipContent>
                 </Tooltip>
               </TooltipProvider>
