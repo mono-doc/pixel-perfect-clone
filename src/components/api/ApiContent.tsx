@@ -51,7 +51,7 @@ const ApiContent = () => {
       </p>
 
       {/* Helpful Section */}
-      <div className="flex items-center gap-4 py-6 border-t border-border">
+      <div className="flex items-center gap-4 py-6">
         <span className="text-muted-foreground text-sm">Was this page helpful?</span>
         <button className="flex items-center gap-2 px-4 py-2 border border-border rounded-full text-sm text-foreground hover:bg-muted transition-colors">
           <ThumbsUp className="w-4 h-4" />
