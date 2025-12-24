@@ -42,7 +42,7 @@ const AssistantPanel = ({ initialQuestion, onClose }: AssistantPanelProps) => {
   };
 
   return (
-    <aside className="w-80 flex-shrink-0 h-[calc(100vh-7rem)] sticky top-28 overflow-hidden flex flex-col border-l border-border animate-fade-in">
+    <aside className="w-80 flex-shrink-0 h-[calc(100vh-6rem)] sticky overflow-hidden flex flex-col border-l border-border animate-fade-in">
       {/* Header */}
       <div className="flex items-center justify-between px-4 py-3 border-b border-border">
         <div className="flex items-center gap-2">
