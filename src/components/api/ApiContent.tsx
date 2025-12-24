@@ -1,5 +1,6 @@
-import { ThumbsUp, ThumbsDown, ChevronRight, Twitter, Github, Linkedin } from "lucide-react";
+import { ThumbsUp, ThumbsDown, ChevronRight } from "lucide-react";
 import CopyPageDropdown from "../shared/CopyPageDropdown";
+import Footer from "../shared/Footer";
 
 const ApiContent = () => {
   return (
@@ -76,31 +77,7 @@ const ApiContent = () => {
         </a>
       </div>
 
-      {/* Footer */}
-      <footer className="flex justify-between items-center py-8 mt-12 border-t border-border">
-        <div className="flex items-center gap-4">
-          <a href="#" className="text-muted-foreground hover:text-foreground transition-colors">
-            <Twitter className="w-5 h-5" />
-          </a>
-          <a href="#" className="text-muted-foreground hover:text-foreground transition-colors">
-            <Github className="w-5 h-5" />
-          </a>
-          <a href="#" className="text-muted-foreground hover:text-foreground transition-colors">
-            <Linkedin className="w-5 h-5" />
-          </a>
-        </div>
-        <span className="text-sm text-muted-foreground">
-          Powered by{" "}
-          <a 
-            href="https://monodoc.io?utm_campaign=poweredBy&utm_medium=referral&utm_source=captions" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="hover:text-foreground transition-colors"
-          >
-            MonoDoc
-          </a>
-        </span>
-      </footer>
+      <Footer />
     </main>
   );
 };
