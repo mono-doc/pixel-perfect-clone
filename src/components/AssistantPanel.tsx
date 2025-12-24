@@ -19,6 +19,7 @@ const AssistantPanel = ({ initialQuestion, onClose }: AssistantPanelProps) => {
   const [inputValue, setInputValue] = useState("");
   const [isFocused, setIsFocused] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
+  const [isThinking, setIsThinking] = useState(false);
 
   const hasValue = inputValue.trim().length > 0;
   const hasMessages = messages.length > 0;
@@ -31,13 +32,15 @@ const AssistantPanel = ({ initialQuestion, onClose }: AssistantPanelProps) => {
     if (!hasValue) return;
     setMessages([...messages, { role: "user", content: inputValue }]);
     setInputValue("");
+    setIsThinking(true);
     // Simulate assistant response
     setTimeout(() => {
+      setIsThinking(false);
       setMessages((prev) => [
         ...prev,
         { role: "assistant", content: "I'm here to help! What would you like to know?" },
       ]);
-    }, 500);
+    }, 1500);
   };
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
@@ -120,6 +123,15 @@ const AssistantPanel = ({ initialQuestion, onClose }: AssistantPanelProps) => {
             <p className="text-sm text-muted-foreground text-center px-4">
               Responses are generated using AI and may contain mistakes.
             </p>
+          </div>
+        )}
+        {isThinking && (
+          <div className="flex justify-start">
+            <div className="flex items-center gap-1 py-2">
+              <span className="w-2 h-2 bg-muted-foreground/60 rounded-full animate-bounce [animation-delay:-0.3s]"></span>
+              <span className="w-2 h-2 bg-muted-foreground/60 rounded-full animate-bounce [animation-delay:-0.15s]"></span>
+              <span className="w-2 h-2 bg-muted-foreground/60 rounded-full animate-bounce"></span>
+            </div>
           </div>
         )}
       </div>
