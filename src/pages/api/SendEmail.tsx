@@ -18,42 +18,42 @@ const codeExamples: Record<Language, string> = {
 const monosend = new MonoSend('mono_xxxxxxxxx');
 
 monosend.emails.send({
-  from: 'Acme <onboarding@monosend.dev>',
-  to: ['delivered@monosend.dev'],
-  subject: 'hello world',
+  from: 'Brand <welcome@monosend.io>',
+  to: ['customer@gmail.com'],
+  subject: 'Welcome to MonoSend!',
   html: '<p>it works!</p>',
-  reply_to: 'onboarding@monosend.dev'
+  reply_to: 'support@monosend.io'
 });`,
   "PHP": `$monosend = MonoSend::client('mono_xxxxxxxxx');
 
 $monosend->emails->send([
-  'from' => 'Acme <onboarding@monosend.dev>',
-  'to' => ['delivered@monosend.dev'],
-  'subject' => 'hello world',
+  'from' => 'Brand <welcome@monosend.io>',
+  'to' => ['customer@gmail.com'],
+  'subject' => 'Welcome to MonoSend!',
   'html' => '<p>it works!</p>',
-  'reply_to': 'onboarding@monosend.dev'
+  'reply_to': 'support@monosend.io'
 ]);`,
   "Python": `import monosend
 
 monosend.api_key = "mono_xxxxxxxxx"
 
 monosend.Emails.send({
-  "from": "Acme <onboarding@monosend.dev>",
-  "to": ["delivered@monosend.dev"],
-  "subject": "hello world",
+  "from": "Brand <welcome@monosend.io>",
+  "to": ["customer@gmail.com"],
+  "subject": "Welcome to MonoSend!",
   "html": "<p>it works!</p>",
-  "reply_to": "onboarding@monosend.dev"
+  "reply_to": "support@monosend.io"
 })`,
   "Ruby": `require 'monosend'
 
 MonoSend.api_key = 'mono_xxxxxxxxx'
 
 MonoSend::Emails.send({
-  from: 'Acme <onboarding@monosend.dev>',
-  to: ['delivered@monosend.dev'],
-  subject: 'hello world',
+  from: 'Brand <welcome@monosend.io>',
+  to: ['customer@gmail.com'],
+  subject: 'Welcome to MonoSend!',
   html: '<p>it works!</p>',
-  reply_to: 'onboarding@monosend.dev'
+  reply_to: 'support@monosend.io'
 })`,
   "Go": `package main
 
@@ -63,11 +63,11 @@ func main() {
   client := monosend.NewClient("mono_xxxxxxxxx")
   
   params := &monosend.SendEmailRequest{
-    From:    "Acme <onboarding@monosend.dev>",
-    To:      []string{"delivered@monosend.dev"},
-    Subject: "hello world",
+    From:    "Brand <welcome@monosend.io>",
+    To:      []string{"customer@gmail.com"},
+    Subject: "Welcome to MonoSend!",
     Html:    "<p>it works!</p>",
-    ReplyTo: "onboarding@monosend.dev",
+    ReplyTo: "support@monosend.io",
   }
   client.Emails.Send(params)
 }`,
@@ -78,9 +78,9 @@ async fn main() {
   let monosend = MonoSend::new("mono_xxxxxxxxx");
   
   let email = CreateEmailOptions::new(
-    "Acme <onboarding@monosend.dev>",
-    ["delivered@monosend.dev"],
-    "hello world",
+    "Brand <welcome@monosend.io>",
+    ["customer@gmail.com"],
+    "Welcome to MonoSend!",
   ).with_html("<p>it works!</p>");
   
   monosend.emails.send(email).await;
@@ -92,11 +92,11 @@ public class Main {
     MonoSend monosend = new MonoSend("mono_xxxxxxxxx");
     
     SendEmailRequest request = SendEmailRequest.builder()
-      .from("Acme <onboarding@monosend.dev>")
-      .to("delivered@monosend.dev")
-      .subject("hello world")
+      .from("Brand <welcome@monosend.io>")
+      .to("customer@gmail.com")
+      .subject("Welcome to MonoSend!")
       .html("<p>it works!</p>")
-      .replyTo("onboarding@monosend.dev")
+      .replyTo("support@monosend.io")
       .build();
       
     monosend.emails().send(request);
@@ -107,11 +107,11 @@ public class Main {
 var client = new MonoSendClient("mono_xxxxxxxxx");
 
 await client.EmailSendAsync(new EmailMessage {
-  From = "Acme <onboarding@monosend.dev>",
-  To = "delivered@monosend.dev",
-  Subject = "hello world",
+  From = "Brand <welcome@monosend.io>",
+  To = "customer@gmail.com",
+  Subject = "Welcome to MonoSend!",
   HtmlBody = "<p>it works!</p>",
-  ReplyTo = "onboarding@monosend.dev"
+  ReplyTo = "support@monosend.io"
 });`
 };
 
