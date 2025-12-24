@@ -83,7 +83,7 @@ const SearchModal = ({ isOpen, onClose }: SearchModalProps) => {
       onClick={onClose}
     >
       {/* Backdrop */}
-      <div className="absolute inset-0 bg-white/80 backdrop-blur-sm" />
+      <div className="absolute inset-0 bg-white/80 dark:bg-black/80 backdrop-blur-sm" />
       
       {/* Modal */}
       <div 
