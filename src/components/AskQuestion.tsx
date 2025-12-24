@@ -49,7 +49,7 @@ const AskQuestion = () => {
     >
       <div
         className={`
-          flex items-center gap-2 bg-background border rounded-full px-4 py-2
+          flex items-center gap-2 bg-background border rounded-xl px-4 py-2
           transition-all duration-300 ease-out shadow-lg
           ${isFocused 
             ? "border-primary scale-105 shadow-xl" 
