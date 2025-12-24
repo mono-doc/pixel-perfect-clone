@@ -2,7 +2,7 @@ import { Youtube, Twitter, Instagram, Linkedin } from "lucide-react";
 
 const Footer = () => {
   return (
-    <footer className="flex items-center justify-between py-8 mt-8 border-t border-border">
+    <footer className="flex items-center justify-between py-8 mt-8">
       <div className="flex items-center gap-4">
         <a href="#" className="text-muted-foreground hover:text-foreground transition-colors">
           <Youtube className="w-5 h-5" />
