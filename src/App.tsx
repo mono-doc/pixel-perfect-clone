@@ -9,6 +9,7 @@ import Introduction from "./pages/Introduction";
 import Api from "./pages/Api";
 import NotFound from "./pages/NotFound";
 import Header from "./components/Header";
+import ScrollToTop from "./components/ScrollToTop";
 
 const queryClient = new QueryClient();
 
@@ -25,6 +26,7 @@ const AppContent = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <ScrollToTop />
       <Header activeTab={activeTab} />
       <Routes>
         <Route path="/" element={<Index />} />
