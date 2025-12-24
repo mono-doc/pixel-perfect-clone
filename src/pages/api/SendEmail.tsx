@@ -161,7 +161,7 @@ const CodeBlock = ({ code, title }: { code: string; title?: string }) => {
           <span className="text-sm text-white/70">{title}</span>
           <div className="flex items-center gap-2">
             <TooltipProvider>
-              <Tooltip>
+              <Tooltip open={copied}>
                 <TooltipTrigger asChild>
                   <button 
                     onClick={handleCopy}
@@ -171,7 +171,7 @@ const CodeBlock = ({ code, title }: { code: string; title?: string }) => {
                   </button>
                 </TooltipTrigger>
                 <TooltipContent>
-                  <p>{copied ? "Copied" : "Copy"}</p>
+                  <p>Copied</p>
                 </TooltipContent>
               </Tooltip>
             </TooltipProvider>
@@ -337,7 +337,7 @@ const SendEmail = () => {
             ))}
             <div className="ml-auto flex items-center gap-1 px-2">
               <TooltipProvider>
-                <Tooltip>
+                <Tooltip open={codeCopied}>
                   <TooltipTrigger asChild>
                     <button 
                       onClick={handleCopyCode}
@@ -347,7 +347,7 @@ const SendEmail = () => {
                     </button>
                   </TooltipTrigger>
                   <TooltipContent>
-                    <p>{codeCopied ? "Copied" : "Copy"}</p>
+                    <p>Copied</p>
                   </TooltipContent>
                 </Tooltip>
               </TooltipProvider>
