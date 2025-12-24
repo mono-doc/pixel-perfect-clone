@@ -1,9 +1,9 @@
+import { useState, useEffect } from "react";
 import { List } from "lucide-react";
 
 interface TocItem {
   label: string;
   href: string;
-  active?: boolean;
   indented?: boolean;
 }
 
@@ -12,6 +12,41 @@ interface OnThisPageProps {
 }
 
 const OnThisPage = ({ items }: OnThisPageProps) => {
+  const [activeId, setActiveId] = useState<string>("");
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveId(`#${entry.target.id}`);
+          }
+        });
+      },
+      { rootMargin: "-20% 0px -70% 0px" }
+    );
+
+    items.forEach((item) => {
+      const id = item.href.replace("#", "");
+      const element = document.getElementById(id);
+      if (element) {
+        observer.observe(element);
+      }
+    });
+
+    return () => observer.disconnect();
+  }, [items]);
+
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    const id = href.replace("#", "");
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth", block: "start" });
+      setActiveId(href);
+    }
+  };
+
   return (
     <aside className="w-56 flex-shrink-0 h-[calc(100vh-7rem)] sticky top-28 overflow-y-auto scrollbar-thin py-6 pl-6">
       <div className="flex items-center gap-2 mb-4">
@@ -19,21 +54,25 @@ const OnThisPage = ({ items }: OnThisPageProps) => {
         <span className="text-sm font-medium text-muted-foreground">On this page</span>
       </div>
       <nav className="space-y-3">
-        {items.map((item, index) => (
-          <a
-            key={index}
-            href={item.href}
-            className={`block text-sm transition-colors ${
-              item.indented ? "pl-4" : ""
-            } ${
-              item.active
-                ? "text-primary font-medium border-l-2 border-primary pl-3"
-                : "text-muted-foreground hover:text-foreground"
-            }`}
-          >
-            {item.label}
-          </a>
-        ))}
+        {items.map((item, index) => {
+          const isActive = activeId === item.href || (activeId === "" && index === 0);
+          return (
+            <a
+              key={index}
+              href={item.href}
+              onClick={(e) => handleClick(e, item.href)}
+              className={`block text-sm transition-colors ${
+                item.indented ? "pl-4" : ""
+              } ${
+                isActive
+                  ? "text-primary font-medium border-l-2 border-primary pl-3"
+                  : "text-muted-foreground hover:text-foreground"
+              }`}
+            >
+              {item.label}
+            </a>
+          );
+        })}
       </nav>
     </aside>
   );

@@ -67,7 +67,7 @@ const MainContent = () => {
       </p>
 
       {/* How it works section */}
-      <section className="mb-10">
+      <section id="how-it-works" className="mb-10 scroll-mt-32">
         <h2 className="text-xl font-semibold text-foreground mb-6 flex items-center gap-2">
           <a href="#" className="text-muted-foreground hover:text-primary">​</a>
           How Mirage Studio Works in 3 Easy Steps
@@ -83,7 +83,7 @@ const MainContent = () => {
       </section>
 
       {/* Availability section */}
-      <section className="mb-10">
+      <section id="pricing" className="mb-10 scroll-mt-32">
         <h2 className="text-xl font-semibold text-foreground mb-6 flex items-center gap-2">
           <a href="#" className="text-muted-foreground hover:text-primary">​</a>
           Availability, Pricing & Usage
@@ -92,7 +92,7 @@ const MainContent = () => {
           To use Mirage Studio, you'll need an active subscription. We've recently updated our offerings, and the Teams and Business plans are no longer available. The current subscription options are:
         </p>
 
-        <h3 className="text-lg font-semibold text-foreground mb-4 flex items-center gap-2">
+        <h3 id="plans" className="text-lg font-semibold text-foreground mb-4 flex items-center gap-2 scroll-mt-32">
           <a href="#" className="text-muted-foreground hover:text-primary">​</a>
           Available Plans
         </h3>
