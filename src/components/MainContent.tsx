@@ -68,35 +68,32 @@ const MainContent = () => {
 
       {/* How it works section */}
       <section id="how-it-works" className="mb-10 scroll-mt-32">
-        <h2 className="text-xl font-semibold text-foreground mb-6 flex items-center gap-2">
-          <a href="#" className="text-muted-foreground hover:text-primary">​</a>
+        <h2 className="text-xl font-semibold text-foreground mb-6">
           How Mirage Studio Works in 3 Easy Steps
         </h2>
-        <ol className="space-y-3 text-base text-muted-foreground list-decimal list-inside leading-relaxed">
+        <ol className="space-y-3 text-base text-muted-foreground list-decimal pl-6 leading-relaxed">
           <li>Start with an audio file or generate a voice track from a script</li>
           <li>Create your AI actor using a reference image or text prompt</li>
           <li>Generate your video</li>
         </ol>
-        <p className="mt-4 text-base text-muted-foreground leading-relaxed">
-          View detailed instructions <a href="#" className="text-primary hover:underline">here</a>.
+        <p className="mt-4 pl-6 text-base text-muted-foreground leading-relaxed">
+          View detailed instructions <a href="#" className="text-primary hover:underline font-medium">here</a>.
         </p>
       </section>
 
       {/* Availability section */}
       <section id="pricing" className="mb-10 scroll-mt-32">
-        <h2 className="text-xl font-semibold text-foreground mb-6 flex items-center gap-2">
-          <a href="#" className="text-muted-foreground hover:text-primary">​</a>
+        <h2 className="text-xl font-semibold text-foreground mb-6">
           Availability, Pricing & Usage
         </h2>
         <p className="text-base text-muted-foreground mb-6 leading-relaxed">
           To use Mirage Studio, you'll need an active subscription. We've recently updated our offerings, and the Teams and Business plans are no longer available. The current subscription options are:
         </p>
 
-        <h3 id="plans" className="text-lg font-semibold text-foreground mb-4 flex items-center gap-2 scroll-mt-32">
-          <a href="#" className="text-muted-foreground hover:text-primary">​</a>
+        <h3 id="plans" className="text-lg font-semibold text-foreground mb-4 scroll-mt-32">
           Available Plans
         </h3>
-        <ul className="space-y-4 text-base text-muted-foreground leading-relaxed">
+        <ul className="space-y-4 text-base text-muted-foreground leading-relaxed list-disc pl-6">
           <li>
             <span className="font-semibold text-foreground">Max</span> – $24.99/month
             <p className="mt-1 text-sm">Includes 500 credits and 2 total seats (1 admin + 1 additional seat).</p>
