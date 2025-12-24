@@ -162,7 +162,17 @@ const MainContent = () => {
             <Linkedin className="w-5 h-5" />
           </a>
         </div>
-        <span className="text-sm text-muted-foreground">Powered by MonoDoc</span>
+        <span className="text-sm text-muted-foreground">
+          Powered by{" "}
+          <a 
+            href="https://monodoc.io?utm_campaign=poweredBy&utm_medium=referral&utm_source=captions" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="hover:text-foreground transition-colors"
+          >
+            MonoDoc
+          </a>
+        </span>
       </footer>
     </main>
   );
