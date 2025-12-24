@@ -1,7 +1,11 @@
 import { useState, useEffect } from "react";
 import { ArrowUp, Command } from "lucide-react";
 
-const AskQuestion = () => {
+interface AskQuestionProps {
+  onSubmit: (question: string) => void;
+}
+
+const AskQuestion = ({ onSubmit }: AskQuestionProps) => {
   const [value, setValue] = useState("");
   const [isFocused, setIsFocused] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
@@ -34,6 +38,19 @@ const AskQuestion = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const handleSubmit = () => {
+    if (!hasValue) return;
+    onSubmit(value);
+    setValue("");
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === "Enter" && !e.shiftKey) {
+      e.preventDefault();
+      handleSubmit();
+    }
+  };
+
   const shouldShow = isVisible && !isAtBottom;
 
   return (
@@ -63,6 +80,7 @@ const AskQuestion = () => {
           onChange={(e) => setValue(e.target.value)}
           onFocus={() => setIsFocused(true)}
           onBlur={() => setIsFocused(false)}
+          onKeyDown={handleKeyDown}
           placeholder="Ask a question..."
           className="flex-1 bg-transparent text-sm text-foreground placeholder:text-muted-foreground focus:outline-none"
         />
@@ -76,6 +94,7 @@ const AskQuestion = () => {
         )}
         
         <button
+          onClick={handleSubmit}
           disabled={!hasValue}
           className={`
             p-1.5 rounded-full transition-all duration-200
