@@ -54,7 +54,7 @@ const FAQ = ({ items }: FaqProps) => {
 
   return (
     <section id="faq" className="mb-10 scroll-mt-32">
-      <h2 className="text-xl font-semibold text-foreground mb-6 flex items-center gap-2">
+      <h2 className="text-xl font-semibold text-foreground mb-6 flex items-center">
         <a href="#" className="text-muted-foreground hover:text-primary">​</a>
         Frequently Asked Questions
       </h2>
