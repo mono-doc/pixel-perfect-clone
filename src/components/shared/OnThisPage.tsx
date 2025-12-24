@@ -60,22 +60,23 @@ const OnThisPage = ({ items }: OnThisPageProps) => {
         <List className="w-4 h-4 text-muted-foreground" />
         <span className="text-sm font-medium text-muted-foreground">On this page</span>
       </div>
-      <nav className="space-y-3">
+      <nav className="border-l border-border">
         {items.map((item, index) => {
           const isActive = activeId === item.href || (activeId === "" && index === 0);
           const isParentActive = isParentOfActive(item);
+          const isHighlighted = isActive || isParentActive;
           
           return (
             <a
               key={index}
               href={item.href}
               onClick={(e) => handleClick(e, item.href)}
-              className={`block text-sm transition-colors ${
-                item.indented ? "pl-4" : ""
+              className={`block text-sm py-2 transition-colors border-l -ml-px ${
+                item.indented ? "pl-6" : "pl-3"
               } ${
-                isActive || isParentActive
-                  ? "text-primary font-medium border-l-2 border-primary pl-3"
-                  : "text-muted-foreground hover:text-foreground"
+                isHighlighted
+                  ? "text-primary font-medium border-primary"
+                  : "text-muted-foreground hover:text-foreground border-transparent"
               }`}
             >
               {item.label}
