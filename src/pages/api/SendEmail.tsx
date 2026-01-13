@@ -11,9 +11,18 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 
-type Language = "Python" | "Node.js" | "Java" | ".NET" | "PHP" | "Ruby" | "Go" | "Rust";
+type Language = "cURL" | "Python" | "Node.js" | "Java" | ".NET" | "PHP" | "Ruby" | "Go" | "Rust";
 
 const codeExamples: Record<Language, string> = {
+  "cURL": `curl -X POST 'https://api.monosend.io/emails' \\
+  -H 'Authorization: Bearer mono_xxxxxxxxx' \\
+  -H 'Content-Type: application/json' \\
+  -d '{
+    "from": "Brand <welcome@monosend.email>",
+    "to": ["customer@gmail.com"],
+    "subject": "Welcome to MonoSend!",
+    "html": "<p>it works!</p>"
+  }'`,
   "Node.js": `import { MonoSend } from 'monosend';
 
 const monosend = new MonoSend('mono_xxxxxxxxx');
@@ -116,7 +125,7 @@ await client.EmailSendAsync(new EmailMessage {
 });`
 };
 
-const languages: Language[] = ["Python", "Node.js", "Java", ".NET", "PHP", "Ruby", "Go", "Rust"];
+const languages: Language[] = ["cURL", "Python", "Node.js", "Java", ".NET", "PHP", "Ruby", "Go", "Rust"];
 
 interface ParameterProps {
   name: string;
@@ -202,7 +211,7 @@ const CodeBlock = ({ code, title, onAskAI }: { code: string; title?: string; onA
 };
 
 const SendEmail = () => {
-  const [activeLanguage, setActiveLanguage] = useState<Language>("Node.js");
+  const [activeLanguage, setActiveLanguage] = useState<Language>("cURL");
   const [codeCopied, setCodeCopied] = useState(false);
   const [showAssistant, setShowAssistant] = useState(false);
   const [assistantCodeContext, setAssistantCodeContext] = useState<{ label: string; code: string } | null>(null);
