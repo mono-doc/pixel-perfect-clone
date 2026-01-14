@@ -405,7 +405,7 @@ const SendEmail = () => {
             name="scheduled_at"
             type="string"
             soon
-            description="Schedule email to be sent later. The date should be in natural language (e.g.: in 1 min) or ISO 8601 format (e.g: 2024-08-05T11:52:01.858Z)."
+            description="Schedule email for future sent."
           />
           
           <Parameter
