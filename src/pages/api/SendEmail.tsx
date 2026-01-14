@@ -11,15 +11,17 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 
-type Language = "cURL" | "Python" | "Node.js" | "Java" | ".NET" | "PHP" | "Ruby" | "Go" | "Rust";
+// type Language = "cURL" | "Python" | "Node.js" | "Java" | ".NET" | "PHP" | "Ruby" | "Go" | "Rust";
+type Language = "cURL" | "Python" | "Node.js" | "Java" | ".NET" | "PHP";
+
 
 const codeExamples: Record<Language, string> = {
   "cURL": `curl -X POST 'https://api.monosend.io/emails' \\
   -H 'Authorization: Bearer mono_xxxxxxxxx' \\
   -H 'Content-Type: application/json' \\
   -d '{
-    "from": "Brand <welcome@monosend.email>",
     "to": ["customer@gmail.com"],
+    "from": "Brand <welcome@monosend.email>",
     "subject": "Welcome to MonoSend!",
     "html": "<p>it works!</p>"
   }'`,
@@ -28,8 +30,8 @@ const codeExamples: Record<Language, string> = {
 const monosend = new MonoSend('mono_xxxxxxxxx');
 
 monosend.emails.send({
-  from: 'Brand <welcome@monosend.io>',
   to: ['customer@gmail.com'],
+  from: 'Brand <welcome@monosend.email>',
   subject: 'Welcome to MonoSend!',
   html: '<p>it works!</p>',
   reply_to: 'support@monosend.io'
@@ -37,8 +39,8 @@ monosend.emails.send({
   "PHP": `$monosend = MonoSend::client('mono_xxxxxxxxx');
 
 $monosend->emails->send([
-  'from' => 'Brand <welcome@monosend.io>',
   'to' => ['customer@gmail.com'],
+  'from' => 'Brand <welcome@monosend.email>',
   'subject' => 'Welcome to MonoSend!',
   'html' => '<p>it works!</p>',
   'reply_to': 'support@monosend.io'
@@ -48,8 +50,8 @@ $monosend->emails->send([
 monosend.api_key = "mono_xxxxxxxxx"
 
 monosend.Emails.send({
-  "from": "Brand <welcome@monosend.io>",
   "to": ["customer@gmail.com"],
+  "from": "Brand <welcome@monosend.email>",
   "subject": "Welcome to MonoSend!",
   "html": "<p>it works!</p>",
   "reply_to": "support@monosend.io"
@@ -59,36 +61,35 @@ monosend.Emails.send({
 MonoSend.api_key = 'mono_xxxxxxxxx'
 
 MonoSend::Emails.send({
-  from: 'Brand <welcome@monosend.io>',
   to: ['customer@gmail.com'],
+  from: 'Brand <welcome@monosend.email>',
   subject: 'Welcome to MonoSend!',
   html: '<p>it works!</p>',
   reply_to: 'support@monosend.io'
 })`,
   "Go": `package main
 
-import "github.com/monosend/monosend-go/v2"
+import "github.com/monosend/monosend"
 
 func main() {
   client := monosend.NewClient("mono_xxxxxxxxx")
   
-  params := &monosend.SendEmailRequest{
-    From:    "Brand <welcome@monosend.io>",
+  params := &monosend.SendEmail{
     To:      []string{"customer@gmail.com"},
+    From:    "Brand <welcome@monosend.email>",
     Subject: "Welcome to MonoSend!",
     Html:    "<p>it works!</p>",
     ReplyTo: "support@monosend.io",
   }
   client.Emails.Send(params)
 }`,
-  "Rust": `use monosend_rs::{MonoSend, CreateEmailOptions};
+  "Rust": `use monosend::{MonoSend, CreateEmailOptions};
 
-#[tokio::main]
 async fn main() {
   let monosend = MonoSend::new("mono_xxxxxxxxx");
   
   let email = CreateEmailOptions::new(
-    "Brand <welcome@monosend.io>",
+    "Brand <welcome@monosend.email>",
     ["customer@gmail.com"],
     "Welcome to MonoSend!",
   ).with_html("<p>it works!</p>");
@@ -102,8 +103,8 @@ public class Main {
     MonoSend monosend = new MonoSend("mono_xxxxxxxxx");
     
     SendEmailRequest request = SendEmailRequest.builder()
-      .from("Brand <welcome@monosend.io>")
       .to("customer@gmail.com")
+      .from("Brand <welcome@monosend.email>")
       .subject("Welcome to MonoSend!")
       .html("<p>it works!</p>")
       .replyTo("support@monosend.io")
@@ -117,15 +118,16 @@ public class Main {
 var client = new MonoSendClient("mono_xxxxxxxxx");
 
 await client.EmailSendAsync(new EmailMessage {
-  From = "Brand <welcome@monosend.io>",
   To = "customer@gmail.com",
+  From = "Brand <welcome@monosend.email>",
   Subject = "Welcome to MonoSend!",
   HtmlBody = "<p>it works!</p>",
   ReplyTo = "support@monosend.io"
 });`
 };
 
-const languages: Language[] = ["cURL", "Python", "Node.js", "Java", ".NET", "PHP", "Ruby", "Go", "Rust"];
+// const languages: Language[] = ["cURL", "Python", "Node.js", "Java", ".NET", "PHP", "Ruby", "Go", "Rust"];
+const languages: Language[] = ["cURL", "Python", "Node.js", "Java", ".NET", "PHP"];
 
 interface ParameterProps {
   name: string;
