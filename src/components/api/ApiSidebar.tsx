@@ -99,8 +99,6 @@ const ApiSidebar = ({ activePath }: ApiSidebarProps) => {
           />
           <NavItem label="Retrieve Email" method="GET" />
           <NavItem label="List Sent Emails" method="GET" />
-          <NavItem label="Update Email" method="PATCH" />
-          <NavItem label="Cancel Email" method="POST" />
           <NavItem label="Retrieve Attachment" method="GET" />
           <NavItem label="List Attachments" method="GET" />
         </nav>
