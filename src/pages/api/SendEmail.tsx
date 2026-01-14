@@ -97,7 +97,7 @@ const templateVariableProperties = [
 
 const codeExamples: Record<Language, string> = {
   "cURL": `curl -X POST 'https://api.monosend.io/emails' \\
-  -H 'Authorization: Bearer mono_xxxxxxxxx' \\
+  -H 'Authorization: Bearer mono_xxxxx' \\
   -H 'Content-Type: application/json' \\
   -d '{
     "to": ["customer@gmail.com"],
@@ -107,7 +107,7 @@ const codeExamples: Record<Language, string> = {
   }'`,
   "Node.js": `import { MonoSend } from 'monosend';
 
-const monosend = new MonoSend('mono_xxxxxxxxx');
+const monosend = new MonoSend('mono_xxxxx');
 
 monosend.emails.send({
   to: ['customer@gmail.com'],
@@ -116,7 +116,7 @@ monosend.emails.send({
   html: '<p>it works!</p>',
   reply_to: 'support@monosend.io'
 });`,
-  "PHP": `$monosend = MonoSend::client('mono_xxxxxxxxx');
+  "PHP": `$monosend = MonoSend::client('mono_xxxxx');
 
 $monosend->emails->send([
   'to' => ['customer@gmail.com'],
@@ -127,7 +127,7 @@ $monosend->emails->send([
 ]);`,
   "Python": `import monosend
 
-monosend.api_key = "mono_xxxxxxxxx"
+monosend.api_key = "mono_xxxxx"
 
 monosend.Emails.send({
   "to": ["customer@gmail.com"],
@@ -138,7 +138,7 @@ monosend.Emails.send({
 })`,
   "Ruby": `require 'monosend'
 
-MonoSend.api_key = 'mono_xxxxxxxxx'
+MonoSend.api_key = 'mono_xxxxx'
 
 MonoSend::Emails.send({
   to: ['customer@gmail.com'],
@@ -152,7 +152,7 @@ MonoSend::Emails.send({
 import "github.com/monosend/monosend"
 
 func main() {
-  client := monosend.NewClient("mono_xxxxxxxxx")
+  client := monosend.NewClient("mono_xxxxx")
   
   params := &monosend.SendEmail{
     To:      []string{"customer@gmail.com"},
@@ -166,7 +166,7 @@ func main() {
   "Rust": `use monosend::{MonoSend, CreateEmailOptions};
 
 async fn main() {
-  let monosend = MonoSend::new("mono_xxxxxxxxx");
+  let monosend = MonoSend::new("mono_xxxxx");
   
   let email = CreateEmailOptions::new(
     "Brand <welcome@monosend.email>",
@@ -180,7 +180,7 @@ async fn main() {
 
 public class Main {
   public static void main(String[] args) {
-    MonoSend monosend = new MonoSend("mono_xxxxxxxxx");
+    MonoSend monosend = new MonoSend("mono_xxxxx");
     
     SendEmailRequest request = SendEmailRequest.builder()
       .to("customer@gmail.com")
@@ -195,7 +195,7 @@ public class Main {
 }`,
   ".NET": `using MonoSend;
 
-var client = new MonoSendClient("mono_xxxxxxxxx");
+var client = new MonoSendClient("mono_xxxxx");
 
 await client.EmailSendAsync(new EmailMessage {
   To = "customer@gmail.com",
