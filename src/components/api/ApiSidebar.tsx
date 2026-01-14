@@ -98,7 +98,12 @@ const ApiSidebar = ({ activePath }: ApiSidebarProps) => {
             href="/api/send-batch-emails"
           />
           <NavItem label="Get Email" method="GET" active={activePath === "/api/get-email"} href="/api/get-email" />
-          <NavItem label="List Sent Emails" method="GET" />
+          <NavItem
+            label="List Sent Emails"
+            method="GET"
+            active={activePath === "/api/list-sent-emails"}
+            href="/api/list-sent-emails"
+          />
         </nav>
       </div>
 
