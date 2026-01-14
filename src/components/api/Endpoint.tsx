@@ -38,7 +38,7 @@ const Endpoint = ({ method, url }: EndpointProps) => {
   }, []);
 
   return (
-    <div className="group flex items-center justify-between gap-3 rounded-lg border border-border bg-muted/50 p-4">
+    <div className="group flex items-center justify-between gap-3 rounded-lg border border-border bg-muted/50 p-2">
       <div className="flex min-w-0 items-center gap-3">
         <span className="rounded bg-blue-100 px-2 py-1 text-xs font-semibold text-blue-700 dark:bg-blue-900/30 dark:text-blue-400">
           {method}
