@@ -11,6 +11,14 @@ import SendEmail from "./pages/api/SendEmail";
 import SendBatchEmails from "./pages/api/SendBatchEmails";
 import GetEmail from "./pages/api/GetEmail";
 import ListSentEmails from "./pages/api/ListSentEmails";
+import CreateContact from "./pages/api/CreateContact";
+import GetContact from "./pages/api/GetContact";
+import GetListContacts from "./pages/api/GetListContacts";
+import UpdateContact from "./pages/api/UpdateContact";
+import RemoveContact from "./pages/api/RemoveContact";
+import AddContactToSegment from "./pages/api/AddContactToSegment";
+import GetContactSegments from "./pages/api/GetContactSegments";
+import RemoveContactSegment from "./pages/api/RemoveContactSegment";
 import NotFound from "./pages/NotFound";
 import Header from "./components/Header";
 import ScrollToTop from "./components/ScrollToTop";
@@ -40,6 +48,14 @@ const AppContent = () => {
         <Route path="/api/send-batch-emails" element={<SendBatchEmails />} />
         <Route path="/api/get-email" element={<GetEmail />} />
         <Route path="/api/list-sent-emails" element={<ListSentEmails />} />
+        <Route path="/api/create-contact" element={<CreateContact />} />
+        <Route path="/api/get-contact" element={<GetContact />} />
+        <Route path="/api/get-list-contacts" element={<GetListContacts />} />
+        <Route path="/api/update-contact" element={<UpdateContact />} />
+        <Route path="/api/remove-contact" element={<RemoveContact />} />
+        <Route path="/api/add-contact-to-segment" element={<AddContactToSegment />} />
+        <Route path="/api/get-contact-segments" element={<GetContactSegments />} />
+        <Route path="/api/remove-contact-segment" element={<RemoveContactSegment />} />
         {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
         <Route path="*" element={<NotFound />} />
       </Routes>
