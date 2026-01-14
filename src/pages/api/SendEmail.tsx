@@ -519,7 +519,7 @@ const SendEmail = () => {
           <CodeBlock 
             title="Response" 
             code={`{
-  "id": "49a3999c-0ce1-4ea6-ab68-afcd6dc2e794"
+  "id": "c91ca148-b1c2-4018-9167-3e135aff18d7"
 }`}
             onAskAI={handleOpenAssistant}
           />
