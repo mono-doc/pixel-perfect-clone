@@ -80,7 +80,7 @@ const templateVariableProperties = [
 
 const codeExamples: Record<Language, string> = {
   "cURL": `curl -X POST 'https://api.monosend.io/emails' \\
-  -H 'Authorization: Bearer mono_xxxxxxxxx' \\
+  -H 'Authorization: Bearer mono_xxxxx' \\
   -H 'Content-Type: application/json' \\
   -d '[
 {
@@ -94,7 +94,7 @@ const codeExamples: Record<Language, string> = {
 
 url = "https://api.monosend.io/emails/batch"
 headers = {
-  "Authorization": "Bearer mono_xxxxxxxxx",
+  "Authorization": "Bearer mono_xxxxx",
   "Content-Type": "application/json"
 }
 payload = [
@@ -111,7 +111,7 @@ print(response.json())`,
   "Node.js": `const response = await fetch("https://api.monosend.io/emails/batch", {
   method: "POST",
   headers: {
-    Authorization: "Bearer mono_xxxxxxxxx",
+    Authorization: "Bearer mono_xxxxx",
     "Content-Type": "application/json"
   },
   body: JSON.stringify([
@@ -137,7 +137,7 @@ public class Main {
 
     HttpRequest request = HttpRequest.newBuilder()
       .uri(URI.create("https://api.monosend.io/emails/batch"))
-      .header("Authorization", "Bearer mono_xxxxxxxxx")
+      .header("Authorization", "Bearer mono_xxxxx")
       .header("Content-Type", "application/json")
       .POST(HttpRequest.BodyPublishers.ofString(payload))
       .build();
@@ -154,7 +154,7 @@ var client = new HttpClient();
 var payload = "[{\\"to\\":[\\"customer@gmail.com\\"],\\"from\\":\\"Brand <welcome@monosend.email>\\",\\"subject\\":\\"Welcome to MonoSend!\\",\\"html\\":\\"<p>it works!</p>\\"}]";
 
 var request = new HttpRequestMessage(HttpMethod.Post, "https://api.monosend.io/emails/batch");
-request.Headers.Add("Authorization", "Bearer mono_xxxxxxxxx");
+request.Headers.Add("Authorization", "Bearer mono_xxxxx");
 request.Content = new StringContent(payload, Encoding.UTF8, "application/json");
 
 var response = await client.SendAsync(request);
@@ -166,7 +166,7 @@ $ch = curl_init("https://api.monosend.io/emails/batch");
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($ch, CURLOPT_POST, true);
 curl_setopt($ch, CURLOPT_HTTPHEADER, [
-  "Authorization: Bearer mono_xxxxxxxxx",
+  "Authorization: Bearer mono_xxxxx",
   "Content-Type: application/json"
 ]);
 curl_setopt($ch, CURLOPT_POSTFIELDS, $payload);
