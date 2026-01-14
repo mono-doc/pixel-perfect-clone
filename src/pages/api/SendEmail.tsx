@@ -337,7 +337,7 @@ const SendEmail = () => {
           <Parameter
             name="attachments"
             type="array"
-            description="Filename and content of attachments (max 40MB per email, after Base64 encoding of the attachments)."
+            description="Filename and content of attachments (max 30MB per email, after Base64 encoding of the attachments). For higher limits please contact support."
           />
         </div>
         
