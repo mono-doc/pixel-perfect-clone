@@ -151,7 +151,7 @@ const Parameter = ({ name, type, required, description, note, children }: Parame
     <p className="text-muted-foreground text-sm">{description}</p>
     {note && (
       <p className="text-muted-foreground text-sm mt-2">
-        To include a friendly name, use the format <code className="bg-muted px-1.5 py-0.5 rounded text-sm">{note}</code>.
+        To add a display (friendly) name, use the format <code className="bg-muted px-1.5 py-0.5 rounded text-sm">{note}</code>.
       </p>
     )}
     {children}
