@@ -229,7 +229,7 @@ const CreateContact = () => {
         </div>
 
         <h2 className="text-xl font-semibold text-foreground mb-4">Body Parameters</h2>
-        <div className="divide-y divide-border border-border">
+        <div className="divide-border border-border">
           <Parameter
             name="email"
             type="string"
