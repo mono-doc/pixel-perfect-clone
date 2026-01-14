@@ -15,11 +15,11 @@ import {
 type Language = "cURL" | "Python" | "Node.js" | "Java" | ".NET" | "PHP";
 
 const codeExamples: Record<Language, string> = {
-  "cURL": `curl -X GET 'https://api.monosend.io/segments/ec8d751d-c7a4-4e10-a122-29ac1488b0cc' \\
+  "cURL": `curl -X GET 'https://api.monosend.io/segments/{segment_id}' \\
   -H 'Authorization: Bearer mono_xxxxx'`,
   "Python": `import requests
 
-url = "https://api.monosend.io/segments/ec8d751d-c7a4-4e10-a122-29ac1488b0cc"
+url = "https://api.monosend.io/segments/{segment_id}"
 headers = {
   "Authorization": "Bearer mono_xxxxx"
 }
@@ -27,7 +27,7 @@ headers = {
 response = requests.get(url, headers=headers)
 print(response.json())`,
   "Node.js": `const response = await fetch(
-  "https://api.monosend.io/segments/ec8d751d-c7a4-4e10-a122-29ac1488b0cc",
+  "https://api.monosend.io/segments/{segment_id}",
   {
     method: "GET",
     headers: {
@@ -46,7 +46,7 @@ import java.net.http.HttpResponse;
 public class Main {
   public static void main(String[] args) throws Exception {
     HttpRequest request = HttpRequest.newBuilder()
-      .uri(URI.create("https://api.monosend.io/segments/ec8d751d-c7a4-4e10-a122-29ac1488b0cc"))
+      .uri(URI.create("https://api.monosend.io/segments/{segment_id}"))
       .header("Authorization", "Bearer mono_xxxxx")
       .GET()
       .build();
@@ -61,14 +61,14 @@ public class Main {
 var client = new HttpClient();
 var request = new HttpRequestMessage(
   HttpMethod.Get,
-  "https://api.monosend.io/segments/ec8d751d-c7a4-4e10-a122-29ac1488b0cc"
+  "https://api.monosend.io/segments/{segment_id}"
 );
 request.Headers.Add("Authorization", "Bearer mono_xxxxx");
 
 var response = await client.SendAsync(request);
 var body = await response.Content.ReadAsStringAsync();
 Console.WriteLine(body);`,
-  "PHP": `$ch = curl_init("https://api.monosend.io/segments/ec8d751d-c7a4-4e10-a122-29ac1488b0cc");
+  "PHP": `$ch = curl_init("https://api.monosend.io/segments/{segment_id}");
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($ch, CURLOPT_HTTPHEADER, [
   "Authorization: Bearer mono_xxxxx"
