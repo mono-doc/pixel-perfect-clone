@@ -10,6 +10,7 @@ import Api from "./pages/Api";
 import SendEmail from "./pages/api/SendEmail";
 import SendBatchEmails from "./pages/api/SendBatchEmails";
 import GetEmail from "./pages/api/GetEmail";
+import ListSentEmails from "./pages/api/ListSentEmails";
 import NotFound from "./pages/NotFound";
 import Header from "./components/Header";
 import ScrollToTop from "./components/ScrollToTop";
@@ -38,6 +39,7 @@ const AppContent = () => {
         <Route path="/api/send-email" element={<SendEmail />} />
         <Route path="/api/send-batch-emails" element={<SendBatchEmails />} />
         <Route path="/api/get-email" element={<GetEmail />} />
+        <Route path="/api/list-sent-emails" element={<ListSentEmails />} />
         {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
         <Route path="*" element={<NotFound />} />
       </Routes>
