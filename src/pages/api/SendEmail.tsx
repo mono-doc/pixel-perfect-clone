@@ -134,18 +134,22 @@ interface ParameterProps {
   name: string;
   type: string;
   required?: boolean;
+  soon?: boolean;
   description: string;
   note?: string;
   children?: React.ReactNode;
 }
 
-const Parameter = ({ name, type, required, description, note, children }: ParameterProps) => (
+const Parameter = ({ name, type, required, soon, description, note, children }: ParameterProps) => (
   <div className="py-5 border-b border-border">
     <div className="flex items-center gap-2 mb-2">
       <span className="font-semibold text-foreground">{name}</span>
       <span className="text-xs px-2 py-0.5 bg-muted rounded text-muted-foreground">{type}</span>
       {required && (
         <span className="text-xs px-2 py-0.5 bg-red-100 text-red-600 dark:bg-red-900/30 dark:text-red-400 rounded">required</span>
+      )}
+      {soon && (
+        <span className="text-xs px-2 py-0.5 bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-300 rounded">soon</span>
       )}
     </div>
     <p className="text-muted-foreground text-sm">{description}</p>
@@ -269,6 +273,7 @@ const SendEmail = () => {
             name="from"
             type="string"
             required
+            soon
             description="Sender email address."
             note={`"Your Name <sender@domain.com>"`}
           />
