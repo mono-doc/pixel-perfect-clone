@@ -429,7 +429,7 @@ const SendBatchEmails = () => {
       </div>
       
       {/* Code Examples Sidebar */}
-      <aside className="max-width: 24rem flex-shrink-0 py-8 sticky top-24 h-fit">
+      <aside className="max-w-md flex-shrink-0 py-8 sticky top-24 h-fit">
         {/* Language Tabs */}
         <div className="bg-[#1a1a2e] dark:bg-[#0d0d1a] rounded-lg overflow-hidden">
           <div className="flex items-center border-b border-white/10 overflow-x-auto">
