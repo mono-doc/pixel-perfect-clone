@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Copy, Sparkles, Info } from "lucide-react";
 import ApiSidebar from "@/components/api/ApiSidebar";
+import AttachmentProperties from "@/components/api/AttachmentProperties";
 import Endpoint from "@/components/api/Endpoint";
 import CopyPageDropdown from "@/components/shared/CopyPageDropdown";
 import Footer from "@/components/shared/Footer";
@@ -338,7 +339,9 @@ const SendEmail = () => {
             name="attachments"
             type="array"
             description="Filename and content of attachments (max 30MB per email, after Base64 encoding of the attachments). For higher limits please contact support."
-          />
+          >
+            <AttachmentProperties defaultOpen />
+          </Parameter>
         </div>
         
         <Footer />
