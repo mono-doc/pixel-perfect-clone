@@ -198,7 +198,7 @@ const RemoveContactSegment = () => {
         </div>
 
         <h2 className="text-xl font-semibold text-foreground mb-4">Path Parameters</h2>
-        <div className="divide-y divide-border border-border">
+        <div className="divide-border border-border">
           <Parameter
             name="contact_id"
             type="string"
