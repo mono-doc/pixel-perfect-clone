@@ -97,7 +97,7 @@ const ApiSidebar = ({ activePath }: ApiSidebarProps) => {
             active={activePath === "/api/send-batch-emails"}
             href="/api/send-batch-emails"
           />
-          <NavItem label="Retrieve Email" method="GET" />
+          <NavItem label="Get Email" method="GET" active={activePath === "/api/get-email"} href="/api/get-email" />
           <NavItem label="List Sent Emails" method="GET" />
           <NavItem label="Retrieve Attachment" method="GET" />
           <NavItem label="List Attachments" method="GET" />
