@@ -1,8 +1,288 @@
+import { useState } from "react";
+import { Copy, Sparkles } from "lucide-react";
 import ApiSidebar from "@/components/api/ApiSidebar";
+import AttachmentProperties from "@/components/api/AttachmentProperties";
+import Endpoint from "@/components/api/Endpoint";
 import CopyPageDropdown from "@/components/shared/CopyPageDropdown";
 import Footer from "@/components/shared/Footer";
+import AssistantPanel from "@/components/AssistantPanel";
+import Notice from "@/components/ui/Notice";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
+
+type Language = "cURL" | "Python" | "Node.js" | "Java" | ".NET" | "PHP";
+
+const attachmentProperties = [
+  {
+    name: "content",
+    type: "buffer | string",
+    description: "The content of the attached file, provided as a buffer or Base64-encoded string.",
+  },
+  {
+    name: "filename",
+    type: "string",
+    description: "Name of attached file.",
+  },
+  {
+    name: "path",
+    type: "string",
+    description: "The path where the attachment file is hosted.",
+  },
+  {
+    name: "contentType",
+    type: "string",
+    description: "The content type of the attachment. If not specified, it will be inferred from the filename.",
+  },
+];
+
+const templateProperties = [
+  {
+    name: "id",
+    type: "string",
+    required: true,
+    description:
+      "The id or the alias of the published email template. Required if template is provided. Only published templates can be used when sending emails.",
+  },
+  {
+    name: "variables",
+    type: "object",
+    description: "Template variables object with key/value pairs.",
+  },
+];
+
+const templateVariableProperties = [
+  {
+    name: "key",
+    type: "string",
+    required: true,
+    description:
+      "The key of the variable. May only contain ASCII letters (a–z, A–Z), numbers (0–9), and underscores (_). The following variable names are reserved and cannot be used: FIRST_NAME, LAST_NAME, EMAIL, UNSUBSCRIBE_URL. It can contain no more than 50 characters.",
+  },
+  {
+    name: "value",
+    type: "string | number",
+    required: true,
+    description: (
+      <>
+        The value of the variable. Observe these technical limitations:
+        <ul className="mt-2 list-disc space-y-1 pl-5">
+          <li>string: maximum length of 2,000 characters</li>
+          <li>number: not greater than 2^53 - 1</li>
+        </ul>
+      </>
+    ),
+  },
+];
+
+const codeExamples: Record<Language, string> = {
+  "cURL": `curl -X POST 'https://api.monosend.io/emails' \\
+  -H 'Authorization: Bearer mono_xxxxxxxxx' \\
+  -H 'Content-Type: application/json' \\
+  -d '[
+{
+    "to": ["customer@gmail.com"],
+    "from": "Brand <welcome@monosend.email>",
+    "subject": "Welcome to MonoSend!",
+    "html": "<p>it works!</p>"
+  }
+]'`,
+  "Python": `import requests
+
+url = "https://api.monosend.io/emails/batch"
+headers = {
+  "Authorization": "Bearer mono_xxxxxxxxx",
+  "Content-Type": "application/json"
+}
+payload = [
+  {
+    "to": ["customer@gmail.com"],
+    "from": "Brand <welcome@monosend.email>",
+    "subject": "Welcome to MonoSend!",
+    "html": "<p>it works!</p>"
+  }
+]
+
+response = requests.post(url, headers=headers, json=payload)
+print(response.json())`,
+  "Node.js": `const response = await fetch("https://api.monosend.io/emails/batch", {
+  method: "POST",
+  headers: {
+    Authorization: "Bearer mono_xxxxxxxxx",
+    "Content-Type": "application/json"
+  },
+  body: JSON.stringify([
+    {
+      to: ["customer@gmail.com"],
+      from: "Brand <welcome@monosend.email>",
+      subject: "Welcome to MonoSend!",
+      html: "<p>it works!</p>"
+    }
+  ])
+});
+
+const data = await response.json();
+console.log(data);`,
+  "Java": `import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
+
+public class Main {
+  public static void main(String[] args) throws Exception {
+    String payload = "[{\\"to\\":[\\"customer@gmail.com\\"],\\"from\\":\\"Brand <welcome@monosend.email>\\",\\"subject\\":\\"Welcome to MonoSend!\\",\\"html\\":\\"<p>it works!</p>\\"}]";
+
+    HttpRequest request = HttpRequest.newBuilder()
+      .uri(URI.create("https://api.monosend.io/emails/batch"))
+      .header("Authorization", "Bearer mono_xxxxxxxxx")
+      .header("Content-Type", "application/json")
+      .POST(HttpRequest.BodyPublishers.ofString(payload))
+      .build();
+
+    HttpClient client = HttpClient.newHttpClient();
+    HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+    System.out.println(response.body());
+  }
+}`,
+  ".NET": `using System.Net.Http;
+using System.Text;
+
+var client = new HttpClient();
+var payload = "[{\\"to\\":[\\"customer@gmail.com\\"],\\"from\\":\\"Brand <welcome@monosend.email>\\",\\"subject\\":\\"Welcome to MonoSend!\\",\\"html\\":\\"<p>it works!</p>\\"}]";
+
+var request = new HttpRequestMessage(HttpMethod.Post, "https://api.monosend.io/emails/batch");
+request.Headers.Add("Authorization", "Bearer mono_xxxxxxxxx");
+request.Content = new StringContent(payload, Encoding.UTF8, "application/json");
+
+var response = await client.SendAsync(request);
+var body = await response.Content.ReadAsStringAsync();
+Console.WriteLine(body);`,
+  "PHP": `$payload = '[{"to":["customer@gmail.com"],"from":"Brand <welcome@monosend.email>","subject":"Welcome to MonoSend!","html":"<p>it works!</p>"}]';
+
+$ch = curl_init("https://api.monosend.io/emails/batch");
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($ch, CURLOPT_POST, true);
+curl_setopt($ch, CURLOPT_HTTPHEADER, [
+  "Authorization: Bearer mono_xxxxxxxxx",
+  "Content-Type: application/json"
+]);
+curl_setopt($ch, CURLOPT_POSTFIELDS, $payload);
+
+$response = curl_exec($ch);
+curl_close($ch);
+
+echo $response;`
+};
+
+const languages: Language[] = ["cURL", "Python", "Node.js", "Java", ".NET", "PHP"];
+
+interface ParameterProps {
+  name: string;
+  type: string;
+  required?: boolean;
+  soon?: boolean;
+  description: string;
+  note?: string;
+  children?: React.ReactNode;
+}
+
+const Parameter = ({ name, type, required, soon, description, note, children }: ParameterProps) => (
+  <div className="py-5 border-b border-border">
+    <div className="flex items-center gap-2 mb-2">
+      <span className="font-semibold text-foreground">{name}</span>
+      <span className="text-xs px-2 py-0.5 bg-muted rounded text-muted-foreground">{type}</span>
+      {required && (
+        <span className="text-xs px-2 py-0.5 bg-red-100 text-red-600 dark:bg-red-900/30 dark:text-red-400 rounded">required</span>
+      )}
+      {soon && (
+        <span className="text-xs px-2 py-0.5 bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-300 rounded">soon</span>
+      )}
+    </div>
+    <p className="text-muted-foreground text-sm">{description}</p>
+    {note && (
+      <p className="text-muted-foreground text-sm mt-2">
+        To add a display (friendly) name, use the format <code className="bg-muted px-1.5 py-0.5 rounded text-sm">{note}</code>.
+      </p>
+    )}
+    {children}
+  </div>
+);
+
+const CodeBlock = ({ code, title, onAskAI }: { code: string; title?: string; onAskAI?: (label: string, code: string) => void }) => {
+  const [copied, setCopied] = useState(false);
+
+  const handleCopy = async () => {
+    await navigator.clipboard.writeText(code);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+
+  return (
+    <div className="bg-[#1a1a2e] dark:bg-[#0d0d1a] rounded-lg overflow-hidden">
+      {title && (
+        <div className="flex items-center justify-between px-4 py-2 border-b border-white/10">
+          <span className="text-sm text-white/70">{title}</span>
+          <div className="flex items-center gap-2">
+            <TooltipProvider>
+              <Tooltip open={copied}>
+                <TooltipTrigger asChild>
+                  <button 
+                    onClick={handleCopy}
+                    className="p-1.5 hover:bg-white/10 rounded transition-colors"
+                  >
+                    <Copy className="w-4 h-4 text-white/50" />
+                  </button>
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p>Copied</p>
+                </TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
+            <TooltipProvider>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <button 
+                    onClick={() => onAskAI?.(title, code)}
+                    className="p-1.5 hover:bg-white/10 rounded transition-colors"
+                  >
+                    <Sparkles className="w-4 h-4 text-white/50" />
+                  </button>
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p>Ask AI</p>
+                </TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
+          </div>
+        </div>
+      )}
+      <pre className="p-4 text-sm overflow-x-auto">
+        <code className="text-white/90 font-mono">{code}</code>
+      </pre>
+    </div>
+  );
+};
 
 const SendBatchEmails = () => {
+  const [activeLanguage, setActiveLanguage] = useState<Language>("cURL");
+  const [codeCopied, setCodeCopied] = useState(false);
+  const [showAssistant, setShowAssistant] = useState(false);
+  const [assistantCodeContext, setAssistantCodeContext] = useState<{ label: string; code: string } | null>(null);
+
+  const handleCopyCode = async () => {
+    await navigator.clipboard.writeText(codeExamples[activeLanguage]);
+    setCodeCopied(true);
+    setTimeout(() => setCodeCopied(false), 2000);
+  };
+
+  const handleOpenAssistant = (label: string, code: string) => {
+    setAssistantCodeContext({ label, code });
+    setShowAssistant(true);
+  };
+
   return (
     <main className="flex max-w-[1600px] mx-auto px-6">
       <ApiSidebar activePath="/api/send-batch-emails" />
