@@ -296,11 +296,10 @@ const SendBatchEmails = () => {
         </div>
         
         <p className="text-muted-foreground mb-2">
-          Send up to 100 batch emails at once,
+          Send up to 100 emails in a single batch request.
         </p>
         <p className="text-muted-foreground mb-6">
-          Instead of sending one email per HTTP request, we provide a batching endpoint that permits you to send up to
-          100 emails in a single API call.
+          Instead of making one HTTP request per email, use our batching endpoint to send up to 100 emails in a single API call, significantly reducing request overhead and improving delivery efficiency.
         </p>
         
         {/* Endpoint */}
