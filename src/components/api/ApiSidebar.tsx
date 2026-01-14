@@ -143,7 +143,7 @@ const ApiSidebar = ({ activePath }: ApiSidebarProps) => {
       </div>
 
       {/* RECEIVING */}
-      <div className="mb-6">
+      {/* <div className="mb-6">
         <SectionLabel>Receiving</SectionLabel>
         <nav className="space-y-0.5">
           <NavItem label="Retrieve Received Email" method="GET" />
@@ -151,7 +151,7 @@ const ApiSidebar = ({ activePath }: ApiSidebarProps) => {
           <NavItem label="Retrieve Attachment" method="GET" />
           <NavItem label="List Attachments" method="GET" />
         </nav>
-      </div>
+      </div> */}
 
       {/* REFERENCE */}
       <div className="mb-6">
