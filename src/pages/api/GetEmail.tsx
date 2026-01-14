@@ -276,7 +276,7 @@ const GetEmail = () => {
             <AttachmentProperties
               defaultOpen={false}
               id="status-events"
-              linkLabel="See status events"
+              {/* linkLabel="See status events" */}
               properties={statusEventProperties}
             />
           </Parameter>
