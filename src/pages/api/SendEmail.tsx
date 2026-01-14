@@ -260,9 +260,9 @@ const SendEmail = () => {
         <div className="divide-y divide-border border-t border-border">
           <Parameter
             name="to"
-            type="string | string[]"
+            type="string[]"
             required
-            description="Recipient email address. For multiple addresses, send as an array of strings. Max 50."
+            description="Recipient email address. Max 100."
           />
 
           <Parameter
