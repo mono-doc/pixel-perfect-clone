@@ -356,7 +356,7 @@ const SendEmail = () => {
           >
             <Notice
               className="mt-3"
-              type="notice"
+              type="info"
               text={
                 "If omitted, a plain-text version will be automatically generated from the HTML content. To disable this behavior, explicitly set the value to an empty string."
               }
