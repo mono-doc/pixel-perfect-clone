@@ -16,6 +16,45 @@ import {
 // type Language = "cURL" | "Python" | "Node.js" | "Java" | ".NET" | "PHP" | "Ruby" | "Go" | "Rust";
 type Language = "cURL" | "Python" | "Node.js" | "Java" | ".NET" | "PHP";
 
+const attachmentProperties = [
+  {
+    name: "content",
+    type: "buffer | string",
+    description: "Content of an attached file, passed as a buffer or Base64 string.",
+  },
+  {
+    name: "filename",
+    type: "string",
+    description: "Name of attached file.",
+  },
+  {
+    name: "path",
+    type: "string",
+    description: "Path where the attachment file is hosted.",
+  },
+  {
+    name: "contentType",
+    type: "string",
+    description: "Content type for the attachment, if not set will be derived from the filename property.",
+  },
+  {
+    name: "contentId",
+    type: "string",
+    description: (
+      <>
+        You can embed images using the content id parameter for the attachment. To show the image, include the ID in
+        the <code className="rounded bg-muted px-1.5 py-0.5 text-xs">src</code> attribute of the{" "}
+        <code className="rounded bg-muted px-1.5 py-0.5 text-xs">img</code> tag (e.g.,{" "}
+        <code className="rounded bg-muted px-1.5 py-0.5 text-xs">&lt;img src=&quot;cid:...&quot;&gt;</code>) of your
+        HTML.{" "}
+        <a className="font-semibold text-foreground underline underline-offset-4" href="#inline-images">
+          Learn about inline images.
+        </a>
+      </>
+    ),
+  },
+];
+
 
 const codeExamples: Record<Language, string> = {
   "cURL": `curl -X POST 'https://api.monosend.io/emails' \\
@@ -340,7 +379,7 @@ const SendEmail = () => {
             type="array"
             description="Filename and content of attachments (max 30MB per email, after Base64 encoding of the attachments). For higher limits please contact support."
           >
-            <AttachmentProperties defaultOpen />
+            <AttachmentProperties defaultOpen properties={attachmentProperties} />
           </Parameter>
         </div>
         
