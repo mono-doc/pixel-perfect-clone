@@ -56,6 +56,44 @@ const attachmentProperties = [
   // },
 ];
 
+const templateProperties = [
+  {
+    name: "id",
+    type: "string",
+    required: true,
+    description:
+      "The id or the alias of the published email template. Required if template is provided. Only published templates can be used when sending emails.",
+  },
+  {
+    name: "variables",
+    type: "object",
+    description: "Template variables object with key/value pairs.",
+  },
+];
+
+const templateVariableProperties = [
+  {
+    name: "key",
+    type: "string",
+    required: true,
+    description:
+      "The key of the variable. May only contain ASCII letters (a–z, A–Z), numbers (0–9), and underscores (_). The following variable names are reserved and cannot be used: FIRST_NAME, LAST_NAME, EMAIL, UNSUBSCRIBE_URL. It can contain no more than 50 characters.",
+  },
+  {
+    name: "value",
+    type: "string | number",
+    required: true,
+    description: (
+      <>
+        The value of the variable. Observe these technical limitations:
+        <ul className="mt-2 list-disc space-y-1 pl-5">
+          <li>string: maximum length of 2,000 characters</li>
+          <li>number: not greater than 2^53 - 1</li>
+        </ul>
+      </>
+    ),
+  },
+];
 
 const codeExamples: Record<Language, string> = {
   "cURL": `curl -X POST 'https://api.monosend.io/emails' \\
@@ -382,6 +420,38 @@ const SendEmail = () => {
             description="Filename and content of attachments (max 30MB per email, after Base64 encoding of the attachments). For higher limits please contact support."
           >
             <AttachmentProperties defaultOpen properties={attachmentProperties} />
+            <div className="mt-6 space-y-4">
+              <h3 className="text-sm font-semibold text-foreground">template object</h3>
+              <p className="text-sm text-muted-foreground">
+                To send using a template, provide a template object with:
+              </p>
+              <AttachmentProperties
+                defaultOpen
+                id="template-properties"
+                linkLabel="See properties"
+                properties={templateProperties}
+              />
+              <Notice
+                className="mt-3"
+                type="notice"
+                text={
+                  "If a template is provided, you cannot send html, text, or react in the payload, otherwise the API will return a validation error. When sending a template, the payload for from, subject, and reply_to take precedence over the template’s defaults for these fields. If the template does not provide a default value for these fields, you must provide them in the payload."
+                }
+              />
+              <CodeBlock
+                code={`variables: {\n\tCTA: 'Login via Magic Link',\n\tCTA_LINK: 'https://example.com/login'\n}`}
+              />
+              <p className="text-sm text-muted-foreground">
+                When sending the template, the HTML will be parsed. If all the variables used in the template were
+                provided, the email will be sent. If not, the call will throw a validation error.
+              </p>
+              <AttachmentProperties
+                defaultOpen
+                id="template-variable-properties"
+                linkLabel="See variable properties"
+                properties={templateVariableProperties}
+              />
+            </div>
           </Parameter>
         </div>
         
