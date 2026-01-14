@@ -282,37 +282,37 @@ const SendEmail = () => {
           
           <Parameter
             name="bcc"
-            type="string | string[]"
-            description="Bcc recipient email address. For multiple addresses, send as an array of strings."
+            type="string[]"
+            description="Bcc recipient email address."
           />
           
           <Parameter
             name="cc"
-            type="string | string[]"
-            description="Cc recipient email address. For multiple addresses, send as an array of strings."
+            type="string[]"
+            description="Cc recipient email address."
           />
           
           <Parameter
             name="reply_to"
-            type="string | string[]"
-            description="Reply-to email address. For multiple addresses, send as an array of strings."
+            type="string[]"
+            description="Reply-to email address."
           />
           
           <Parameter
             name="html"
             type="string"
-            description="The HTML version of the message."
+            description="The HTML-formatted version of the message body. Use this to define rich content such as styling, links, images, and layout for the email."
           />
           
           <Parameter
             name="text"
             type="string"
-            description="The plain text version of the message."
+            description="The plain-text version of the message body."
           >
             <div className="mt-3 p-3 bg-blue-50 dark:bg-blue-900/20 rounded-lg border border-blue-100 dark:border-blue-800 flex items-start gap-2">
               <Info className="w-4 h-4 text-blue-500 mt-0.5 flex-shrink-0" />
               <span className="text-sm text-blue-700 dark:text-blue-300">
-                If not provided, the HTML will be used to generate a plain text version. You can opt out of this behavior by setting value to an empty string.
+                If omitted, a plain-text version will be automatically generated from the HTML content. To disable this behavior, explicitly set the value to an empty string.
               </span>
             </div>
           </Parameter>
