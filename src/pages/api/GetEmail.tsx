@@ -13,7 +13,7 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 
-type Language = "Python" | "Node.js" | "Java" | ".NET" | "PHP";
+type Language = "cURL" | "Python" | "Node.js" | "Java" | ".NET" | "PHP";
 
 const statusEventProperties = [
   {
@@ -75,6 +75,8 @@ const statusEventProperties = [
 ];
 
 const codeExamples: Record<Language, string> = {
+  "cURL": `curl -X GET 'https://api.monosend.io/emails/e2e22821-f1cf-48e2-95c6-661d5bd390f4' \\
+  -H 'Authorization: Bearer mono_xxxxx'`,
   "Python": `import requests
 
 url = "https://api.monosend.io/emails/e2e22821-f1cf-48e2-95c6-661d5bd390f4"
@@ -138,7 +140,7 @@ curl_close($ch);
 echo $response;`,
 };
 
-const languages: Language[] = ["Python", "Node.js", "Java", ".NET", "PHP"];
+const languages: Language[] = ["cURL", "Python", "Node.js", "Java", ".NET", "PHP"];
 
 interface ParameterProps {
   name: string;
@@ -345,7 +347,7 @@ const GetEmail = () => {
   "to": ["customer@gmail.com"],
   "from": "Name <welcome@monosend.email>",
   "created_at": "2024-05-03T12:34:56.987654+00:00",
-  "sent_at": "2024-03-20T12:34:56.987654+00:00",
+  "sent_at": "2024-20-03T12:34:56.987654+00:00",
   "subject": "Welcome to MonoSend!",
   "html": "<p>it works!</p>",
   "text": null,
