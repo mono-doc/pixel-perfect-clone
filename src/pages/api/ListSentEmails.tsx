@@ -194,7 +194,7 @@ const ListSentEmails = () => {
         </div>
 
         <h2 className="text-xl font-semibold text-foreground mb-4">Query Parameters</h2>
-        <div className="divide-y divide-border border-t border-border">
+        <div className="divide-border border-border">
           <Parameter
             name="limit"
             type="number"
