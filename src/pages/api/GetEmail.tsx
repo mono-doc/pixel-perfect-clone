@@ -220,7 +220,7 @@ const CodeBlock = ({ code, title, onAskAI }: { code: string; title?: string; onA
 };
 
 const GetEmail = () => {
-  const [activeLanguage, setActiveLanguage] = useState<Language>("Python");
+  const [activeLanguage, setActiveLanguage] = useState<Language>("cURL");
   const [codeCopied, setCodeCopied] = useState(false);
   const [showAssistant, setShowAssistant] = useState(false);
   const [assistantCodeContext, setAssistantCodeContext] = useState<{ label: string; code: string } | null>(null);
