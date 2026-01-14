@@ -19,19 +19,21 @@ const AttachmentProperties = ({
   defaultOpen = true,
   properties,
   id = "attachments-examples",
-  linkLabel = "See examples",
+  linkLabel,
 }: AttachmentPropertiesProps) => {
   const [isOpen, setIsOpen] = useState(defaultOpen);
   const panelId = `${id}-properties`;
 
   return (
     <div className="mt-4" id={id}>
-      <a
-        className="inline-flex text-sm font-semibold text-foreground underline underline-offset-4"
-        href={`#${id}`}
-      >
-        {linkLabel}
-      </a>
+      {linkLabel && (
+        <a
+          className="inline-flex text-sm font-semibold text-foreground underline underline-offset-4"
+          href={`#${id}`}
+        >
+          {linkLabel}
+        </a>
+      )}
 
       <div className="mt-4 rounded-2xl border border-border bg-card">
         <button
