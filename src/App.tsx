@@ -19,6 +19,10 @@ import RemoveContact from "./pages/api/RemoveContact";
 import AddContactToSegment from "./pages/api/AddContactToSegment";
 import GetContactSegments from "./pages/api/GetContactSegments";
 import RemoveContactSegment from "./pages/api/RemoveContactSegment";
+import CreateSegment from "./pages/api/CreateSegment";
+import GetSegment from "./pages/api/GetSegment";
+import GetSegments from "./pages/api/GetSegments";
+import RemoveSegment from "./pages/api/RemoveSegment";
 import NotFound from "./pages/NotFound";
 import Header from "./components/Header";
 import ScrollToTop from "./components/ScrollToTop";
@@ -56,6 +60,10 @@ const AppContent = () => {
         <Route path="/api/add-contact-to-segment" element={<AddContactToSegment />} />
         <Route path="/api/get-contact-segments" element={<GetContactSegments />} />
         <Route path="/api/remove-contact-segment" element={<RemoveContactSegment />} />
+        <Route path="/api/create-segment" element={<CreateSegment />} />
+        <Route path="/api/get-segment" element={<GetSegment />} />
+        <Route path="/api/get-segments" element={<GetSegments />} />
+        <Route path="/api/remove-segment" element={<RemoveSegment />} />
         {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
         <Route path="*" element={<NotFound />} />
       </Routes>
