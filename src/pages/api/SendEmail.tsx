@@ -35,7 +35,7 @@ const attachmentProperties = [
   {
     name: "contentType",
     type: "string",
-    description: "Content type for the attachment, if not set will be derived from the filename property.",
+    description: "The content type of the attachment. If not specified, it will be inferred from the filename.",
   },
   // {
   //   name: "contentId",
