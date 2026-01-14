@@ -257,7 +257,7 @@ const GetEmail = () => {
         </div>
 
         <h2 className="text-xl font-semibold text-foreground mb-4">Path Parameters</h2>
-        <div className="divide-y divide-border border-t border-border">
+        <div className="divide-y divide-border border-border">
           <Parameter
             name="id"
             type="string"
@@ -266,8 +266,8 @@ const GetEmail = () => {
           />
         </div>
 
-        <h2 className="text-xl font-semibold text-foreground mb-4 mt-8">Response Fields</h2>
-        <div className="divide-y divide-border border-t border-border">
+        <h2 className="text-xl font-semibold text-foreground mb-4 mt-8">All event statuses</h2>
+        <div className="divide-border border-border">
           <Parameter
             name="status"
             type="string"
