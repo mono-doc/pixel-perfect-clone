@@ -262,7 +262,7 @@ const SendEmail = () => {
             name="to"
             type="string[]"
             required
-            description="Recipient email address. Max 100."
+            description="One or more recipient email addresses. You can include up to 50 recipients per request. For higher limits please contact support."
           />
 
           <Parameter
