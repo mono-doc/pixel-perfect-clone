@@ -20,7 +20,7 @@ const attachmentProperties = [
   {
     name: "content",
     type: "buffer | string",
-    description: "Content of an attached file, passed as a buffer or Base64 string.",
+    description: "The content of the attached file, provided as a buffer or Base64-encoded string.",
   },
   {
     name: "filename",
@@ -30,29 +30,29 @@ const attachmentProperties = [
   {
     name: "path",
     type: "string",
-    description: "Path where the attachment file is hosted.",
+    description: "The path where the attachment file is hosted.",
   },
   {
     name: "contentType",
     type: "string",
     description: "Content type for the attachment, if not set will be derived from the filename property.",
   },
-  {
-    name: "contentId",
-    type: "string",
-    description: (
-      <>
-        You can embed images using the content id parameter for the attachment. To show the image, include the ID in
-        the <code className="rounded bg-muted px-1.5 py-0.5 text-xs">src</code> attribute of the{" "}
-        <code className="rounded bg-muted px-1.5 py-0.5 text-xs">img</code> tag (e.g.,{" "}
-        <code className="rounded bg-muted px-1.5 py-0.5 text-xs">&lt;img src=&quot;cid:...&quot;&gt;</code>) of your
-        HTML.{" "}
-        <a className="font-semibold text-foreground underline underline-offset-4" href="#inline-images">
-          Learn about inline images.
-        </a>
-      </>
-    ),
-  },
+  // {
+  //   name: "contentId",
+  //   type: "string",
+  //   description: (
+  //     <>
+  //       You can embed images using the content id parameter for the attachment. To show the image, include the ID in
+  //       the <code className="rounded bg-muted px-1.5 py-0.5 text-xs">src</code> attribute of the{" "}
+  //       <code className="rounded bg-muted px-1.5 py-0.5 text-xs">img</code> tag (e.g.,{" "}
+  //       <code className="rounded bg-muted px-1.5 py-0.5 text-xs">&lt;img src=&quot;cid:...&quot;&gt;</code>) of your
+  //       HTML.{" "}
+  //       <a className="font-semibold text-foreground underline underline-offset-4" href="#inline-images">
+  //         Learn about inline images.
+  //       </a>
+  //     </>
+  //   ),
+  // },
 ];
 
 
