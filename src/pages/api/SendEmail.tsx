@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Copy, Sparkles, Info } from "lucide-react";
 import ApiSidebar from "@/components/api/ApiSidebar";
+import Endpoint from "@/components/api/Endpoint";
 import CopyPageDropdown from "@/components/shared/CopyPageDropdown";
 import Footer from "@/components/shared/Footer";
 import AssistantPanel from "@/components/AssistantPanel";
@@ -249,9 +250,8 @@ const SendEmail = () => {
         </p>
         
         {/* Endpoint */}
-        <div className="flex items-center gap-3 p-4 bg-muted/50 rounded-lg border border-border mb-8">
-          <span className="text-xs font-semibold px-2 py-1 bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400 rounded">POST</span>
-          <code className="text-sm text-foreground">https://api.monosend.io/emails</code>
+        <div className="mb-8">
+          <Endpoint method="POST" url="https://api.monosend.io/emails" />
         </div>
         
         {/* Body Parameters */}
