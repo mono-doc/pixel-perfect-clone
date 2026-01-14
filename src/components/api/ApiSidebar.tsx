@@ -107,6 +107,41 @@ const ApiSidebar = ({ activePath }: ApiSidebarProps) => {
         </nav>
       </div>
 
+      {/* CONTACTS */}
+      <div className="mb-6">
+        <SectionLabel>Contacts</SectionLabel>
+        <nav className="space-y-0.5">
+          <NavItem label="Create Contact" method="POST" active={activePath === "/api/create-contact"} href="/api/create-contact" />
+          <NavItem label="Get Contact" method="GET" active={activePath === "/api/get-contact"} href="/api/get-contact" />
+          <NavItem
+            label="Get List Contacts"
+            method="GET"
+            active={activePath === "/api/get-list-contacts"}
+            href="/api/get-list-contacts"
+          />
+          <NavItem label="Update Contact" method="PATCH" active={activePath === "/api/update-contact"} href="/api/update-contact" />
+          <NavItem label="Remove Contact" method="DELETE" active={activePath === "/api/remove-contact"} href="/api/remove-contact" />
+          <NavItem
+            label="Add Contact to Segment"
+            method="POST"
+            active={activePath === "/api/add-contact-to-segment"}
+            href="/api/add-contact-to-segment"
+          />
+          <NavItem
+            label="Get Contact Segments"
+            method="GET"
+            active={activePath === "/api/get-contact-segments"}
+            href="/api/get-contact-segments"
+          />
+          <NavItem
+            label="Remove Contact Segment"
+            method="DELETE"
+            active={activePath === "/api/remove-contact-segment"}
+            href="/api/remove-contact-segment"
+          />
+        </nav>
+      </div>
+
       {/* RECEIVING */}
       <div className="mb-6">
         <SectionLabel>Receiving</SectionLabel>
