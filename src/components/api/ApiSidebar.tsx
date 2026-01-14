@@ -142,6 +142,17 @@ const ApiSidebar = ({ activePath }: ApiSidebarProps) => {
         </nav>
       </div>
 
+      {/* SEGMENTS */}
+      <div className="mb-6">
+        <SectionLabel>Segments</SectionLabel>
+        <nav className="space-y-0.5">
+          <NavItem label="Create Segment" method="POST" active={activePath === "/api/create-segment"} href="/api/create-segment" />
+          <NavItem label="Get Segment" method="GET" active={activePath === "/api/get-segment"} href="/api/get-segment" />
+          <NavItem label="Get Segments" method="GET" active={activePath === "/api/get-segments"} href="/api/get-segments" />
+          <NavItem label="Remove Segment" method="DELETE" active={activePath === "/api/remove-segment"} href="/api/remove-segment" />
+        </nav>
+      </div>
+
       {/* RECEIVING */}
       {/* <div className="mb-6">
         <SectionLabel>Receiving</SectionLabel>
