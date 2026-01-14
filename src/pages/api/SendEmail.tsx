@@ -1,11 +1,12 @@
 import { useState } from "react";
-import { Copy, Sparkles, Info } from "lucide-react";
+import { Copy, Sparkles } from "lucide-react";
 import ApiSidebar from "@/components/api/ApiSidebar";
 import AttachmentProperties from "@/components/api/AttachmentProperties";
 import Endpoint from "@/components/api/Endpoint";
 import CopyPageDropdown from "@/components/shared/CopyPageDropdown";
 import Footer from "@/components/shared/Footer";
 import AssistantPanel from "@/components/AssistantPanel";
+import Notice from "@/components/ui/Notice";
 import {
   Tooltip,
   TooltipContent,
@@ -353,12 +354,13 @@ const SendEmail = () => {
             type="string"
             description="The plain-text version of the message body."
           >
-            <div className="mt-3 p-3 bg-blue-50 dark:bg-blue-900/20 rounded-lg border border-blue-100 dark:border-blue-800 flex items-start gap-2">
-              <Info className="w-4 h-4 text-blue-500 mt-0.5 flex-shrink-0" />
-              <span className="text-sm text-blue-700 dark:text-blue-300">
-                If omitted, a plain-text version will be automatically generated from the HTML content. To disable this behavior, explicitly set the value to an empty string.
-              </span>
-            </div>
+            <Notice
+              className="mt-3"
+              type="notice"
+              text={
+                "If omitted, a plain-text version will be automatically generated from the HTML content. To disable this behavior, explicitly set the value to an empty string."
+              }
+            />
           </Parameter>
           
           <Parameter
