@@ -428,7 +428,6 @@ const SendEmail = () => {
               <AttachmentProperties
                 defaultOpen
                 id="template-properties"
-                linkLabel="See properties"
                 properties={templateProperties}
               />
               <Notice
