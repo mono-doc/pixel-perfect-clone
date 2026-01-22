@@ -1,20 +1,39 @@
-import { ArrowUpRight, ThumbsDown, ThumbsUp } from "lucide-react";
+import { ArrowUpRight, ChevronRight, ThumbsDown, ThumbsUp } from "lucide-react";
 import { Link } from "react-router-dom";
 import CopyPageDropdown from "@/components/shared/CopyPageDropdown";
 import Footer from "@/components/shared/Footer";
+import EmailsIntroCard from "@/components/dashboard/EmailsIntroCard";
 
-const metrics = [
+const tourCards = [
   {
-    title: "Deliverability",
-    description: "Monitor inbox placement, spam rate, and bounces for every campaign.",
+    title: "Performance overview",
+    description: "Track delivery, opens, clicks, and spam rates at a glance for any timeframe.",
   },
   {
-    title: "Engagement",
-    description: "Track opens, clicks, and replies across automated and broadcast sends.",
+    title: "Campaign health",
+    description: "Compare sends by audience, tags, and templates to spot what needs attention.",
   },
   {
-    title: "Volume",
-    description: "Compare send volume by day, campaign, or audience segment.",
+    title: "Engagement timeline",
+    description: "Follow message activity hour by hour and identify drop-off points quickly.",
+  },
+];
+
+const insightLinks = [
+  {
+    title: "Deliverability watchlist",
+    description: "Review bounces, complaints, and inbox placement warnings.",
+    to: "#",
+  },
+  {
+    title: "Engagement deep dive",
+    description: "Break down clicks and replies by audience segment or campaign.",
+    to: "#",
+  },
+  {
+    title: "Volume trends",
+    description: "See weekly volume changes and compare across workspaces.",
+    to: "#",
   },
 ];
 
@@ -26,88 +45,77 @@ const EmailsIntroductionContent = () => {
       </div>
 
       <div className="flex items-start justify-between mb-6">
-        <h1 className="text-3xl sm:text-4xl font-semibold text-foreground">
-          Emails dashboard introduction
-        </h1>
+        <h1 className="text-3xl sm:text-4xl font-semibold text-foreground">Emails introduction</h1>
         <CopyPageDropdown />
       </div>
 
-      <p className="text-base text-muted-foreground mb-8 leading-relaxed">
-        The Emails dashboard gives you a single view of how messages perform across your account,
-        from delivery to engagement. Use it to spot trends, troubleshoot deliverability, and share
-        performance updates with your team.
+      <p className="text-base text-muted-foreground mb-6 leading-relaxed">
+        Welcome to the Emails dashboard. Use this view to understand delivery health, engagement
+        trends, and sending volume so you can make fast decisions with your team.
       </p>
 
-      <section id="overview" className="scroll-mt-32">
-        <h2 className="text-2xl font-semibold text-foreground mb-3">Overview</h2>
-        <p className="text-base text-muted-foreground mb-4 leading-relaxed">
-          The overview panel summarizes your most important metrics and highlights changes over the
-          selected time range. Choose a default workspace and pin the cards your team reviews most.
+      <div className="flex flex-wrap gap-3">
+        <Link
+          to="#"
+          className="h-9 px-4 bg-primary text-primary-foreground rounded-full text-sm font-medium hover:opacity-90 transition-opacity flex items-center gap-2"
+        >
+          Open emails dashboard
+          <ArrowUpRight className="w-4 h-4" />
+        </Link>
+        <Link
+          to="#"
+          className="h-9 px-4 border border-border rounded-full text-sm font-medium text-foreground hover:bg-muted transition-colors flex items-center"
+        >
+          View metrics glossary
+        </Link>
+      </div>
+
+      <section id="tour" className="mt-12 scroll-mt-32">
+        <h2 className="text-xl font-semibold text-foreground mb-3">Dashboard tour</h2>
+        <p className="text-base text-muted-foreground mb-6 leading-relaxed">
+          Get oriented with the key panels you will use to monitor performance each day.
         </p>
         <div className="grid gap-4 md:grid-cols-3">
-          {metrics.map((metric) => (
-            <div key={metric.title} className="rounded-xl border border-border p-4 bg-muted/40">
-              <h3 className="text-sm font-semibold text-foreground mb-2">{metric.title}</h3>
-              <p className="text-sm text-muted-foreground leading-relaxed">{metric.description}</p>
-            </div>
+          {tourCards.map((card) => (
+            <EmailsIntroCard key={card.title} title={card.title} description={card.description} />
           ))}
         </div>
       </section>
 
       <section id="filters" className="mt-10 scroll-mt-32">
-        <h2 className="text-2xl font-semibold text-foreground mb-3">Filters and segments</h2>
-        <p className="text-base text-muted-foreground mb-4 leading-relaxed">
-          Use filters to narrow the dashboard to a specific audience, sending domain, or campaign.
-          Saved segments help you return to the same view whenever you need to audit performance.
+        <h2 className="text-xl font-semibold text-foreground mb-3">Filters and segments</h2>
+        <p className="text-base text-muted-foreground mb-6 leading-relaxed">
+          Focus your dashboard on the campaigns and audiences that matter right now. Filters and
+          saved segments help you align on the same view across marketing, product, and operations.
         </p>
-        <div className="rounded-xl border border-border p-4">
+        <div className="rounded-xl border border-border p-4 bg-muted/40">
           <ul className="list-disc list-inside space-y-2 text-sm text-muted-foreground">
             <li>Filter by tag, domain, or campaign to compare similar sends.</li>
-            <li>Save segments for regular reporting and share them with collaborators.</li>
-            <li>Switch date ranges to see daily, weekly, or monthly trends.</li>
+            <li>Save segments for weekly reporting and share them with collaborators.</li>
+            <li>Switch date ranges to review daily, weekly, or monthly trends.</li>
           </ul>
         </div>
       </section>
 
-      <section id="events" className="mt-10 scroll-mt-32">
-        <h2 className="text-2xl font-semibold text-foreground mb-3">Event timeline</h2>
-        <p className="text-base text-muted-foreground mb-4 leading-relaxed">
-          The timeline connects delivery events with engagement metrics so you can understand where
-          messages drop off. Investigate spikes in bounces or complaints and export the event data
-          for deeper analysis.
+      <section id="insights" className="mt-10 scroll-mt-32">
+        <h2 className="text-xl font-semibold text-foreground mb-3">Insights to review</h2>
+        <p className="text-base text-muted-foreground mb-6 leading-relaxed">
+          Drill into the insights panel to investigate changes and share the right highlights with
+          your stakeholders.
         </p>
-        <Link
-          to="#"
-          className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:opacity-80 transition-opacity"
-        >
-          Learn how event data is collected
-          <ArrowUpRight className="w-4 h-4" />
-        </Link>
-      </section>
-
-      <section id="next-steps" className="mt-10 scroll-mt-32">
-        <h2 className="text-2xl font-semibold text-foreground mb-3">Next steps</h2>
-        <p className="text-base text-muted-foreground mb-4 leading-relaxed">
-          Ready to dive deeper? Pair the dashboard with webhooks and activity logs to get real-time
-          updates on message activity in your workspace.
-        </p>
-        <div className="flex flex-wrap gap-3">
-          <Link
-            to="#"
-            className="h-9 px-4 border border-border rounded-full text-sm font-medium text-foreground hover:bg-muted transition-colors inline-flex items-center"
-          >
-            View activity logs
-          </Link>
-          <Link
-            to="#"
-            className="h-9 px-4 bg-primary text-primary-foreground rounded-full text-sm font-medium hover:opacity-90 transition-opacity inline-flex items-center"
-          >
-            Configure webhooks
-          </Link>
+        <div className="grid gap-4 md:grid-cols-3">
+          {insightLinks.map((link) => (
+            <EmailsIntroCard
+              key={link.title}
+              title={link.title}
+              description={link.description}
+              to={link.to}
+            />
+          ))}
         </div>
       </section>
 
-      <div className="flex items-center gap-4 py-8">
+      <div className="flex items-center gap-4 py-6">
         <span className="text-sm text-muted-foreground">Was this page helpful?</span>
         <div className="flex items-center gap-2">
           <button className="p-2 border border-border rounded-lg hover:bg-muted transition-colors">
@@ -117,6 +125,21 @@ const EmailsIntroductionContent = () => {
             <ThumbsDown className="w-4 h-4 text-muted-foreground" />
           </button>
         </div>
+      </div>
+
+      <div id="next-steps" className="flex justify-end py-6 scroll-mt-32">
+        <Link
+          to="#"
+          className="flex items-center gap-3 p-4 border border-border rounded-lg hover:bg-muted transition-colors group"
+        >
+          <div className="text-right">
+            <span className="block text-xs text-muted-foreground">Next</span>
+            <span className="block text-sm font-medium text-foreground group-hover:text-primary transition-colors">
+              Emails dashboard reports
+            </span>
+          </div>
+          <ChevronRight className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" />
+        </Link>
       </div>
 
       <Footer />

@@ -1,9 +1,9 @@
 import OnThisPage from "@/components/shared/OnThisPage";
 
 const tocItems = [
-  { label: "Overview", href: "#overview" },
+  { label: "Dashboard tour", href: "#tour" },
   { label: "Filters and segments", href: "#filters" },
-  { label: "Event timeline", href: "#events" },
+  { label: "Insights to review", href: "#insights" },
   { label: "Next steps", href: "#next-steps" },
 ];
 
