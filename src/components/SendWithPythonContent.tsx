@@ -15,7 +15,7 @@ const SendWithPythonContent = () => {
       </div>
 
       <p className="text-base text-muted-foreground mb-8 leading-relaxed">
-        Learn how to send your first email using the Resend Python SDK.
+        Learn how to send your first email using the MonoSend Python SDK.
       </p>
 
       <section id="prerequisites" className="scroll-mt-32">
@@ -46,7 +46,7 @@ const SendWithPythonContent = () => {
       <section id="1-install" className="mt-10 scroll-mt-32">
         <h2 className="text-2xl font-semibold text-foreground mb-3">1. Install</h2>
         <p className="text-base text-muted-foreground mb-4 leading-relaxed">
-          Get the Resend Python SDK.
+          Get the MonoSend Python SDK.
         </p>
         <div className="rounded-xl border border-border bg-muted/40 overflow-hidden">
           <div className="flex items-center justify-between px-4 py-2 border-b border-border text-xs font-semibold text-muted-foreground">
