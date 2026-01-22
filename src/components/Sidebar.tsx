@@ -1,4 +1,4 @@
-import { Zap, Globe, MessageSquare, User, CreditCard, Coins, Users, Shield, HelpCircle, Video, FileText, Settings, Play, Captions, BookOpen, Send } from "lucide-react";
+import { Zap, Globe, MessageSquare, User, CreditCard, Coins, Users, Shield, HelpCircle, Video, FileText, Settings, Play, Captions, BookOpen, Send, Mail } from "lucide-react";
 import { Link } from "react-router-dom";
 
 interface NavItemProps {
@@ -72,6 +72,19 @@ const Sidebar = ({ activeItem = "Quick Start" }: SidebarProps) => {
           />
           <NavItem icon={<Globe className="w-4 h-4" />} label="Our AI Model" active={activeItem === "Our AI Model"} />
           <NavItem icon={<MessageSquare className="w-4 h-4" />} label="Prompt Guide" active={activeItem === "Prompt Guide"} />
+        </nav>
+      </div>
+
+      {/* DASHBOARD */}
+      <div className="mb-6">
+        <SectionLabel>Dashboard</SectionLabel>
+        <nav className="space-y-0.5">
+          <NavItem
+            icon={<Mail className="w-4 h-4" />}
+            label="Emails → Introduction"
+            active={activeItem === "Emails → Introduction"}
+            href="/dashboard/emails/introduction"
+          />
         </nav>
       </div>
 
