@@ -49,7 +49,7 @@ const IntroductionContent = () => {
       </div>
 
       <p className="text-base text-muted-foreground mb-6 leading-relaxed">
-        Resend is the email API for developers.
+        MonoSend is the email API for developers.
       </p>
 
       <div className="flex flex-wrap gap-3">
@@ -71,7 +71,7 @@ const IntroductionContent = () => {
       <section id="quickstart" className="mt-12 scroll-mt-32">
         <h2 className="text-xl font-semibold text-foreground mb-3">Quickstart</h2>
         <p className="text-base text-muted-foreground mb-6 leading-relaxed">
-          Learn how to get Resend set up in your project.
+          Learn how to get MonoSend set up in your project.
         </p>
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {quickstartLinks.map((item) => (
