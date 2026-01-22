@@ -7,6 +7,7 @@ import { ThemeProvider } from "next-themes";
 import Index from "./pages/Index";
 import Introduction from "./pages/Introduction";
 import Api from "./pages/Api";
+import SendWithPython from "./pages/SendWithPython";
 import SendEmail from "./pages/api/SendEmail";
 import SendBatchEmails from "./pages/api/SendBatchEmails";
 import GetEmail from "./pages/api/GetEmail";
@@ -37,6 +38,8 @@ const AppContent = () => {
       ? "studio"
       : location.pathname.startsWith("/introduction")
         ? "introduction"
+        : location.pathname.startsWith("/send-with-python")
+          ? "introduction"
         : location.pathname.startsWith("/api")
           ? "api"
           : undefined;
@@ -48,6 +51,7 @@ const AppContent = () => {
       <Routes>
         <Route path="/" element={<Index />} />
         <Route path="/introduction" element={<Introduction />} />
+        <Route path="/send-with-python" element={<SendWithPython />} />
         <Route path="/api" element={<Api />} />
         <Route path="/api/send-email" element={<SendEmail />} />
         <Route path="/api/send-batch-emails" element={<SendBatchEmails />} />
