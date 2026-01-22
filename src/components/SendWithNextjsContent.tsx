@@ -24,7 +24,7 @@ const SendWithNextjsContent = () => {
         <ul className="list-disc list-inside space-y-2 text-muted-foreground">
           <li>
             <a
-              href="https://resend.com/api-keys"
+              href="https://monosend.io/api-keys"
               className="text-foreground underline underline-offset-2 hover:text-primary transition-colors"
             >
               Create an API key
@@ -32,7 +32,7 @@ const SendWithNextjsContent = () => {
           </li>
           <li>
             <a
-              href="https://resend.com/domains"
+              href="https://monosend.io/domains"
               className="text-foreground underline underline-offset-2 hover:text-primary transition-colors"
             >
               Verify your sending domain
@@ -52,7 +52,7 @@ const SendWithNextjsContent = () => {
             <span>npm</span>
           </div>
           <pre className="p-4 text-sm text-foreground font-mono overflow-x-auto">
-            <code>npm install resend</code>
+            <code>npm install monosend</code>
           </pre>
         </div>
       </section>
@@ -67,7 +67,7 @@ const SendWithNextjsContent = () => {
             <span>.env.local</span>
           </div>
           <pre className="p-4 text-sm text-foreground font-mono overflow-x-auto">
-            <code>RESEND_API_KEY=re_123456789</code>
+            <code>MONOSEND_API_KEY=mono_xxxxx</code>
           </pre>
         </div>
       </section>
@@ -83,16 +83,17 @@ const SendWithNextjsContent = () => {
           </div>
           <pre className="p-4 text-sm text-foreground font-mono overflow-x-auto">
             <code>{`import { NextResponse } from "next/server";
-import { Resend } from "resend";
+import { MonoSend } from "monosend";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+const monosend = new MonoSend(process.env.MONOSEND_API_KEY ?? "");
 
 export async function POST() {
-  const { data, error } = await resend.emails.send({
-    from: "Acme <onboarding@resend.dev>",
-    to: ["delivered@resend.dev"],
-    subject: "Hello from Next.js",
-    html: "<strong>It works!</strong>",
+  const { data, error } = await monosend.emails.send({
+    to: ["customer@gmail.com"],
+    from: "Brand <welcome@monosend.email>",
+    subject: "Welcome to MonoSend!",
+    html: "<p>it works!</p>",
+    reply_to: "support@monosend.io",
   });
 
   if (error) {
@@ -108,7 +109,7 @@ export async function POST() {
       <section id="4-try-it-yourself" className="mt-10 scroll-mt-32">
         <h2 className="text-2xl font-semibold text-foreground mb-4">4. Try it yourself</h2>
         <a
-          href="https://github.com/resend/resend-nextjs-example"
+          href="https://github.com/monosend/monosend-nextjs-example"
           className="block rounded-xl border border-border p-4 hover:bg-muted transition-colors"
         >
           <h3 className="text-base font-semibold text-foreground mb-1">Next.js Example</h3>

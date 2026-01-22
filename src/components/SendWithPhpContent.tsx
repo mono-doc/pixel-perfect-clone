@@ -26,7 +26,7 @@ const SendWithPhpContent = () => {
         <ul className="list-disc list-inside space-y-2 text-muted-foreground">
           <li>
             <a
-              href="https://resend.com/api-keys"
+              href="https://monosend.io/api-keys"
               className="text-foreground underline underline-offset-2 hover:text-primary transition-colors"
             >
               Create an API key
@@ -34,7 +34,7 @@ const SendWithPhpContent = () => {
           </li>
           <li>
             <a
-              href="https://resend.com/domains"
+              href="https://monosend.io/domains"
               className="text-foreground underline underline-offset-2 hover:text-primary transition-colors"
             >
               Verify your domain
@@ -53,7 +53,7 @@ const SendWithPhpContent = () => {
             <span>Composer</span>
           </div>
           <pre className="p-4 text-sm text-foreground font-mono overflow-x-auto">
-            <code>composer require resend/resend-php</code>
+            <code>composer require monosend/monosend-php</code>
           </pre>
         </div>
       </section>
@@ -71,15 +71,16 @@ const SendWithPhpContent = () => {
             <code>{`<?php
 require 'vendor/autoload.php';
 
-use Resend\\Resend;
+use MonoSend\\MonoSend;
 
-$resend = Resend::client(getenv('RESEND_API_KEY'));
+$monosend = MonoSend::client(getenv('MONOSEND_API_KEY'));
 
-$resend->emails->send([
-    'from' => 'Acme <onboarding@resend.dev>',
-    'to' => ['delivered@resend.dev'],
-    'subject' => 'hello world',
-    'html' => '<strong>it works!</strong>',
+$monosend->emails->send([
+    'to' => ['customer@gmail.com'],
+    'from' => 'Brand <welcome@monosend.email>',
+    'subject' => 'Welcome to MonoSend!',
+    'html' => '<p>it works!</p>',
+    'reply_to' => 'support@monosend.io',
 ]);`}</code>
           </pre>
         </div>
@@ -88,7 +89,7 @@ $resend->emails->send([
       <section id="3-try-it-yourself" className="mt-10 scroll-mt-32">
         <h2 className="text-2xl font-semibold text-foreground mb-4">3. Try it yourself</h2>
         <a
-          href="https://github.com/resend/resend-php-example"
+          href="https://github.com/monosend/monosend-php-example"
           className="block rounded-xl border border-border p-4 hover:bg-muted transition-colors"
         >
           <h3 className="text-base font-semibold text-foreground mb-1">PHP Example</h3>

@@ -26,7 +26,7 @@ const SendWithJavaContent = () => {
         <ul className="list-disc list-inside space-y-2 text-muted-foreground">
           <li>
             <a
-              href="https://resend.com/api-keys"
+              href="https://monosend.io/api-keys"
               className="text-foreground underline underline-offset-2 hover:text-primary transition-colors"
             >
               Create an API key
@@ -34,7 +34,7 @@ const SendWithJavaContent = () => {
           </li>
           <li>
             <a
-              href="https://resend.com/domains"
+              href="https://monosend.io/domains"
               className="text-foreground underline underline-offset-2 hover:text-primary transition-colors"
             >
               Verify your domain
@@ -53,7 +53,7 @@ const SendWithJavaContent = () => {
             <span>Gradle</span>
           </div>
           <pre className="p-4 text-sm text-foreground font-mono overflow-x-auto">
-            <code>implementation "com.resend:resend-java:+"</code>
+            <code>implementation "com.monosend:monosend-java:+"</code>
           </pre>
         </div>
       </section>
@@ -68,28 +68,21 @@ const SendWithJavaContent = () => {
             <span>src/Main.java</span>
           </div>
           <pre className="p-4 text-sm text-foreground font-mono overflow-x-auto">
-            <code>{`import com.resend.Resend;
-import com.resend.exception.ResendException;
-import com.resend.services.emails.model.CreateEmailOptions;
-import com.resend.services.emails.model.CreateEmailResponse;
+            <code>{`import com.monosend.*;
 
 public class Main {
     public static void main(String[] args) {
-        Resend resend = new Resend(System.getenv("RESEND_API_KEY"));
+        MonoSend monosend = new MonoSend(System.getenv("MONOSEND_API_KEY"));
 
-        CreateEmailOptions params = CreateEmailOptions.builder()
-                .from("Acme <onboarding@resend.dev>")
-                .to("delivered@resend.dev")
-                .subject("hello world")
-                .html("<strong>it works!</strong>")
+        SendEmailRequest request = SendEmailRequest.builder()
+                .to("customer@gmail.com")
+                .from("Brand <welcome@monosend.email>")
+                .subject("Welcome to MonoSend!")
+                .html("<p>it works!</p>")
+                .replyTo("support@monosend.io")
                 .build();
 
-        try {
-            CreateEmailResponse data = resend.emails().send(params);
-            System.out.println(data.getId());
-        } catch (ResendException e) {
-            e.printStackTrace();
-        }
+        monosend.emails().send(request);
     }
 }`}</code>
           </pre>
@@ -99,7 +92,7 @@ public class Main {
       <section id="3-try-it-yourself" className="mt-10 scroll-mt-32">
         <h2 className="text-2xl font-semibold text-foreground mb-4">3. Try it yourself</h2>
         <a
-          href="https://github.com/resendlabs/resend-java-example"
+          href="https://github.com/monosend/monosend-java-example"
           className="block rounded-xl border border-border p-4 hover:bg-muted transition-colors"
         >
           <h3 className="text-base font-semibold text-foreground mb-1">Java Example</h3>
