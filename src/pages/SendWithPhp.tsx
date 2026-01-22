@@ -5,7 +5,7 @@ import SendWithPhpTableOfContents from "@/components/SendWithPhpTableOfContents"
 const SendWithPhp = () => {
   return (
     <main className="flex max-w-[1600px] mx-auto px-6">
-      <Sidebar activeItem="Quick Start" />
+      <Sidebar activeItem="PHP" />
       <SendWithPhpContent />
       <SendWithPhpTableOfContents />
     </main>

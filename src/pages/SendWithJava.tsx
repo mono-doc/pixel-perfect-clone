@@ -5,7 +5,7 @@ import SendWithJavaTableOfContents from "@/components/SendWithJavaTableOfContent
 const SendWithJava = () => {
   return (
     <main className="flex max-w-[1600px] mx-auto px-6">
-      <Sidebar activeItem="Quick Start" />
+      <Sidebar activeItem="Java" />
       <SendWithJavaContent />
       <SendWithJavaTableOfContents />
     </main>
