@@ -15,7 +15,7 @@ const quickstartLinks = [
   { title: "Go Quickstart", to: "#" },
   { title: "Rust Quickstart", to: "#" },
   { title: "Elixir Quickstart", to: "#" },
-  { title: "Java Quickstart", to: "#" },
+  { title: "Java Quickstart", to: "/send-with-java" },
   { title: ".NET Quickstart", to: "#" },
 ];
 
