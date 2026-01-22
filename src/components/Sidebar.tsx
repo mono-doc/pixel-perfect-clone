@@ -1,4 +1,4 @@
-import { Zap, Globe, MessageSquare, User, CreditCard, Coins, Users, Shield, HelpCircle, Video, FileText, Settings, Play, Captions, BookOpen, Send, Mail } from "lucide-react";
+import { User, CreditCard, Coins, Users, Shield, HelpCircle, Video, FileText, Settings, Play, Captions, BookOpen, Mail } from "lucide-react";
 import { Link } from "react-router-dom";
 
 interface NavItemProps {
@@ -63,15 +63,6 @@ const Sidebar = ({ activeItem = "Quick Start" }: SidebarProps) => {
         <SectionLabel>Get Started</SectionLabel>
         <nav className="space-y-0.5">
           <NavItem icon={<BookOpen className="w-4 h-4" />} label="Introduction" active={activeItem === "Introduction"} />
-          <NavItem icon={<Zap className="w-4 h-4" />} label="Quick Start" active={activeItem === "Quick Start"} />
-          <NavItem
-            icon={<Send className="w-4 h-4" />}
-            label="Send with Next.js"
-            active={activeItem === "Send with Next.js"}
-            href="/send-with-nextjs"
-          />
-          <NavItem icon={<Globe className="w-4 h-4" />} label="Our AI Model" active={activeItem === "Our AI Model"} />
-          <NavItem icon={<MessageSquare className="w-4 h-4" />} label="Prompt Guide" active={activeItem === "Prompt Guide"} />
         </nav>
       </div>
 
