@@ -1,4 +1,4 @@
-import { User, CreditCard, Coins, Users, Shield, HelpCircle, Video, FileText, Settings, Play, Captions, BookOpen, Mail, Code2, Braces, Coffee, Terminal } from "lucide-react";
+import { User, CreditCard, Coins, Users, Shield, HelpCircle, Video, FileText, Settings, Play, Captions, BookOpen, Mail, Code2, Braces, Coffee, Terminal, Zap, BarChart3, Globe, List, Key, Webhook } from "lucide-react";
 import { Link } from "react-router-dom";
 
 interface NavItemProps {
@@ -94,6 +94,24 @@ const Sidebar = ({ activeItem = "Introduction" }: SidebarProps) => {
             active={activeItem === "Node"}
             href="/send-with-node"
           />
+        </nav>
+      </div>
+
+      {/* LEARN */}
+      <div className="mb-6">
+        <SectionLabel>Learn</SectionLabel>
+        <nav className="space-y-0.5">
+          <NavItem icon={<Mail className="w-4 h-4" />} label="Emails" active={activeItem === "Emails"} href="/learn/emails" />
+          <NavItem icon={<Zap className="w-4 h-4" />} label="Automations" active={activeItem === "Automations"} href="/learn/automations" />
+          <NavItem icon={<FileText className="w-4 h-4" />} label="Templates" active={activeItem === "Templates"} href="/learn/templates" />
+          <NavItem icon={<Users className="w-4 h-4" />} label="Audience" active={activeItem === "Audience"} href="/learn/audience" />
+          <NavItem icon={<BarChart3 className="w-4 h-4" />} label="Metrics" active={activeItem === "Metrics"} href="/learn/metrics" />
+          <NavItem icon={<Globe className="w-4 h-4" />} label="Domains" active={activeItem === "Domains"} href="/learn/domains" />
+          <NavItem icon={<User className="w-4 h-4" />} label="Senders" active={activeItem === "Senders"} href="/learn/senders" />
+          <NavItem icon={<List className="w-4 h-4" />} label="Logs" active={activeItem === "Logs"} href="/learn/logs" />
+          <NavItem icon={<Key className="w-4 h-4" />} label="API Keys" active={activeItem === "API Keys"} href="/learn/api-keys" />
+          <NavItem icon={<Webhook className="w-4 h-4" />} label="Webhooks" active={activeItem === "Webhooks"} href="/learn/webhooks" />
+          <NavItem icon={<Settings className="w-4 h-4" />} label="Settings" active={activeItem === "Settings"} href="/learn/settings" />
         </nav>
       </div>
 

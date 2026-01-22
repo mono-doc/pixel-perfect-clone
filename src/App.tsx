@@ -14,6 +14,17 @@ import SendWithNextjs from "./pages/SendWithNextjs";
 import SendWithNode from "./pages/SendWithNode";
 import BatchSending from "./pages/dashboard/BatchSending";
 import EmailsIntroduction from "./pages/dashboard/EmailsIntroduction";
+import LearnEmails from "./pages/learn/Emails";
+import LearnAutomations from "./pages/learn/Automations";
+import LearnTemplates from "./pages/learn/Templates";
+import LearnAudience from "./pages/learn/Audience";
+import LearnMetrics from "./pages/learn/Metrics";
+import LearnDomains from "./pages/learn/Domains";
+import LearnSenders from "./pages/learn/Senders";
+import LearnLogs from "./pages/learn/Logs";
+import LearnApiKeys from "./pages/learn/ApiKeys";
+import LearnWebhooks from "./pages/learn/Webhooks";
+import LearnSettings from "./pages/learn/Settings";
 import SendEmail from "./pages/api/SendEmail";
 import SendBatchEmails from "./pages/api/SendBatchEmails";
 import GetEmail from "./pages/api/GetEmail";
@@ -54,6 +65,8 @@ const AppContent = () => {
           ? "introduction"
         : location.pathname.startsWith("/dashboard/emails")
           ? "introduction"
+        : location.pathname.startsWith("/learn")
+          ? "introduction"
         : location.pathname.startsWith("/api")
           ? "api"
           : undefined;
@@ -71,6 +84,17 @@ const AppContent = () => {
         <Route path="/send-with-node" element={<SendWithNode />} />
         <Route path="/send-with-nextjs" element={<SendWithNextjs />} />
         <Route path="/dashboard/emails/introduction" element={<EmailsIntroduction />} />
+        <Route path="/learn/emails" element={<LearnEmails />} />
+        <Route path="/learn/automations" element={<LearnAutomations />} />
+        <Route path="/learn/templates" element={<LearnTemplates />} />
+        <Route path="/learn/audience" element={<LearnAudience />} />
+        <Route path="/learn/metrics" element={<LearnMetrics />} />
+        <Route path="/learn/domains" element={<LearnDomains />} />
+        <Route path="/learn/senders" element={<LearnSenders />} />
+        <Route path="/learn/logs" element={<LearnLogs />} />
+        <Route path="/learn/api-keys" element={<LearnApiKeys />} />
+        <Route path="/learn/webhooks" element={<LearnWebhooks />} />
+        <Route path="/learn/settings" element={<LearnSettings />} />
         <Route path="/api" element={<Api />} />
         <Route path="/api/send-email" element={<SendEmail />} />
         <Route path="/api/send-batch-emails" element={<SendBatchEmails />} />
