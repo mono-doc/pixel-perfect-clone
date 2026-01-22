@@ -1,32 +1,49 @@
-import { Zap, Globe, MessageSquare, User, CreditCard, Coins, Users, Shield, HelpCircle, Video, FileText, Settings, Play, Captions, BookOpen } from "lucide-react";
+import { Zap, Globe, MessageSquare, User, CreditCard, Coins, Users, Shield, HelpCircle, Video, FileText, Settings, Play, Captions, BookOpen, Send } from "lucide-react";
+import { Link } from "react-router-dom";
 
 interface NavItemProps {
   icon: React.ReactNode;
   label: string;
   active?: boolean;
   hasChevron?: boolean;
+  href?: string;
 }
 
-const NavItem = ({ icon, label, active, hasChevron }: NavItemProps) => (
-  <a
-    href="#"
-    className={`flex items-center justify-between gap-2.5 px-3 py-2 rounded-lg text-sm transition-colors ${
-      active
-        ? "bg-nav-active text-primary font-medium"
-        : "text-foreground hover:bg-nav-hover"
-    }`}
-  >
-    <div className="flex items-center gap-2.5">
-      <span className={active ? "text-primary" : "text-muted-foreground"}>{icon}</span>
-      <span>{label}</span>
-    </div>
-    {hasChevron && (
-      <svg className="w-4 h-4 text-muted-foreground" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-      </svg>
-    )}
-  </a>
-);
+const NavItem = ({ icon, label, active, hasChevron, href }: NavItemProps) => {
+  const className = `flex items-center justify-between gap-2.5 px-3 py-2 rounded-lg text-sm transition-colors ${
+    active
+      ? "bg-nav-active text-primary font-medium"
+      : "text-foreground hover:bg-nav-hover"
+  }`;
+
+  const content = (
+    <>
+      <div className="flex items-center gap-2.5">
+        <span className={active ? "text-primary" : "text-muted-foreground"}>{icon}</span>
+        <span>{label}</span>
+      </div>
+      {hasChevron && (
+        <svg className="w-4 h-4 text-muted-foreground" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+        </svg>
+      )}
+    </>
+  );
+
+  if (href) {
+    return (
+      <Link to={href} className={className}>
+        {content}
+      </Link>
+    );
+  }
+
+  return (
+    <a href="#" className={className}>
+      {content}
+    </a>
+  );
+};
 
 const SectionLabel = ({ children }: { children: React.ReactNode }) => (
   <h3 className="text-2xs font-semibold text-section-label uppercase tracking-wider mb-2 px-3">
@@ -47,6 +64,12 @@ const Sidebar = ({ activeItem = "Quick Start" }: SidebarProps) => {
         <nav className="space-y-0.5">
           <NavItem icon={<BookOpen className="w-4 h-4" />} label="Introduction" active={activeItem === "Introduction"} />
           <NavItem icon={<Zap className="w-4 h-4" />} label="Quick Start" active={activeItem === "Quick Start"} />
+          <NavItem
+            icon={<Send className="w-4 h-4" />}
+            label="Send with Next.js"
+            active={activeItem === "Send with Next.js"}
+            href="/send-with-nextjs"
+          />
           <NavItem icon={<Globe className="w-4 h-4" />} label="Our AI Model" active={activeItem === "Our AI Model"} />
           <NavItem icon={<MessageSquare className="w-4 h-4" />} label="Prompt Guide" active={activeItem === "Prompt Guide"} />
         </nav>
