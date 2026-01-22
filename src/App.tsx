@@ -12,6 +12,7 @@ import SendWithJava from "./pages/SendWithJava";
 import SendWithPhp from "./pages/SendWithPhp";
 import SendWithNextjs from "./pages/SendWithNextjs";
 import BatchSending from "./pages/dashboard/BatchSending";
+import EmailsIntroduction from "./pages/dashboard/EmailsIntroduction";
 import SendEmail from "./pages/api/SendEmail";
 import SendBatchEmails from "./pages/api/SendBatchEmails";
 import GetEmail from "./pages/api/GetEmail";
@@ -49,6 +50,8 @@ const AppContent = () => {
           ? "introduction"
         : location.pathname.startsWith("/send-with-nextjs")
           ? "introduction"
+        : location.pathname.startsWith("/dashboard/emails")
+          ? "introduction"
         : location.pathname.startsWith("/api")
           ? "api"
           : undefined;
@@ -64,6 +67,7 @@ const AppContent = () => {
         <Route path="/send-with-java" element={<SendWithJava />} />
         <Route path="/send-with-php" element={<SendWithPhp />} />
         <Route path="/send-with-nextjs" element={<SendWithNextjs />} />
+        <Route path="/dashboard/emails/introduction" element={<EmailsIntroduction />} />
         <Route path="/api" element={<Api />} />
         <Route path="/api/send-email" element={<SendEmail />} />
         <Route path="/api/send-batch-emails" element={<SendBatchEmails />} />
