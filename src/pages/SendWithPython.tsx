@@ -5,7 +5,7 @@ import SendWithPythonTableOfContents from "@/components/SendWithPythonTableOfCon
 const SendWithPython = () => {
   return (
     <main className="flex max-w-[1600px] mx-auto px-6">
-      <Sidebar activeItem="Quick Start" />
+      <Sidebar activeItem="Python" />
       <SendWithPythonContent />
       <SendWithPythonTableOfContents />
     </main>

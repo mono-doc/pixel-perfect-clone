@@ -1,4 +1,4 @@
-import { User, CreditCard, Coins, Users, Shield, HelpCircle, Video, FileText, Settings, Play, Captions, BookOpen, Mail } from "lucide-react";
+import { User, CreditCard, Coins, Users, Shield, HelpCircle, Video, FileText, Settings, Play, Captions, BookOpen, Mail, Code2, Braces, Coffee, Terminal } from "lucide-react";
 import { Link } from "react-router-dom";
 
 interface NavItemProps {
@@ -55,7 +55,7 @@ interface SidebarProps {
   activeItem?: string;
 }
 
-const Sidebar = ({ activeItem = "Quick Start" }: SidebarProps) => {
+const Sidebar = ({ activeItem = "Introduction" }: SidebarProps) => {
   return (
     <aside className="w-64 flex-shrink-0 border-r border-border h-[calc(100vh-7rem)] sticky overflow-y-auto scrollbar-thin py-6 pr-4">
       {/* GET STARTED */}
@@ -63,6 +63,37 @@ const Sidebar = ({ activeItem = "Quick Start" }: SidebarProps) => {
         <SectionLabel>Get Started</SectionLabel>
         <nav className="space-y-0.5">
           <NavItem icon={<BookOpen className="w-4 h-4" />} label="Introduction" active={activeItem === "Introduction"} />
+        </nav>
+      </div>
+
+      {/* QUICKSTART */}
+      <div className="mb-6">
+        <SectionLabel>Quickstart</SectionLabel>
+        <nav className="space-y-0.5">
+          <NavItem
+            icon={<Code2 className="w-4 h-4" />}
+            label="Python"
+            active={activeItem === "Python"}
+            href="/send-with-python"
+          />
+          <NavItem
+            icon={<Braces className="w-4 h-4" />}
+            label="PHP"
+            active={activeItem === "PHP"}
+            href="/send-with-php"
+          />
+          <NavItem
+            icon={<Coffee className="w-4 h-4" />}
+            label="Java"
+            active={activeItem === "Java"}
+            href="/send-with-java"
+          />
+          <NavItem
+            icon={<Terminal className="w-4 h-4" />}
+            label="Node"
+            active={activeItem === "Node"}
+            href="/send-with-node"
+          />
         </nav>
       </div>
 

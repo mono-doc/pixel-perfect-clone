@@ -22,7 +22,7 @@ const Index = () => {
   return (
     <>
       <main className="flex max-w-[1600px] mx-auto px-6">
-        <Sidebar activeItem="Quick Start" />
+        <Sidebar activeItem="Introduction" />
         <MainContent />
         {assistantOpen ? (
           <AssistantPanel 
