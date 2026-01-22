@@ -4,19 +4,19 @@ import CopyPageDropdown from "@/components/shared/CopyPageDropdown";
 import Footer from "@/components/shared/Footer";
 
 const quickstartLinks = [
-  "Node.js Quickstart",
-  "Next.js Quickstart",
-  "Express Quickstart",
-  "PHP Quickstart",
-  "Laravel Quickstart",
-  "Python Quickstart",
-  "Ruby Quickstart",
-  "Rails Quickstart",
-  "Go Quickstart",
-  "Rust Quickstart",
-  "Elixir Quickstart",
-  "Java Quickstart",
-  ".NET Quickstart",
+  { title: "Node.js Quickstart", to: "#" },
+  { title: "Next.js Quickstart", to: "#" },
+  { title: "Express Quickstart", to: "#" },
+  { title: "PHP Quickstart", to: "#" },
+  { title: "Laravel Quickstart", to: "#" },
+  { title: "Python Quickstart", to: "/send-with-python" },
+  { title: "Ruby Quickstart", to: "#" },
+  { title: "Rails Quickstart", to: "#" },
+  { title: "Go Quickstart", to: "#" },
+  { title: "Rust Quickstart", to: "#" },
+  { title: "Elixir Quickstart", to: "#" },
+  { title: "Java Quickstart", to: "#" },
+  { title: ".NET Quickstart", to: "#" },
 ];
 
 const exploreLinks = [
@@ -74,13 +74,13 @@ const IntroductionContent = () => {
           Learn how to get Resend set up in your project.
         </p>
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {quickstartLinks.map((title) => (
+          {quickstartLinks.map((item) => (
             <Link
-              key={title}
-              to="#"
+              key={item.title}
+              to={item.to}
               className="group border border-border rounded-lg p-4 hover:bg-muted transition-colors flex items-center justify-between"
             >
-              <span className="text-sm font-medium text-foreground">{title}</span>
+              <span className="text-sm font-medium text-foreground">{item.title}</span>
               <ArrowUpRight className="w-4 h-4 text-muted-foreground group-hover:text-foreground transition-colors" />
             </Link>
           ))}
