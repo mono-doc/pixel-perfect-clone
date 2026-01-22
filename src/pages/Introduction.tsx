@@ -1,106 +1,124 @@
-import { ArrowRight } from "lucide-react";
+import { ArrowUpRight, ChevronRight } from "lucide-react";
 import { Link } from "react-router-dom";
+import CopyPageDropdown from "@/components/shared/CopyPageDropdown";
+import Footer from "@/components/shared/Footer";
+
+const quickstartLinks = [
+  "Node.js Quickstart",
+  "Next.js Quickstart",
+  "Express Quickstart",
+  "PHP Quickstart",
+  "Laravel Quickstart",
+  "Python Quickstart",
+  "Ruby Quickstart",
+  "Rails Quickstart",
+  "Go Quickstart",
+  "Rust Quickstart",
+  "Elixir Quickstart",
+  "Java Quickstart",
+  ".NET Quickstart",
+];
+
+const exploreLinks = [
+  {
+    title: "Emails",
+    description: "Visualize all the activity in your account.",
+  },
+  {
+    title: "Domains",
+    description: "Ensure deliverability of your emails.",
+  },
+  {
+    title: "Webhooks",
+    description: "Notify your application about email events.",
+  },
+];
 
 const Introduction = () => {
-  const gradientLineStyle = {
-    borderRadius: "2px",
-    background: "linear-gradient(90deg, #00D0FF 0%, #66D9FF 50%, #A6ECFF 100%)",
-  };
-
   return (
     <main className="bg-background">
-      {/* Hero Section */}
-      <div className="bg-gradient-to-b from-accent/50 to-background">
-        <div className="max-w-[1200px] mx-auto px-6 py-16 md:py-24">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight max-w-4xl">
-            Your guide to growing with AI-powered short-form video
-          </h1>
-          <div className="w-16 h-1 mt-6 mb-6" style={gradientLineStyle} />
-          <p className="text-lg md:text-xl text-muted-foreground max-w-2xl">
-            Step-by-step help, troubleshooting, and how-to resources to get the most out of Captions and Mirage's frontier AI video tools.
+      <div className="max-w-[1200px] mx-auto px-6 py-12">
+        <div className="flex items-start justify-between mb-6">
+          <h1 className="text-3xl sm:text-4xl font-semibold text-foreground">Introduction</h1>
+          <CopyPageDropdown />
+        </div>
+        <p className="text-base text-muted-foreground mb-6 leading-relaxed">
+          Resend is the email API for developers.
+        </p>
+        <div className="flex flex-wrap gap-3">
+          <Link
+            to="#"
+            className="h-9 px-4 bg-primary text-primary-foreground rounded-full text-sm font-medium hover:opacity-90 transition-opacity flex items-center gap-2"
+          >
+            Get started
+            <ArrowUpRight className="w-4 h-4" />
+          </Link>
+          <Link
+            to="#"
+            className="h-9 px-4 border border-border rounded-full text-sm font-medium text-foreground hover:bg-muted transition-colors flex items-center"
+          >
+            View API reference
+          </Link>
+        </div>
+
+        <section className="mt-12">
+          <h2 className="text-xl font-semibold text-foreground mb-3">Quickstart</h2>
+          <p className="text-base text-muted-foreground mb-6 leading-relaxed">
+            Learn how to get Resend set up in your project.
           </p>
-        </div>
-      </div>
-
-      {/* Product Cards */}
-      <div className="max-w-[1200px] mx-auto px-6 py-12">
-        <div className="grid md:grid-cols-2 gap-8">
-          {/* Captions Card */}
-          <div className="group">
-            <div className="bg-muted rounded-lg overflow-hidden mb-6 aspect-[4/3] flex items-center justify-center">
-              <div className="w-full h-full bg-gradient-to-br from-slate-700 to-slate-900 flex items-center justify-center p-8">
-                <div className="flex gap-2 items-end">
-                  <div className="w-20 h-36 bg-slate-800 rounded-lg shadow-xl" />
-                  <div className="w-24 h-44 bg-slate-700 rounded-lg shadow-xl -mb-2" />
-                  <div className="w-20 h-36 bg-slate-800 rounded-lg shadow-xl" />
-                </div>
-              </div>
-            </div>
-            <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-3">Captions</h2>
-            <p className="text-muted-foreground mb-4">
-              Edit by text, add subtitles, and translate in one pass
-            </p>
-            <Link 
-              to="#" 
-              className="inline-flex items-center gap-2 text-primary font-semibold text-sm uppercase tracking-wide hover:gap-3 transition-all"
-            >
-              Learn More
-              <ArrowRight className="w-4 h-4" />
-            </Link>
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {quickstartLinks.map((title) => (
+              <Link
+                key={title}
+                to="#"
+                className="group border border-border rounded-lg p-4 hover:bg-muted transition-colors flex items-center justify-between"
+              >
+                <span className="text-sm font-medium text-foreground">{title}</span>
+                <ArrowUpRight className="w-4 h-4 text-muted-foreground group-hover:text-foreground transition-colors" />
+              </Link>
+            ))}
           </div>
+        </section>
 
-          {/* Mirage Studio Card */}
-          <div className="group">
-            <div className="relative">
-              <div className="absolute -top-1 left-0 right-0 h-1 bg-primary rounded-t-lg" />
-              <div className="bg-muted rounded-lg overflow-hidden mb-6 aspect-[4/3] flex items-center justify-center">
-                <div className="w-full h-full bg-gradient-to-br from-slate-700 to-slate-900 flex items-center justify-center p-8">
-                  <div className="grid grid-cols-3 gap-2 w-full max-w-xs">
-                    <div className="aspect-square bg-slate-600 rounded" />
-                    <div className="aspect-square bg-slate-600 rounded" />
-                    <div className="aspect-square bg-slate-600 rounded" />
-                    <div className="aspect-square bg-slate-600 rounded" />
-                    <div className="aspect-square bg-slate-600 rounded" />
-                    <div className="aspect-square bg-slate-600 rounded" />
-                  </div>
+        <section className="mt-12">
+          <h2 className="text-xl font-semibold text-foreground mb-3">Explore</h2>
+          <p className="text-base text-muted-foreground mb-6 leading-relaxed">
+            Discover the full range of features and capabilities.
+          </p>
+          <div className="grid gap-4 md:grid-cols-3">
+            {exploreLinks.map((item) => (
+              <Link
+                key={item.title}
+                to="#"
+                className="group border border-border rounded-lg p-4 hover:bg-muted transition-colors"
+              >
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-sm font-medium text-foreground">{item.title}</span>
+                  <ArrowUpRight className="w-4 h-4 text-muted-foreground group-hover:text-foreground transition-colors" />
                 </div>
-              </div>
-            </div>
-            <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-3">Mirage Studio</h2>
-            <p className="text-muted-foreground mb-4">
-              Create realistic talking video from a script or audio
-            </p>
-            <Link 
-              to="/" 
-              className="inline-flex items-center gap-2 text-primary font-semibold text-sm uppercase tracking-wide hover:gap-3 transition-all"
-            >
-              Learn More
-              <ArrowRight className="w-4 h-4" />
-            </Link>
+                <p className="text-sm text-muted-foreground leading-relaxed">{item.description}</p>
+              </Link>
+            ))}
           </div>
+        </section>
+
+        <div className="flex justify-end py-10">
+          <Link
+            to="#"
+            className="flex items-center gap-3 p-4 border border-border rounded-lg hover:bg-muted transition-colors group"
+          >
+            <div className="text-right">
+              <span className="block text-xs text-muted-foreground">Next</span>
+              <span className="block text-sm font-medium text-foreground group-hover:text-primary transition-colors">
+                Node.js Quickstart
+              </span>
+            </div>
+            <ChevronRight className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" />
+          </Link>
         </div>
-      </div>
 
-      {/* What we build Section */}
-      <div className="max-w-[1200px] mx-auto px-6 py-12 border-t border-border">
-        <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">What we build</h2>
-        <div className="w-12 h-1 mb-6" style={gradientLineStyle} />
-        <p className="text-muted-foreground max-w-3xl leading-relaxed">
-          We train models that understand speech, timing, and style. Then we ship them in products that cut busywork out of the process. Scripting, editing, localization, and publishing live in one flow so teams spend more time creating and less time hunting through timelines.
-        </p>
+        <Footer />
       </div>
-
-      {/* Our point of view Section */}
-      <div className="max-w-[1200px] mx-auto px-6 py-12">
-        <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">Our point of view</h2>
-        <div className="w-12 h-1 mb-6" style={gradientLineStyle} />
-        <p className="text-muted-foreground max-w-3xl leading-relaxed">
-          Mirage is built on the belief that the distance between idea and audience should be zero. By combining frontier AI research with powerful short-form video tools, we give creators and businesses the ability to reach their full creative and commercial potential.
-        </p>
-      </div>
-
-      {/* Footer spacing */}
-      <div className="h-24" />
     </main>
   );
 };
