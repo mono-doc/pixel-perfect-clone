@@ -5,7 +5,7 @@ import EmailsIntroductionTableOfContents from "@/components/dashboard/EmailsIntr
 const EmailsIntroduction = () => {
   return (
     <main className="flex max-w-[1600px] mx-auto px-6">
-      <Sidebar activeItem="Introduction" />
+      <Sidebar activeItem="Emails → Introduction" />
       <EmailsIntroductionContent />
       <EmailsIntroductionTableOfContents />
     </main>
