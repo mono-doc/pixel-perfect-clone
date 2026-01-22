@@ -8,6 +8,7 @@ import Index from "./pages/Index";
 import Introduction from "./pages/Introduction";
 import Api from "./pages/Api";
 import SendWithPython from "./pages/SendWithPython";
+import SendWithPhp from "./pages/SendWithPhp";
 import SendWithNextjs from "./pages/SendWithNextjs";
 import SendEmail from "./pages/api/SendEmail";
 import SendBatchEmails from "./pages/api/SendBatchEmails";
@@ -39,7 +40,8 @@ const AppContent = () => {
       ? "studio"
       : location.pathname.startsWith("/introduction")
         ? "introduction"
-        : location.pathname.startsWith("/send-with-python")
+        : location.pathname.startsWith("/send-with-python") ||
+            location.pathname.startsWith("/send-with-php")
           ? "introduction"
         : location.pathname.startsWith("/send-with-nextjs")
           ? "introduction"
@@ -55,6 +57,7 @@ const AppContent = () => {
         <Route path="/" element={<Index />} />
         <Route path="/introduction" element={<Introduction />} />
         <Route path="/send-with-python" element={<SendWithPython />} />
+        <Route path="/send-with-php" element={<SendWithPhp />} />
         <Route path="/send-with-nextjs" element={<SendWithNextjs />} />
         <Route path="/api" element={<Api />} />
         <Route path="/api/send-email" element={<SendEmail />} />
