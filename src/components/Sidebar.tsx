@@ -1,4 +1,4 @@
-import { Zap, Globe, MessageSquare, User, CreditCard, Coins, Users, Shield, HelpCircle, Video, FileText, Settings, Play, Captions } from "lucide-react";
+import { Zap, Globe, MessageSquare, User, CreditCard, Coins, Users, Shield, HelpCircle, Video, FileText, Settings, Play, Captions, BookOpen } from "lucide-react";
 
 interface NavItemProps {
   icon: React.ReactNode;
@@ -34,16 +34,21 @@ const SectionLabel = ({ children }: { children: React.ReactNode }) => (
   </h3>
 );
 
-const Sidebar = () => {
+interface SidebarProps {
+  activeItem?: string;
+}
+
+const Sidebar = ({ activeItem = "Quick Start" }: SidebarProps) => {
   return (
     <aside className="w-64 flex-shrink-0 border-r border-border h-[calc(100vh-7rem)] sticky overflow-y-auto scrollbar-thin py-6 pr-4">
       {/* GET STARTED */}
       <div className="mb-6">
         <SectionLabel>Get Started</SectionLabel>
         <nav className="space-y-0.5">
-          <NavItem icon={<Zap className="w-4 h-4" />} label="Quick Start" active />
-          <NavItem icon={<Globe className="w-4 h-4" />} label="Our AI Model" />
-          <NavItem icon={<MessageSquare className="w-4 h-4" />} label="Prompt Guide" />
+          <NavItem icon={<BookOpen className="w-4 h-4" />} label="Introduction" active={activeItem === "Introduction"} />
+          <NavItem icon={<Zap className="w-4 h-4" />} label="Quick Start" active={activeItem === "Quick Start"} />
+          <NavItem icon={<Globe className="w-4 h-4" />} label="Our AI Model" active={activeItem === "Our AI Model"} />
+          <NavItem icon={<MessageSquare className="w-4 h-4" />} label="Prompt Guide" active={activeItem === "Prompt Guide"} />
         </nav>
       </div>
 
