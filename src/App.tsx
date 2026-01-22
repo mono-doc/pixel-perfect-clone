@@ -11,6 +11,7 @@ import SendWithPython from "./pages/SendWithPython";
 import SendWithJava from "./pages/SendWithJava";
 import SendWithPhp from "./pages/SendWithPhp";
 import SendWithNextjs from "./pages/SendWithNextjs";
+import BatchSending from "./pages/dashboard/BatchSending";
 import EmailsIntroduction from "./pages/dashboard/EmailsIntroduction";
 import SendEmail from "./pages/api/SendEmail";
 import SendBatchEmails from "./pages/api/SendBatchEmails";
@@ -85,6 +86,7 @@ const AppContent = () => {
         <Route path="/api/get-segments" element={<GetSegments />} />
         <Route path="/api/remove-segment" element={<RemoveSegment />} />
         <Route path="/api/rate-limiting" element={<RateLimiting />} />
+        <Route path="/dashboard/emails/batch-sending" element={<BatchSending />} />
         {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
         <Route path="*" element={<NotFound />} />
       </Routes>
