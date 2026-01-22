@@ -7,7 +7,7 @@ const quickstartLinks = [
   { title: "Node.js Quickstart", to: "#" },
   { title: "Next.js Quickstart", to: "/send-with-nextjs" },
   { title: "Express Quickstart", to: "#" },
-  { title: "PHP Quickstart", to: "#" },
+  { title: "PHP Quickstart", to: "/send-with-php" },
   { title: "Laravel Quickstart", to: "#" },
   { title: "Python Quickstart", to: "/send-with-python" },
   { title: "Ruby Quickstart", to: "#" },
