@@ -5,7 +5,7 @@ import Footer from "@/components/shared/Footer";
 
 const quickstartLinks = [
   { title: "Node.js Quickstart", to: "#" },
-  { title: "Next.js Quickstart", to: "#" },
+  { title: "Next.js Quickstart", to: "/send-with-nextjs" },
   { title: "Express Quickstart", to: "#" },
   { title: "PHP Quickstart", to: "#" },
   { title: "Laravel Quickstart", to: "#" },
