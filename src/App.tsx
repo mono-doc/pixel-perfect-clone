@@ -23,6 +23,7 @@ import CreateSegment from "./pages/api/CreateSegment";
 import GetSegment from "./pages/api/GetSegment";
 import GetSegments from "./pages/api/GetSegments";
 import RemoveSegment from "./pages/api/RemoveSegment";
+import RateLimiting from "./pages/api/RateLimiting";
 import NotFound from "./pages/NotFound";
 import Header from "./components/Header";
 import ScrollToTop from "./components/ScrollToTop";
@@ -64,6 +65,7 @@ const AppContent = () => {
         <Route path="/api/get-segment" element={<GetSegment />} />
         <Route path="/api/get-segments" element={<GetSegments />} />
         <Route path="/api/remove-segment" element={<RemoveSegment />} />
+        <Route path="/api/rate-limiting" element={<RateLimiting />} />
         {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
         <Route path="*" element={<NotFound />} />
       </Routes>

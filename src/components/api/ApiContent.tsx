@@ -66,10 +66,10 @@ const ApiContent = () => {
       {/* Next Navigation */}
       <div className="flex justify-end mt-8">
         <a
-          href="#"
+          href="/api/rate-limiting"
           className="flex flex-col items-end p-4 border border-border rounded-lg hover:bg-muted transition-colors min-w-[200px]"
         >
-          <span className="text-lg font-semibold text-foreground">API pricing</span>
+          <span className="text-lg font-semibold text-foreground">Rate limiting</span>
           <span className="flex items-center gap-1 text-sm text-muted-foreground">
             Next
             <ChevronRight className="w-4 h-4" />

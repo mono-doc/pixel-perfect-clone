@@ -82,7 +82,7 @@ const ApiSidebar = ({ activePath }: ApiSidebarProps) => {
         <nav className="space-y-0.5">
           <NavItem label="Overview" active={activePath === "/api"} href="/api" />
           <NavItem label="API pricing" />
-          <NavItem label="Rate limiting" />
+          <NavItem label="Rate limiting" active={activePath === "/api/rate-limiting"} href="/api/rate-limiting" />
         </nav>
       </div>
 
